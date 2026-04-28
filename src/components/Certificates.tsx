@@ -64,7 +64,7 @@ export function Certificates() {
                 </button>
               </div>
             </div>
-            <iframe
+            <embed
               src={selected.file}
               className={styles.viewer}
               title={selected.name}
