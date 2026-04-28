@@ -24,8 +24,11 @@ export const pt = {
   projects: {
     title: 'Projetos',
 
-    p1_title: 'API de Pagamentos',
-    p1_desc: 'Microsserviço de alta disponibilidade processando +50k transações diárias com filas, retries e observabilidade.',
+    p1_title: 'Generator API',
+    p1_desc: 'API REST robusta com geração de CPF, encurtador de URL, gerador de senhas, UUID, serviços de data e números sorteados.',
+
+    p2_title: 'YT Downloader CLI',
+    p2_desc: 'Ferramenta de linha de comando para baixar vídeos e áudios do YouTube direto do terminal, com seleção de qualidade e extração em MP3.',
   },
   timeline: {
     title: 'Trajetória',

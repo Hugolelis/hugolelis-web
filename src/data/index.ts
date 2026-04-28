@@ -1,7 +1,8 @@
 import type { Project, Skill } from '../types'
 
 export const projects: Project[] = [
-  { id: 1, titleKey: 'p1_title', tag: 'Python · FastAPI · PostgreSQL', descriptionKey: 'p1_desc', year: '2024' },
+  { id: 1, titleKey: 'p1_title', tag: 'Node.js · TypeScript · PostgreSQL', descriptionKey: 'p1_desc', year: '2026', link: 'https://github.com/Hugolelis/Generator-API' },
+  { id: 2, titleKey: 'p2_title', tag: 'Python · yt-dlp · Typer', descriptionKey: 'p2_desc', year: '2026', link: 'https://github.com/Hugolelis/YT_Downloader-CLI' },
 ]
 
 export const skills: Skill[] = [

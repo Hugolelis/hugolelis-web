@@ -5,7 +5,6 @@ export interface Project {
   descriptionKey: string
   year: string
   link?: string
-  github?: string
 }
 
 export interface Skill {

@@ -26,8 +26,11 @@ export const en: Translations = {
   projects: {
     title: 'Projects',
 
-    p1_title: 'Payments API',
-    p1_desc: 'High-availability microservice processing 50k+ daily transactions with queues, retries, and observability.',
+    p1_title: 'Generator API',
+    p1_desc: 'Robust REST API offering CPF generation, URL shortener, password generator, UUID, date services and sorted numbers.',
+
+    p2_title: 'YT Downloader CLI',
+    p2_desc: 'CLI tool to download YouTube videos and audio directly from the terminal, with quality selection and MP3 extraction.',
   },
   timeline: {
     title: 'Timeline',
