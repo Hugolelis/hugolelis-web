@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import styles from './Hero.module.css'
 
-import cvUrl from '../assets/Hugolelis_cv.pdf'
+import cvUrl from '/Hugolelis_cv.pdf'
 
 interface TerminalField {
   key: string
