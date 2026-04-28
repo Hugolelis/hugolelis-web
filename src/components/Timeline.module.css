@@ -16,7 +16,7 @@
   position: relative;
 }
 
-/* Vertical line connecting all items */
+/* Linha vertical conectando os itens */
 .item:not(:last-child) .meta::after {
   content: '';
   position: absolute;
@@ -81,7 +81,7 @@
 
 .role {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
   font-weight: 400;
   color: var(--text);
   margin-bottom: 0.25rem;
@@ -101,17 +101,37 @@
   max-width: 480px;
 }
 
-@media (max-width: 700px) {
+/* Tablet */
+@media (max-width: 768px) {
   .item {
-    grid-template-columns: 5rem 1fr;
-    gap: 0 1.5rem;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0 1.75rem;
   }
 
   .item:not(:last-child) .meta::after {
-    left: calc(5rem - 0.5px);
+    left: calc(5.5rem - 0.5px);
   }
 
-  .year {
-    font-size: 0.68rem;
+  .year { font-size: 0.7rem; }
+  .desc { max-width: 100%; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .timeline { padding: 5rem 0; }
+
+  .item {
+    grid-template-columns: 4.5rem 1fr;
+    gap: 0 1.25rem;
   }
+
+  .item:not(:last-child) .meta::after {
+    left: calc(4.5rem - 0.5px);
+  }
+
+  .year { font-size: 0.65rem; }
+
+  .card { padding-bottom: 2.5rem; }
+
+  .desc { font-size: 0.9rem; }
 }
