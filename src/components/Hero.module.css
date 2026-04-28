@@ -1,37 +1,39 @@
-/* ─── Hero ─────────────────────────────────────────────── */
 .hero {
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 8rem 3rem 5rem;
   position: relative;
-  padding: 8rem 0 5rem;
+  overflow: hidden;
 }
 
 .gridBg {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
   background-size: 60px 60px;
-  opacity: 0.35;
-  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 30%, transparent 100%);
+  opacity: 0.6;
 }
 
-/* ─── Layout dois colunas ───────────────────────────────── */
 .layout {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
   align-items: center;
 }
 
-/* ─── Coluna esquerda ───────────────────────────────────── */
 .leftCol {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0;
 }
 
 .label {
@@ -40,206 +42,248 @@
   color: var(--accent);
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  animation: fadeUp 0.6s ease both;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
   font-weight: 400;
   line-height: 1.1;
-  display: flex;
-  align-items: center;
-  gap: 0.15em;
-  flex-wrap: wrap;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  animation: fadeUp 0.6s 0.1s ease both;
+  min-height: 4.5rem;
 }
 
-.accent { color: var(--text); }
+.accent { color: var(--accent); }
 
 .cursor {
   display: inline-block;
   width: 3px;
   height: 1em;
   background: var(--accent);
+  margin-left: 3px;
+  vertical-align: text-bottom;
   animation: blink 1s step-end infinite;
-  vertical-align: middle;
-  margin-left: 2px;
-  flex-shrink: 0;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
 }
 
 .sub {
+  font-size: 0.95rem;
   color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.65;
   max-width: 420px;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s 0.2s ease both;
+  line-height: 1.6;
+  min-height: 3rem;
+  transition: all 0.4s ease;
 }
 
 .cta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
+  gap: 1rem;
+  animation: fadeUp 0.6s 0.3s ease both;
 }
 
-/* ─── Terminal ──────────────────────────────────────────── */
+/* ── Terminal ── */
 .terminal {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
   overflow: hidden;
+  animation: fadeUp 0.6s 0.2s ease both;
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  box-shadow: 0 0 0 1px #1a1a1a;
 }
 
 .termBar {
+  background: #1a1a1a;
+  padding: 0.7rem 1rem;
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
+  gap: 0.4rem;
+  border-bottom: 1px solid #2a2a2a;
 }
 
 .termDot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  flex-shrink: 0;
+  opacity: 0.85;
 }
 
 .termTitle {
-  font-size: 0.75rem;
-  color: var(--muted);
   margin-left: auto;
-  margin-right: auto;
+  font-size: 0.72rem;
+  color: #555;
+  letter-spacing: 0.04em;
 }
 
 .termBody {
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 1.25rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.1rem;
 }
 
-.termComment { color: var(--muted); }
+.termComment {
+  font-size: 0.78rem;
+  color: #4a5568;
+  line-height: 1.9;
+  user-select: none;
+}
 
 .termLine {
   display: flex;
-  gap: 0.25em;
+  align-items: center;
+  gap: 0;
+  font-size: 0.82rem;
+  line-height: 2;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0 0.25rem;
+  transition: background 0.15s, opacity 0.35s ease, transform 0.35s ease;
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: translateX(-8px);
 }
 
 .termLineVisible {
   opacity: 1;
-  transform: none;
+  transform: translateX(0);
 }
 
-.termKey   { color: #79b8ff; }
-.termColon { color: var(--muted); }
-.termQuote { color: #f97583; }
-.termValue { color: #85e89d; }
-.termComma { color: var(--muted); }
+.termLine:hover { background: rgba(255,255,255,0.04); }
+
+.termKey   { color: #7dd3fc; min-width: 90px; }
+.termColon { color: #888; margin: 0 4px 0 0; }
+.termQuote { color: #a78bfa; }
+.termValue { color: #86efac; flex: 1; }
+.termComma { color: #888; }
+
+.termEdit {
+  font-size: 0.65rem;
+  color: #444;
+  margin-left: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.termLine:hover .termEdit { opacity: 1; color: #888; }
+
+.termInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fbbf24;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  flex: 1;
+  caret-color: #e8ff47;
+  min-width: 60px;
+}
 
 .termFooter {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #1e1e1e;
+  display: flex;
+  align-items: center;
+}
+
+.termHint {
+  font-size: 0.72rem;
+  color: #555;
+  letter-spacing: 0.04em;
 }
 
 .termSuccess {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.78rem;
-  color: var(--muted);
+  font-size: 0.72rem;
+  color: #4ade80;
+  letter-spacing: 0.04em;
 }
 
 .termSuccessDot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #28c840;
-  flex-shrink: 0;
+  background: #4ade80;
+  animation: pulse 1.5s ease infinite;
 }
 
-/* ─── Badge disponível ──────────────────────────────────── */
+.termRun {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(232,255,71,0.08);
+  border: 1px solid rgba(232,255,71,0.25);
+  color: #e8ff47;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 5px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, border-color 0.2s;
+}
+.termRun:hover {
+  background: rgba(232,255,71,0.15);
+  border-color: rgba(232,255,71,0.5);
+}
+
+.termRunIcon {
+  font-size: 0.6rem;
+}
+
+/* ── Badge ── */
 .badge {
   position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 3rem;
+  right: 3rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--muted);
-  white-space: nowrap;
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
 }
 
 .dot {
-  width: 7px;
-  height: 7px;
+  width: 8px; height: 8px;
   border-radius: 50%;
-  background: #28c840;
-  animation: pulse 2s ease-in-out infinite;
-  flex-shrink: 0;
+  background: #4ade80;
+  animation: pulse 2s ease infinite;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.6; transform: scale(0.85); }
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
 }
 
-/* ─── Tablet (≤ 900px) ──────────────────────────────────── */
+/* ── Responsive ── */
 @media (max-width: 900px) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .terminal {
-    max-width: 480px;
-  }
-
-  .sub { max-width: 100%; }
+  .layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .terminal { max-width: 100%; }
 }
 
-/* ─── Mobile (≤ 600px) ──────────────────────────────────── */
-@media (max-width: 600px) {
-  .hero {
-    padding: 7rem 0 4rem;
-    min-height: 100svh;
-  }
-
-  .title {
-    font-size: clamp(1.75rem, 8vw, 2.5rem);
-  }
-
-  .terminal {
-    font-size: 0.8rem;
-  }
-
-  .termBody {
-    padding: 1rem 1.1rem;
-  }
-
-  .cta {
-    flex-direction: column;
-  }
-
-  .cta a {
-    text-align: center;
-  }
-
-  .badge {
-    bottom: 1.5rem;
-    font-size: 0.7rem;
-  }
+@media (max-width: 700px) {
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .badge { display: none; }
 }
