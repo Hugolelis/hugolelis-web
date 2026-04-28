@@ -15,7 +15,7 @@ interface TerminalField {
 const fields: TerminalField[] = [
   { key: 'name',     labelPt: 'nome',        labelEn: 'name',     valuePt: 'Hugo de Lelis',               valueEn: 'Hugo de Lelis' },
   { key: 'role',     labelPt: 'cargo',       labelEn: 'role',     valuePt: 'Desenvolvedor de Software',    valueEn: 'Software Developer' },
-  { key: 'stack',    labelPt: 'stack',       labelEn: 'stack',    valuePt: 'Python · Node.js · C++',   valueEn: 'Python · Node.js · C++' },
+  { key: 'stack',    labelPt: 'stack',       labelEn: 'stack',    valuePt: 'Python · Node · C++',   valueEn: 'Python · Node · C++' },
   { key: 'location', labelPt: 'localizacao', labelEn: 'location', valuePt: 'Brasil',                   valueEn: 'Brazil' },
 ]
 
