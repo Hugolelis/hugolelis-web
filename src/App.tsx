@@ -1,4 +1,4 @@
-import { Nav, Hero, About, Timeline, Projects, Contact, Footer } from './components'
+import { Nav, Hero, About, Timeline, Certificates, Projects, Contact, Footer } from './components'
 
 export default function App() {
   return (
@@ -7,6 +7,7 @@ export default function App() {
       <Hero />
       <About />
       <Timeline />
+      <Certificates />
       <Projects />
       <Contact />
       <Footer />

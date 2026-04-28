@@ -2,6 +2,7 @@ export const pt = {
   nav: {
     about: 'Sobre',
     timeline: 'Trajetória',
+    certificates: 'Certificados',
     projects: 'Projetos',
     contact: 'Contato',
   },
@@ -64,6 +65,17 @@ export const pt = {
         place: 'Metta Innovations',
         desc: 'Foco em Visão Computacional e IA. Desenvolvimento com C++ e Python, MySQL e PostgreSQL, aplicações Qt/QML, Docker, testes unitários e metodologia ágil/Scrum.',
       },
+    ],
+  },
+  certificates: {
+    title: 'Certificados',
+    items: [
+      { name: 'Introduction to Software Engineering', issuer: 'IBM · Coursera', year: '2026', file: 'src/assets/courses/software_eng.pdf' },
+      { name: 'SQL: A Practical Introduction for Querying Databases', issuer: 'IBM · Coursera', year: '2026', file: 'src/assets/courses/SQL.pdf' },
+      { name: 'Introduction to Git and GitHub', issuer: 'Google · Coursera', year: '2026', file: 'src/assets/courses/GIT.pdf' },
+      { name: 'Object-Oriented Data Structures in C++', issuer: 'University of Illinois · Coursera', year: '2026', file: 'src/assets/courses/c++.pdf' },
+      { name: 'Python for Data Science, AI & Development', issuer: 'IBM · Coursera', year: '2026', file: 'src/assets/courses/python.pdf' },
+      { name: 'Docker from beginner to advanced', issuer: 'Udemy', year: '2025', file: 'src/assets/courses/docker.pdf' },
     ],
   },
   contact: {

@@ -13,6 +13,7 @@ export function Nav() {
       <ul className={styles.links}>
         <li><a href="#sobre">{t.nav.about}</a></li>
         <li><a href="#trajetoria">{t.nav.timeline}</a></li>
+        <li><a href="#certificados">{t.nav.certificates}</a></li>
         <li><a href="#projetos">{t.nav.projects}</a></li>
         <li><a href="#contato">{t.nav.contact}</a></li>
       </ul>
