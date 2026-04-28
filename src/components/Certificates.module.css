@@ -21,6 +21,8 @@
   text-align: left;
   width: 100%;
   transition: border-color 0.2s;
+  text-decoration: none;
+  color: inherit;
 }
 
 .card:hover {
