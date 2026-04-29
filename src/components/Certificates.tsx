@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useApp } from '../context/AppContext'
+import { Pdfmodal } from './Pdfmodal'
 import styles from './Certificates.module.css'
 
 interface CertItem {
@@ -39,38 +40,12 @@ export function Certificates() {
       </div>
 
       {selected && (
-        <div className={styles.overlay} onClick={() => setSelected(null)}>
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.modalHeader}>
-              <div className={styles.modalInfo}>
-                <span className={styles.modalName}>{selected.name}</span>
-                <span className={styles.modalIssuer}>{selected.issuer} · {selected.year}</span>
-              </div>
-              <div className={styles.modalActions}>
-                <a
-                  href={selected.file}
-                  download
-                  className={styles.downloadBtn}
-                  title="Download"
-                >
-                  ↓
-                </a>
-                <button
-                  className={styles.closeBtn}
-                  onClick={() => setSelected(null)}
-                  title="Fechar"
-                >
-                  ✕
-                </button>
-              </div>
-            </div>
-            <embed
-              src={selected.file}
-              className={styles.viewer}
-              title={selected.name}
-            />
-          </div>
-        </div>
+        <Pdfmodal
+          name={selected.name}
+          issuer={`${selected.issuer} · ${selected.year}`}
+          file={selected.file}
+          onClose={() => setSelected(null)}
+        />
       )}
     </section>
   )

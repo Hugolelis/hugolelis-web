@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
+import { Pdfmodal } from './Pdfmodal'
 import styles from './Hero.module.css'
 
 import cvUrl from '/Hugolelis_cv.pdf'
@@ -13,10 +14,10 @@ interface TerminalField {
 }
 
 const fields: TerminalField[] = [
-  { key: 'name',     labelPt: 'nome',        labelEn: 'name',     valuePt: 'Hugo de Lelis',               valueEn: 'Hugo de Lelis' },
-  { key: 'role',     labelPt: 'cargo',       labelEn: 'role',     valuePt: 'Desenvolvedor de Software',    valueEn: 'Software Developer' },
-  { key: 'stack',    labelPt: 'stack',       labelEn: 'stack',    valuePt: 'Python · Node · C++',   valueEn: 'Python · Node · C++' },
-  { key: 'location', labelPt: 'localizacao', labelEn: 'location', valuePt: 'Brasil',                   valueEn: 'Brazil' },
+  { key: 'name',     labelPt: 'nome',        labelEn: 'name',     valuePt: 'Hugo de Lelis',            valueEn: 'Hugo de Lelis' },
+  { key: 'role',     labelPt: 'cargo',       labelEn: 'role',     valuePt: 'Desenvolvedor de Software', valueEn: 'Software Developer' },
+  { key: 'stack',    labelPt: 'stack',       labelEn: 'stack',    valuePt: 'Python · Node · C++',       valueEn: 'Python · Node · C++' },
+  { key: 'location', labelPt: 'localizacao', labelEn: 'location', valuePt: 'Brasil',                    valueEn: 'Brazil' },
 ]
 
 function useTypewriter(text: string, speed = 28) {
@@ -38,6 +39,7 @@ function useTypewriter(text: string, speed = 28) {
 export function Hero() {
   const { t, lang } = useApp()
   const [animStep, setAnimStep] = useState(0)
+  const [cvOpen, setCvOpen] = useState(false)
 
   const roleValue = lang === 'pt' ? fields[1].valuePt : fields[1].valueEn
   const displayedTitle = useTypewriter(
@@ -68,7 +70,12 @@ export function Hero() {
           <div className={styles.cta}>
             <a href="#projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
             <a href="#contato" className="btn btn--ghost">{t.hero.cta_contact}</a>
-            <a href={cvUrl} target='_blank' className="btn btn--ghost">{t.hero.cta_cv}</a>
+            <button
+              className="btn btn--ghost"
+              onClick={() => setCvOpen(true)}
+            >
+              {t.hero.cta_cv}
+            </button>
           </div>
         </div>
 
@@ -121,6 +128,15 @@ export function Hero() {
         <span>{t.hero.available}</span>
         <span className={styles.dot} />
       </div>
+
+      {cvOpen && (
+        <Pdfmodal
+          name="Hugolelis_cv.pdf"
+          issuer="Hugo de Lelis"
+          file={cvUrl}
+          onClose={() => setCvOpen(false)}
+        />
+      )}
     </section>
   )
 }
