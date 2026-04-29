@@ -2,6 +2,7 @@ import type { Translations } from './pt'
 
 export const en: Translations = {
   nav: {
+    hero: 'Home',
     about: 'About',
     timeline: 'Timeline',
     certificates: 'Certificates',

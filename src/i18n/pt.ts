@@ -1,5 +1,6 @@
 export const pt = {
   nav: {
+    hero: 'Início',
     about: 'Sobre',
     timeline: 'Trajetória',
     certificates: 'Certificados',

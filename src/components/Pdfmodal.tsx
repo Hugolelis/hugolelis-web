@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import styles from './Pdfmodal.module.css'
 
 interface PdfModalProps {
@@ -7,7 +8,20 @@ interface PdfModalProps {
     onClose: () => void
 }
 
+function useIsMobile() {
+    const [isMobile, setIsMobile] = useState(false)
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 768)
+        check()
+        window.addEventListener('resize', check)
+        return () => window.removeEventListener('resize', check)
+    }, [])
+    return isMobile
+}
+
 export function Pdfmodal({ name, issuer, file, onClose }: PdfModalProps) {
+    const isMobile = useIsMobile()
+
     return (
         <div className={styles.overlay} onClick={onClose}>
         <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -34,11 +48,35 @@ export function Pdfmodal({ name, issuer, file, onClose }: PdfModalProps) {
                 </button>
             </div>
             </div>
+
+            {isMobile ? (
+            <div className={styles.mobileFallback}>
+                <p className={styles.fallbackText}>
+                Visualização não disponível.
+                </p>
+                <a
+                href={file}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.fallbackBtn}
+                >
+                Abrir PDF ↗
+                </a>
+                <a
+                href={file}
+                download
+                className={styles.fallbackBtnOutline}
+                >
+                Baixar PDF ↓
+                </a>
+            </div>
+            ) : (
             <embed
-            src={file}
-            className={styles.viewer}
-            title={name}
+                src={file}
+                className={styles.viewer}
+                title={name}
             />
+            )}
         </div>
         </div>
     )

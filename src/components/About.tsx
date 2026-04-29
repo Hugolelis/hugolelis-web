@@ -3,7 +3,7 @@ import { skills } from '../data'
 import styles from './About.module.css'
 
 const categoryColors: Record<string, string> = {
-  backend: 'var(--accent)',
+  backend: 'var(--accent-term)',
   infra: 'var(--accent-blue)',
   tools: 'var(--muted)',
 }

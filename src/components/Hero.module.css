@@ -280,16 +280,16 @@
 
 /* ── Responsive ── */
 
-@media (max-width: 1024px) {
-  .layout { gap: 2.5rem; }
-  .hero { padding: 8rem 2rem 5rem; }
-}
-
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .layout {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+  .hero { padding: 8rem 2rem 5rem; }
+  .badge { display: none; }
+}
+
+@media (max-width: 900px) {
   .terminal { max-width: 100%; }
   .sub { max-width: 100%; min-height: unset; }
   .title { min-height: unset; }

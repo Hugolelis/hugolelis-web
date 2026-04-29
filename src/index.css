@@ -15,6 +15,7 @@
   --grid-color: #1e1e1e;
   --nav-bg: rgba(10,10,10,0.85);
   --accent: #e0e0e0;
+  --accent-term: #4ade80;
   --accent-dim: #b0b0b0;
   --accent-blue: #60a5fa;
   --text: #f0f0f0;
@@ -27,8 +28,9 @@
   --border: #dddbd7;
   --grid-color: #dddbd7;
   --nav-bg: rgba(245,244,240,0.85);
-  --accent: #b0b0b0;
-  --accent-dim: #a8a8a8;
+  --accent: #6b6b6b;
+  --accent-term: #4ade80;
+  --accent-dim: #4a4a4a;
   --accent-blue: #2563eb;
   --text: #1a1a1a;
   --muted: #888;

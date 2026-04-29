@@ -35,9 +35,26 @@
   font-size: 0.9rem;
   letter-spacing: 0.04em;
   transition: color 0.2s;
+  position: relative;
 }
 
 .links a:hover { color: var(--text); }
+
+/* linha embaixo do link ativo */
+.activeLink {
+  color: var(--text) !important;
+}
+
+.activeLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: var(--accent);
+  border-radius: 2px;
+}
 
 .controls {
   display: flex;
@@ -63,7 +80,7 @@
   border-color: var(--accent);
 }
 
-/* ── Hamburguer ── */
+/* ── Hamburger ── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -79,9 +96,7 @@
   transition: border-color 0.2s;
 }
 
-.hamburger:hover {
-  border-color: var(--accent);
-}
+.hamburger:hover { border-color: var(--accent); }
 
 .hamburger span {
   display: block;
@@ -93,20 +108,11 @@
   transform-origin: center;
 }
 
-.hamburger:hover span {
-  background: var(--text);
-}
+.hamburger:hover span { background: var(--text); }
 
-/* animação X ao abrir */
-.hamburgerOpen span:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
-}
-.hamburgerOpen span:nth-child(2) {
-  opacity: 0;
-}
-.hamburgerOpen span:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
-}
+.hamburgerOpen span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburgerOpen span:nth-child(2) { opacity: 0; }
+.hamburgerOpen span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* ── Mobile Menu ── */
 .mobileMenu {
@@ -125,9 +131,7 @@
   transition: transform 0.3s ease;
 }
 
-.mobileMenuOpen {
-  transform: translateX(0);
-}
+.mobileMenuOpen { transform: translateX(0); }
 
 .mobileLinks {
   list-style: none;
@@ -136,9 +140,7 @@
   gap: 0;
 }
 
-.mobileLinks li {
-  border-bottom: 1px solid var(--border);
-}
+.mobileLinks li { border-bottom: 1px solid var(--border); }
 
 .mobileLinks a {
   display: block;
@@ -155,7 +157,12 @@
   padding-left: 0.5rem;
 }
 
-/* overlay escuro atrás do menu */
+/* active no mobile — só muda a cor, sem underline */
+.mobileLinks .activeLink {
+  color: var(--text) !important;
+  padding-left: 0.5rem;
+}
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -165,7 +172,7 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 700px) {
   .nav { padding: 1.25rem 1.5rem; }
   .links { display: none; }
   .hamburger { display: flex; }

@@ -83,6 +83,66 @@
   border: none;
 }
 
+/* ── Mobile fallback ── */
+.mobileFallback {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.fallbackText {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
+.fallbackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  width: 100%;
+  max-width: 220px;
+  justify-content: center;
+}
+
+.fallbackBtn:hover { opacity: 0.85; }
+
+.fallbackBtnOutline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  width: 100%;
+  max-width: 220px;
+  justify-content: center;
+}
+
+.fallbackBtnOutline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 @media (max-width: 700px) {
   .modal { height: 92vh; }
 }
