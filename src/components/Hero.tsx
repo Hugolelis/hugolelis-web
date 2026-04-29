@@ -56,7 +56,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} id='hero'>
       <div className={styles.gridBg} aria-hidden />
       <div className={styles.layout}>
 
