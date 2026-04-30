@@ -49,6 +49,7 @@ export function Nav() {
 
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}>
         <ul className={styles.mobileLinks}>
+          <li><a href="#hero"         onClick={closeMenu} className={active === 'hero' ? styles.activeLink : ''}>{t.nav.hero}</a></li>
           <li><a href="#sobre"        onClick={closeMenu} className={active === 'sobre'        ? styles.activeLink : ''}>{t.nav.about}</a></li>
           <li><a href="#trajetoria"   onClick={closeMenu} className={active === 'trajetoria'   ? styles.activeLink : ''}>{t.nav.timeline}</a></li>
           <li><a href="#certificados" onClick={closeMenu} className={active === 'certificados' ? styles.activeLink : ''}>{t.nav.certificates}</a></li>
