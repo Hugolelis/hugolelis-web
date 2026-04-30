@@ -81,7 +81,7 @@ export const pt = {
   },
   contact: {
     title: 'Vamos conversar?',
-    sub: 'Quer trocar uma ideia sobre arquitetura de sistemas?',
+    sub: 'Quer trocar uma ideia sobre sistemas?',
     cta: 'Enviar e-mail',
   },
   footer: 'Desenvolvido @ Hugolelis',

@@ -83,7 +83,7 @@ export const en: Translations = {
   },
   contact: {
     title: "Let's talk?",
-    sub: 'Want to chat about system architecture?',
+    sub: 'Want to chat about systems?',
     cta: 'Send an email',
   },
   footer: 'Developed @ Hugolelis',
