@@ -28,10 +28,10 @@ export const en: Translations = {
   projects: {
     title: 'Projects',
 
-    p1_title: 'Generator API',
+    p1_title: 'Generator',
     p1_desc: 'Robust REST API offering CPF generation, URL shortener, password generator, UUID, date services and sorted numbers.',
 
-    p2_title: 'YT Downloader CLI',
+    p2_title: 'YT Downloader',
     p2_desc: 'CLI tool to download YouTube videos and audio directly from the terminal, with quality selection and MP3 extraction.',
   },
   timeline: {
@@ -85,6 +85,38 @@ export const en: Translations = {
     title: "Let's talk?",
     sub: 'Want to chat about systems?',
     cta: 'Send an email',
+  },
+  blog: {
+    label: '# posts & articles',
+    sub: 'Thoughts on development, systems and technology.',
+    empty: 'No posts yet.',
+    linkedin: 'View on LinkedIn →',
+    posts: [
+      {
+        id: 1,
+        date: '2026-05-07',
+        title: 'I launched my portfolio!',
+        content: `A space where I gather my projects, experience and journey as a developer.\n\nThe project features:\n→ React + TypeScript\n→ Custom loading animation\n→ Responsive design\n→ PT-BR and EN support\n→ Light and dark theme\n→ Vercel hosting`,
+        tags: ['React', 'TypeScript', 'Vercel'],
+        linkedinUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7456332957394477058/',
+      },
+      {
+        id: 2,
+        date: '2026-04-28',
+        title: 'Do you organize your project by responsibility or by feature?',
+        content: `This decision directly impacts scalability, readability and maintainability — and it's more controversial than it seems.\n\n🔍 My take\nThere's no right answer. There's only the right context.\n\nIn small projects, organizing by responsibility is simple, intuitive and works well. But as the software scales, feature-based organization tends to win for its ease of finding and migrating resources.\n\n⚠️ My conclusion\nThe real problem isn't which style you choose. It's mixing styles without criteria and waking up to a codebase that makes the developer's life harder.`,
+        tags: ['Architecture', 'Best Practices'],
+        linkedinUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7443682520711421952/',
+      },
+      {
+        id: 3,
+        date: '2026-04-14',
+        title: 'Have you ever opened a 300-line JSON and tried to understand it?',
+        content: `This happens all the time:\n• Debugging an API response\n• Reviewing a payload\n• Understanding a schema without context\n\n🚀 JSON Crack solves this.\n\nIt's a tool that transforms JSON into an interactive visual graph. Paste the content, it maps the structure, organizes the nodes and delivers a navigable diagram in seconds — no setup, no install.\n\nAnd it doesn't stop at JSON — the tool also reads CSV, XML and YAML with the same ease.`,
+        tags: ['Tools', 'JSON', 'Dev Tips'],
+        linkedinUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7449947535521009664/',
+      },
+    ],
   },
   footer: 'Developed @ Hugolelis',
 }

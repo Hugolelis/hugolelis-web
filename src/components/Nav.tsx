@@ -26,6 +26,7 @@ export function Nav() {
           <li><a href="#certificados" className={active === 'certificados' ? styles.activeLink : ''}>{t.nav.certificates}</a></li>
           <li><a href="#projetos"     className={active === 'projetos'     ? styles.activeLink : ''}>{t.nav.projects}</a></li>
           <li><a href="#contato"      className={active === 'contato'      ? styles.activeLink : ''}>{t.nav.contact}</a></li>
+          <li><a href="/blog"         className={styles.blogLink}>Blog</a></li>
         </ul>
 
         <div className={styles.controls}>
@@ -55,6 +56,7 @@ export function Nav() {
           <li><a href="#certificados" onClick={closeMenu} className={active === 'certificados' ? styles.activeLink : ''}>{t.nav.certificates}</a></li>
           <li><a href="#projetos"     onClick={closeMenu} className={active === 'projetos'     ? styles.activeLink : ''}>{t.nav.projects}</a></li>
           <li><a href="#contato"      onClick={closeMenu} className={active === 'contato'      ? styles.activeLink : ''}>{t.nav.contact}</a></li>
+          <li><a href="/blog"         className={styles.blogLink}>Blog</a></li>
         </ul>
       </div>
 

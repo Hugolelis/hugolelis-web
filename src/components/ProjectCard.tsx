@@ -8,11 +8,20 @@ interface Props {
   translations: Translations['projects']
 }
 
+const TYPE_CLASS: Record<Project['type'], string> = {
+  API:   styles.tagApi,
+  CLI:   styles.tagCli,
+  WEB:   styles.tagWeb,
+  LIB:   styles.tagLib,
+  OTHER: styles.tagOther,
+}
+
 export function ProjectCard({ project, translations }: Props) {
   const [hovered, setHovered] = useState(false)
 
   const title = translations[project.titleKey as keyof typeof translations]
   const description = translations[project.descriptionKey as keyof typeof translations]
+  const typeClass = TYPE_CLASS[project.type] ?? styles.tagOther
 
   return (
     <a href={project.link} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
@@ -22,6 +31,7 @@ export function ProjectCard({ project, translations }: Props) {
         onMouseLeave={() => setHovered(false)}
       >
         <div className={styles.top}>
+          <span className={`${styles.typeBadge} ${typeClass}`}>{project.type}</span>
           <span className={styles.tag}>{project.tag}</span>
           <span className={styles.year}>{project.year}</span>
         </div>

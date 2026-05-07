@@ -20,6 +20,31 @@
   --accent-blue: #60a5fa;
   --text: #f0f0f0;
   --muted: #666;
+
+  /* terminal dark */
+  --term-bg: #0d0d0d;
+  --term-bar: #1a1a1a;
+  --term-border: #2a2a2a;
+  --term-shadow: rgba(0,0,0,0.4);
+  --term-hover: rgba(255,255,255,0.04);
+  --term-comment: #4a5568;
+  --term-muted: #555;
+  --term-key: #7dd3fc;
+  --term-quote: #a78bfa;
+  --term-value: #86efac;
+  --term-punct: #888;
+  --term-input: #fbbf24;
+
+  /* project tags */
+  --tag-api-bg: rgba(96,165,250,0.12);
+  --tag-api-color: #60a5fa;
+  --tag-api-border: rgba(96,165,250,0.3);
+  --tag-cli-bg: rgba(167,139,250,0.12);
+  --tag-cli-color: #a78bfa;
+  --tag-cli-border: rgba(167,139,250,0.3);
+  --tag-default-bg: rgba(255,255,255,0.06);
+  --tag-default-color: #aaa;
+  --tag-default-border: rgba(255,255,255,0.1);
 }
 
 [data-theme='light'] {
@@ -34,6 +59,31 @@
   --accent-blue: #2563eb;
   --text: #1a1a1a;
   --muted: #888;
+
+  /* terminal light */
+  --term-bg: #ffffff;
+  --term-bar: #f0efeb;
+  --term-border: #dddbd7;
+  --term-shadow: rgba(0,0,0,0.08);
+  --term-hover: rgba(0,0,0,0.04);
+  --term-comment: #94a3b8;
+  --term-muted: #aaa;
+  --term-key: #2563eb;
+  --term-quote: #7c3aed;
+  --term-value: #16a34a;
+  --term-punct: #999;
+  --term-input: #d97706;
+
+  /* project tags */
+  --tag-api-bg: rgba(37,99,235,0.08);
+  --tag-api-color: #2563eb;
+  --tag-api-border: rgba(37,99,235,0.2);
+  --tag-cli-bg: rgba(124,58,237,0.08);
+  --tag-cli-color: #7c3aed;
+  --tag-cli-border: rgba(124,58,237,0.2);
+  --tag-default-bg: rgba(0,0,0,0.04);
+  --tag-default-color: #666;
+  --tag-default-border: rgba(0,0,0,0.1);
 }
 
 html { scroll-behavior: smooth; }

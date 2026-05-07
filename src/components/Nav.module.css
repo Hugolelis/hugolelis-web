@@ -45,6 +45,13 @@
   color: var(--text) !important;
 }
 
+/* Pagina blog ativa */
+.blogLinkActive {
+  background: var(--tag-api-bg) !important;
+  color: var(--tag-api-color) !important;
+  border-color: var(--tag-api-border) !important;
+}
+
 .activeLink::after {
   content: '';
   position: absolute;
@@ -54,6 +61,20 @@
   height: 1.5px;
   background: var(--accent);
   border-radius: 2px;
+}
+
+.blogLink {
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  color: var(--accent-blue) !important;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--tag-api-border);
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 4px;
+  transition: background 0.2s !important;
+}
+.blogLink:hover {
+  background: var(--tag-api-bg);
 }
 
 .controls {
@@ -172,7 +193,7 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .nav { padding: 1.25rem 1.5rem; }
   .links { display: none; }
   .hamburger { display: flex; }
