@@ -5,56 +5,11 @@
   transition: background 0.3s, color 0.3s;
 }
 
-/* Nav */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 3rem;
-  background: var(--nav-bg);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-}
-
-.logo {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: color 0.2s;
-}
-.logo:hover { color: var(--accent); }
-
-.controls {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.toggle {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  padding: 0.35rem 0.7rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
-}
-.toggle:hover {
-  border-color: var(--accent);
-  color: var(--text);
-}
-
-/* Main */
+/* Main — padding-top para compensar nav fixa */
 .main {
   max-width: 720px;
   margin: 0 auto;
-  padding: 5rem 2rem 6rem;
+  padding: 8rem 2rem 6rem;
 }
 
 /* Header */
@@ -103,6 +58,7 @@
 .card {
   border-bottom: 1px solid var(--border);
   transition: border-color 0.2s;
+  position: relative;
 }
 
 .card:first-child {
@@ -236,7 +192,6 @@
 }
 
 @media (max-width: 700px) {
-  .nav { padding: 1rem 1.5rem; }
-  .main { padding: 3.5rem 1.25rem 4rem; }
+  .main { padding: 6rem 1.25rem 4rem; }
   .cardTitle { font-size: 1.3rem; }
 }

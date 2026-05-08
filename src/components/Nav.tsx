@@ -12,21 +12,27 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const active = useActiveSection(SECTIONS)
 
+  const onBlog = window.location.pathname === '/blog'
   const closeMenu = () => setMenuOpen(false)
+
+  const handleNav = (hash: string) => {
+    closeMenu()
+    if (onBlog) window.location.href = `/${hash}`
+  }
 
   return (
     <>
-      <nav className={`${styles.nav} ${scrollY > 40 ? styles.scrolled : ''}`}>
-        <a href="#hero" className={styles.logo}>{'<Hugo />'}</a>
+      <nav className={`${styles.nav} ${scrollY > 40 || onBlog ? styles.scrolled : ''}`}>
+        <a href={onBlog ? '/' : '#hero'} className={styles.logo}>{'<Hugo />'}</a>
 
         <ul className={styles.links}>
-          <li><a href="#hero"         className={active === 'hero'         ? styles.activeLink : ''}>{t.nav.hero}</a></li>
-          <li><a href="#sobre"        className={active === 'sobre'        ? styles.activeLink : ''}>{t.nav.about}</a></li>
-          <li><a href="#trajetoria"   className={active === 'trajetoria'   ? styles.activeLink : ''}>{t.nav.timeline}</a></li>
-          <li><a href="#certificados" className={active === 'certificados' ? styles.activeLink : ''}>{t.nav.certificates}</a></li>
-          <li><a href="#projetos"     className={active === 'projetos'     ? styles.activeLink : ''}>{t.nav.projects}</a></li>
-          <li><a href="#contato"      className={active === 'contato'      ? styles.activeLink : ''}>{t.nav.contact}</a></li>
-          <li><a href="/blog"         className={styles.blogLink}>Blog</a></li>
+          <li><a href={onBlog ? '/#hero'         : '#hero'}         onClick={() => handleNav('#hero')}         className={active === 'hero'         ? styles.activeLink : ''}>{t.nav.hero}</a></li>
+          <li><a href={onBlog ? '/#sobre'        : '#sobre'}        onClick={() => handleNav('#sobre')}        className={active === 'sobre'        ? styles.activeLink : ''}>{t.nav.about}</a></li>
+          <li><a href={onBlog ? '/#trajetoria'   : '#trajetoria'}   onClick={() => handleNav('#trajetoria')}   className={active === 'trajetoria'   ? styles.activeLink : ''}>{t.nav.timeline}</a></li>
+          <li><a href={onBlog ? '/#certificados' : '#certificados'} onClick={() => handleNav('#certificados')} className={active === 'certificados' ? styles.activeLink : ''}>{t.nav.certificates}</a></li>
+          <li><a href={onBlog ? '/#projetos'     : '#projetos'}     onClick={() => handleNav('#projetos')}     className={active === 'projetos'     ? styles.activeLink : ''}>{t.nav.projects}</a></li>
+          <li><a href={onBlog ? '/#contato'      : '#contato'}      onClick={() => handleNav('#contato')}      className={active === 'contato'      ? styles.activeLink : ''}>{t.nav.contact}</a></li>
+          <li><a href="/blog" className={`${styles.blogLink} ${onBlog ? styles.blogLinkActive : ''}`}>Blog</a></li>
         </ul>
 
         <div className={styles.controls}>
@@ -41,22 +47,20 @@ export function Nav() {
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Abrir menu"
           >
-            <span />
-            <span />
-            <span />
+            <span /><span /><span />
           </button>
         </div>
       </nav>
 
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}>
         <ul className={styles.mobileLinks}>
-          <li><a href="#hero"         onClick={closeMenu} className={active === 'hero' ? styles.activeLink : ''}>{t.nav.hero}</a></li>
-          <li><a href="#sobre"        onClick={closeMenu} className={active === 'sobre'        ? styles.activeLink : ''}>{t.nav.about}</a></li>
-          <li><a href="#trajetoria"   onClick={closeMenu} className={active === 'trajetoria'   ? styles.activeLink : ''}>{t.nav.timeline}</a></li>
-          <li><a href="#certificados" onClick={closeMenu} className={active === 'certificados' ? styles.activeLink : ''}>{t.nav.certificates}</a></li>
-          <li><a href="#projetos"     onClick={closeMenu} className={active === 'projetos'     ? styles.activeLink : ''}>{t.nav.projects}</a></li>
-          <li><a href="#contato"      onClick={closeMenu} className={active === 'contato'      ? styles.activeLink : ''}>{t.nav.contact}</a></li>
-          <li><a href="/blog"         className={styles.blogLink}>Blog</a></li>
+          <li><a href={onBlog ? '/#hero'         : '#hero'}         onClick={() => handleNav('#hero')}         className={active === 'hero'         ? styles.activeLink : ''}>{t.nav.hero}</a></li>
+          <li><a href={onBlog ? '/#sobre'        : '#sobre'}        onClick={() => handleNav('#sobre')}        className={active === 'sobre'        ? styles.activeLink : ''}>{t.nav.about}</a></li>
+          <li><a href={onBlog ? '/#trajetoria'   : '#trajetoria'}   onClick={() => handleNav('#trajetoria')}   className={active === 'trajetoria'   ? styles.activeLink : ''}>{t.nav.timeline}</a></li>
+          <li><a href={onBlog ? '/#certificados' : '#certificados'} onClick={() => handleNav('#certificados')} className={active === 'certificados' ? styles.activeLink : ''}>{t.nav.certificates}</a></li>
+          <li><a href={onBlog ? '/#projetos'     : '#projetos'}     onClick={() => handleNav('#projetos')}     className={active === 'projetos'     ? styles.activeLink : ''}>{t.nav.projects}</a></li>
+          <li><a href={onBlog ? '/#contato'      : '#contato'}      onClick={() => handleNav('#contato')}      className={active === 'contato'      ? styles.activeLink : ''}>{t.nav.contact}</a></li>
+          <li><a href="/blog" className={`${styles.blogLink} ${onBlog ? styles.blogLinkActive : ''}`}>Blog</a></li>
         </ul>
       </div>
 

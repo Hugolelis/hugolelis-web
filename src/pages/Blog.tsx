@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useApp } from '../context/AppContext'
+import { Nav } from '../components'
 import styles from './Blog.module.css'
 
 function formatDate(dateStr: string, lang: 'pt' | 'en') {
@@ -10,19 +11,13 @@ function formatDate(dateStr: string, lang: 'pt' | 'en') {
 }
 
 export function Blog() {
-  const { lang, theme, toggleTheme, toggleLang, t } = useApp()
+  const { lang, t } = useApp()
   const [expanded, setExpanded] = useState<number | null>(null)
   const toggle = (id: number) => setExpanded(prev => prev === id ? null : id)
 
   return (
     <div className={styles.page}>
-      <nav className={styles.nav}>
-        <a href="/" className={styles.logo}>{'<Hugo />'}</a>
-        <div className={styles.controls}>
-          <button className={styles.toggle} onClick={toggleLang}>{lang === 'pt' ? 'EN' : 'PT'}</button>
-          <button className={styles.toggle} onClick={toggleTheme}>{theme === 'dark' ? '○' : '●'}</button>
-        </div>
-      </nav>
+      <Nav />
 
       <main className={styles.main}>
         <header className={styles.header}>
