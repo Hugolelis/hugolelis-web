@@ -87,7 +87,7 @@ export const en: Translations = {
     cta: 'Send an email',
   },
   blog: {
-    label: '# posts & articles',
+    label: '# posts linkedin',
     sub: 'Thoughts on development, systems and technology.',
     empty: 'No posts yet.',
     linkedin: 'View on LinkedIn →',

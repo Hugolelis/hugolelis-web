@@ -85,7 +85,7 @@ export const pt = {
     cta: 'Enviar e-mail',
   },
   blog: {
-    label: '# posts & artigos',
+    label: '# posts linkedin',
     sub: 'Pensamentos sobre desenvolvimento, sistemas e tecnologia.',
     empty: 'Nenhum post ainda.',
     linkedin: 'Ver no LinkedIn →',
