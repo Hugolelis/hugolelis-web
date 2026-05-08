@@ -5,14 +5,12 @@
   transition: background 0.3s, color 0.3s;
 }
 
-/* Main — padding-top para compensar nav fixa */
 .main {
   max-width: 720px;
   margin: 0 auto;
   padding: 8rem 2rem 6rem;
 }
 
-/* Header */
 .header {
   margin-bottom: 3.5rem;
 }
@@ -41,7 +39,6 @@
   line-height: 1.6;
 }
 
-/* Feed */
 .feed {
   display: flex;
   flex-direction: column;
@@ -54,10 +51,9 @@
   padding: 2rem 0;
 }
 
-/* Card */
 .card {
   border-bottom: 1px solid var(--border);
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, padding-left 0.3s;
   position: relative;
 }
 
@@ -67,6 +63,21 @@
 
 .cardOpen {
   border-color: var(--accent);
+  padding-left: 1.25rem;
+}
+
+.cardOpen::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.75rem;
+  bottom: 1.75rem;
+  width: 1px;
+  background: var(--border);
+}
+
+.card:has(.cardTop:hover) {
+  padding-left: 1.25rem;
 }
 
 .cardTop {
@@ -82,22 +93,6 @@
   gap: 0.5rem;
   color: var(--text);
   position: relative;
-  transition: padding-left 0.3s;
-}
-
-.cardOpen .cardTop,
-.card:has(.cardTop:hover) .cardTop {
-  padding-left: 1.25rem;
-}
-
-.cardOpen::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 1.75rem;
-  bottom: 1.75rem;
-  width: 2px;
-  background: var(--accent);
 }
 
 .meta {
@@ -157,7 +152,6 @@
   color: var(--accent);
 }
 
-/* Body */
 .body {
   padding: 0 0 1.75rem;
   animation: fadeDown 0.25s ease both;
@@ -184,6 +178,7 @@
   letter-spacing: 0.04em;
   transition: opacity 0.2s;
 }
+
 .linkedinBtn:hover { opacity: 0.7; }
 
 @keyframes fadeDown {
