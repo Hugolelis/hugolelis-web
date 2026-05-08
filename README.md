@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-1a1a2e?style=for-the-badge&logoColor=white)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Live-1a1a2e?style=for-the-badge&logoColor=white)]()
-[![Version](https://img.shields.io/badge/Version-1.0.0-1a1a2e?style=for-the-badge&logoColor=white)]()
+[![Version](https://img.shields.io/badge/Version-2.0.0-1a1a2e?style=for-the-badge&logoColor=white)]()
 
 </div>
 
