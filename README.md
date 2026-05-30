@@ -8,17 +8,37 @@
 
 </div>
 
-Personal portfolio built with React and TypeScript, featuring multilingual support, a project showcase, and an interactive career timeline.
+> **Portfolio** is a personal portfolio website built with React and TypeScript. It showcases professional experience, projects, certificates, and blog posts — with full bilingual support (Portuguese and English), dark/light themes, and a terminal-inspired design.
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Scripts](#scripts)
+- [Deployment](#deployment)
+- [License](#license)
 
 ---
 
 ## Features
 
-- **Multilingual** — Portuguese and English support
-- **Career Timeline** — interactive experience and education history
-- **Project Showcase** — curated backend projects
-- **CV Download** — direct resume download
-- **Responsive Design** — optimized for all screen sizes
+| Capability | Description |
+|---|---|
+| **Bilingual** | Full Portuguese and English support with browser auto-detection and manual toggle |
+| **Dark/Light theme** | Persists preference via `localStorage` and respects `prefers-color-scheme` |
+| **Terminal hero** | Animated code editor display with typewriter effect |
+| **Interactive timeline** | Career and education history with dark mode support |
+| **Project showcase** | Cards with type badges (API, CLI), tech tags, and GitHub links |
+| **Certificate viewer** | Inline PDF modal with mobile download fallback |
+| **Blog page** | Dedicated `/blog` route with LinkedIn posts, tags, and expandable content |
+| **CV download** | PDF preview directly in the browser |
+| **Responsive design** | Adaptive layout, hamburger menu, and mobile-friendly components |
+| **Loading screen** | Animated terminal boot sequence with progress bar |
 
 ---
 
@@ -29,61 +49,115 @@ Personal portfolio built with React and TypeScript, featuring multilingual suppo
 ![Vite](https://img.shields.io/badge/Vite-1a1a2e?style=for-the-badge&logo=vite&logoColor=white)
 ![CSS Modules](https://img.shields.io/badge/CSS_Modules-1a1a2e?style=for-the-badge&logo=cssmodules&logoColor=white)
 
----
-
-## Project Structure
-
-```text
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── About.tsx
-│   │   ├── Contact.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Hero.tsx
-│   │   ├── Nav.tsx
-│   │   ├── Projects.tsx
-│   │   ├── ProjectCard.tsx
-│   │   └── Timeline.tsx
-│   ├── context/
-│   │   └── AppContext.tsx
-│   ├── i18n/
-│   │   ├── en.ts
-│   │   └── pt.ts
-│   ├── App.tsx
-│   └── main.tsx
-├── index.html
-├── package.json
-└── tsconfig.json
-```
+| | |
+|---|---|
+| **Framework** | [React 19](https://react.dev) |
+| **Language** | [TypeScript](https://www.typescriptlang.org) |
+| **Bundler** | [Vite](https://vitejs.dev) |
+| **Styling** | [CSS Modules](https://github.com/css-modules/css-modules) |
+| **Linter** | [ESLint](https://eslint.org) |
+| **Fonts** | DM Serif Display, DM Sans, JetBrains Mono |
+| **Deploy** | [Vercel](https://vercel.com) |
 
 ---
 
-## Running
-
-**1. Clone the repository**
+## Installation
 
 ```bash
+# Clone the repository
 git clone https://github.com/Hugolelis/Portfolio.git
 cd Portfolio
-```
 
-**2. Install dependencies**
-
-```bash
+# Install dependencies
 npm install
+
+# Start the development server
+npm run dev
 ```
 
-**3. Start the development server**
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## Usage
+
+### Development
 
 ```bash
 npm run dev
 ```
 
+### Production build
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+---
+
+## Project Structure
+
+```
+src/
+├── assets/                  # Static images and icons
+├── components/
+│   ├── About.tsx            # About me section with skills
+│   ├── Certificates.tsx     # Certificate grid
+│   ├── Contact.tsx          # Contact information
+│   ├── Footer.tsx           # Footer
+│   ├── Hero.tsx             # Terminal-inspired hero section
+│   ├── LoadingScreen.tsx    # Animated boot screen
+│   ├── Nav.tsx              # Navigation with scroll spy
+│   ├── PdfModal.tsx         # PDF viewer modal
+│   ├── ProjectCard.tsx      # Individual project card
+│   ├── Projects.tsx         # Projects section
+│   └── Timeline.tsx         # Career timeline
+├── context/                 # React Context (theme, language, translations)
+├── data/                    # Static data (projects, skills)
+├── hooks/                   # Custom hooks
+│   ├── useActiveSection.ts  # IntersectionObserver for nav
+│   └── useScrollY.ts        # Scroll position tracking
+├── i18n/                    # Translations (pt.ts, en.ts)
+├── pages/                   # Pages (Blog)
+├── types/                   # TypeScript interfaces
+├── App.tsx                  # Root component
+├── index.css                # Global styles and CSS custom properties
+└── main.tsx                 # Entry point
+```
+
+---
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start Vite development server |
+| `npm run build` | Run `tsc -b` and build for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint across the codebase |
+
+---
+
+## Deployment
+
+The project is configured for **Vercel** deployment with SPA rewrites via `vercel.json`.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Hugolelis/Portfolio)
+
 ---
 
 ## License
 
-Licensed under the **MIT** License. See [LICENSE](LICENSE) for details.
+Distributed under the **MIT License**. See [LICENSE](LICENSE) for more information.
