@@ -101,17 +101,14 @@
   max-width: 480px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
+  .timeline { padding: 5rem 0; }
   .item {
     grid-template-columns: 5rem 1fr;
     gap: 0 1.5rem;
   }
-
   .item:not(:last-child) .meta::after {
     left: calc(5rem - 0.5px);
   }
-
-  .year {
-    font-size: 0.68rem;
-  }
+  .year { font-size: 0.68rem; }
 }

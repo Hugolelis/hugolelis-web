@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useApp } from '../context/AppContext'
-import { Pdfmodal } from './Pdfmodal'
+import { PdfModal } from './PdfModal'
 import styles from './Certificates.module.css'
 
 interface CertItem {
@@ -10,16 +10,21 @@ interface CertItem {
   file: string
 }
 
+const LIMIT = 3
+
 export function Certificates() {
   const { t } = useApp()
   const [selected, setSelected] = useState<CertItem | null>(null)
+  const items = t.certificates.items
+  const visible = items.slice(0, LIMIT)
+  const hasMore = items.length > LIMIT
 
   return (
     <section id="certificados" className={styles.certificates}>
       <div className="container">
         <h2 className="section-title">{t.certificates.title}</h2>
         <div className={styles.grid}>
-          {t.certificates.items.map((cert, i) => (
+          {visible.map((cert, i) => (
             <button
               key={i}
               className={styles.card}
@@ -32,15 +37,21 @@ export function Certificates() {
               </div>
               <div className={styles.meta}>
                 <span className={styles.year}>{cert.year}</span>
-                <span className={styles.arrow}>↗</span>
+                <span className={styles.arrow}>→</span>
               </div>
             </button>
           ))}
         </div>
+        {hasMore && (
+          <a href="/certificados" className={styles.viewAll}>
+            <span>{t.certificates.viewAll}</span>
+            <span className={styles.viewArrow}>→</span>
+          </a>
+        )}
       </div>
 
       {selected && (
-        <Pdfmodal
+        <PdfModal
           name={selected.name}
           issuer={`${selected.issuer} · ${selected.year}`}
           file={selected.file}

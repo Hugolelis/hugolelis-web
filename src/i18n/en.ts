@@ -8,6 +8,7 @@ export const en: Translations = {
     certificates: 'Certificates',
     projects: 'Projects',
     contact: 'Contact',
+    pages: 'Pages',
   },
   hero: {
     role: 'Software Developer',
@@ -27,6 +28,8 @@ export const en: Translations = {
   },
   projects: {
     title: 'Projects',
+    viewAll: 'View all projects',
+    count: '{n} projects',
 
     p1_title: 'Generator',
     p1_desc: 'Robust REST API offering CPF generation, URL shortener, password generator, UUID, date services and sorted numbers.',
@@ -72,6 +75,8 @@ export const en: Translations = {
   },
   certificates: {
     title: 'Certificates',
+    viewAll: 'View all certificates',
+    count: '{n} certificates',
     items: [
       { name: 'Introduction to Software Engineering', issuer: 'IBM · Coursera', year: '2026', file: '/courses/software_eng.pdf' },
       { name: 'SQL: A Practical Introduction for Querying Databases', issuer: 'IBM · Coursera', year: '2026', file: '/courses/SQL.pdf' },

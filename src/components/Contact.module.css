@@ -34,3 +34,8 @@
 }
 
 .social a:hover { color: var(--text); }
+
+@media (max-width: 900px) {
+  .contact { padding: 5rem 0; }
+  .sub { font-size: 0.95rem; }
+}

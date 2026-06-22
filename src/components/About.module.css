@@ -46,6 +46,7 @@
 
 .tag:hover { border-color: var(--tag-color, var(--accent)); }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
+  .about { padding: 5rem 0; }
   .inner { grid-template-columns: 1fr; gap: 2.5rem; }
 }

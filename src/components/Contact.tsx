@@ -13,9 +13,9 @@ export function Contact() {
           {t.contact.cta}
         </a>
         <div className={styles.social}>
-          <a href="https://github.com/Hugolelis" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://github.com/Hugolelis" target="_blank" rel="noreferrer" aria-label="GitHub (opens in new tab)">GitHub</a>
           <span>·</span>
-          <a href="https://www.linkedin.com/in/hugolelis/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/hugolelis/" target="_blank" rel="noreferrer" aria-label="LinkedIn (opens in new tab)">LinkedIn</a>
         </div>
       </div>
     </section>

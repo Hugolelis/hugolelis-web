@@ -45,13 +45,6 @@
   color: var(--text) !important;
 }
 
-/* Pagina blog ativa */
-.blogLinkActive {
-  background: var(--tag-api-bg) !important;
-  color: var(--tag-api-color) !important;
-  border-color: var(--tag-api-border) !important;
-}
-
 .activeLink::after {
   content: '';
   position: absolute;
@@ -63,18 +56,87 @@
   border-radius: 2px;
 }
 
-.blogLink {
-  font-family: var(--font-mono) !important;
-  font-size: 0.72rem !important;
-  color: var(--accent-blue) !important;
-  letter-spacing: 0.04em;
-  border: 1px solid var(--tag-api-border);
-  padding: 0.2rem 0.6rem !important;
-  border-radius: 4px;
-  transition: background 0.2s !important;
+/* ── Pages Accordion (desktop) ── */
+.pagesItem {
+  position: relative;
 }
-.blogLink:hover {
+
+.pagesTrigger {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.pagesTrigger:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.pagesTriggerOpen {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.pagesChevron {
+  font-size: 0.65rem;
+  transition: transform 0.25s;
+}
+
+.pagesTriggerOpen .pagesChevron {
+  transform: rotate(180deg);
+}
+
+.pagesDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 140px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.35rem;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 8px 24px var(--term-shadow);
+}
+
+.pagesDropdownOpen {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.pageLink {
+  display: block;
+  padding: 0.55rem 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  border-radius: 5px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.pageLink:hover {
   background: var(--tag-api-bg);
+  color: var(--tag-api-color);
+}
+
+.pageLinkActive {
+  background: var(--tag-api-bg) !important;
+  color: var(--tag-api-color) !important;
 }
 
 .controls {
@@ -184,6 +246,49 @@
   padding-left: 0.5rem;
 }
 
+/* ── Mobile Pages Section ── */
+.mobilePagesSection {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.mobilePagesLabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.mobilePagesLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mobilePagesLinks a {
+  display: block;
+  padding: 1rem 0;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s, padding-left 0.2s;
+}
+
+.mobilePagesLinks a:hover {
+  color: var(--accent);
+  padding-left: 0.5rem;
+}
+
+.mobilePagesLinks a:last-child {
+  border-bottom: none;
+}
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -192,8 +297,28 @@
   backdrop-filter: blur(2px);
 }
 
+/* ── Skip link ── */
+.skipLink {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.2s;
+}
+
+.skipLink:focus {
+  top: 0;
+}
+
 /* ── Responsive ── */
-@media (max-width: 1200px) {
+@media (max-width: 1150px) {
   .nav { padding: 1.25rem 1.5rem; }
   .links { display: none; }
   .hamburger { display: flex; }

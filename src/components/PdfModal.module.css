@@ -143,6 +143,9 @@
   color: var(--accent);
 }
 
-@media (max-width: 700px) {
-  .modal { height: 92vh; }
+@media (max-width: 900px) {
+  .overlay { padding: 0.75rem; }
+  .modal { height: 94vh; border-radius: 8px; }
+  .modalHeader { padding: 0.75rem 1rem; }
+  .modalName { font-size: 0.85rem; }
 }

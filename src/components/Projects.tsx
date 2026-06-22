@@ -3,15 +3,19 @@ import { projects } from '../data'
 import { ProjectCard } from './ProjectCard'
 import styles from './Projects.module.css'
 
+const LIMIT = 3
+
 export function Projects() {
   const { t } = useApp()
+  const visible = projects.slice(0, LIMIT)
+  const hasMore = projects.length > LIMIT
 
   return (
     <section id="projetos" className={styles.projects}>
       <div className="container">
         <h2 className="section-title">{t.projects.title}</h2>
         <div className={styles.list}>
-          {projects.map((project) => (
+          {visible.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
@@ -19,6 +23,12 @@ export function Projects() {
             />
           ))}
         </div>
+        {hasMore && (
+          <a href="/projetos" className={styles.viewAll}>
+            <span>{t.projects.viewAll}</span>
+            <span className={styles.viewArrow}>→</span>
+          </a>
+        )}
       </div>
     </section>
   )

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import styles from './Pdfmodal.module.css'
+import styles from './PdfModal.module.css'
 
 interface PdfModalProps {
     name: string
@@ -19,12 +19,26 @@ function useIsMobile() {
     return isMobile
 }
 
-export function Pdfmodal({ name, issuer, file, onClose }: PdfModalProps) {
+export function PdfModal({ name, issuer, file, onClose }: PdfModalProps) {
     const isMobile = useIsMobile()
 
+    useEffect(() => {
+        const handleKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') onClose()
+        }
+        document.addEventListener('keydown', handleKey)
+        return () => document.removeEventListener('keydown', handleKey)
+    }, [onClose])
+
     return (
-        <div className={styles.overlay} onClick={onClose}>
-        <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.overlay} onClick={onClose} role="presentation">
+        <div
+            className={styles.modal}
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label={name}
+        >
             <div className={styles.modalHeader}>
             <div className={styles.modalInfo}>
                 <span className={styles.modalName}>{name}</span>

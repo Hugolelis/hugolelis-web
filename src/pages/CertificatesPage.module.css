@@ -1,0 +1,118 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8rem 2rem 6rem;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.count {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+.card:hover .arrow {
+  color: var(--accent);
+}
+
+.icon {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+.name {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.issuer {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.year {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.arrow {
+  font-size: 1rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+@media (max-width: 900px) {
+  .main { padding: 6rem 1.25rem 4rem; }
+}

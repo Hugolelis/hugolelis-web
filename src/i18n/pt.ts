@@ -6,6 +6,7 @@ export const pt = {
     certificates: 'Certificados',
     projects: 'Projetos',
     contact: 'Contato',
+    pages: 'Páginas',
   },
   hero: {
     role: 'Desenvolvedor de Software',
@@ -25,6 +26,8 @@ export const pt = {
   },
   projects: {
     title: 'Projetos',
+    viewAll: 'Ver todos os projetos',
+    count: '{n} projetos',
 
     p1_title: 'Generator',
     p1_desc: 'API REST robusta com geração de CPF, encurtador de URL, gerador de senhas, UUID, serviços de data e números sorteados.',
@@ -70,6 +73,8 @@ export const pt = {
   },
   certificates: {
     title: 'Certificados',
+    viewAll: 'Ver todos os certificados',
+    count: '{n} certificados',
     items: [
       { name: 'Introduction to Software Engineering', issuer: 'IBM · Coursera', year: '2026', file: '/courses/software_eng.pdf' },
       { name: 'SQL: A Practical Introduction for Querying Databases', issuer: 'IBM · Coursera', year: '2026', file: '/courses/SQL.pdf' },

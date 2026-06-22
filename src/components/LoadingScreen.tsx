@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './LoadingScreen.module.css'
 
-export default function LoadingScreen({ onDone }: { onDone: () => void }) {
+export function LoadingScreen({ onDone }: { onDone: () => void }) {
     const [progress, setProgress] = useState(0)
     const [phase, setPhase] = useState(0) // 0=loading 1=done 2=exit
 

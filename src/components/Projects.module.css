@@ -3,7 +3,44 @@
   border-top: 1px solid var(--border);
 }
 
+@media (max-width: 900px) {
+  .projects { padding: 5rem 0; }
+}
+
 .list {
   display: flex;
   flex-direction: column;
+}
+
+.viewAll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  padding: 1rem 1.25rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  transition: border-color 0.2s, color 0.2s, gap 0.2s, background 0.2s;
+}
+
+.viewAll:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  gap: 0.75rem;
+  background: var(--surface);
+}
+
+.viewArrow {
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+
+.viewAll:hover .viewArrow {
+  transform: translateX(3px);
 }

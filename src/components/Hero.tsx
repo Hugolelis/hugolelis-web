@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
-import { Pdfmodal } from './Pdfmodal'
+import { PdfModal } from './PdfModal'
 import styles from './Hero.module.css'
 
 import cvUrl from '/Hugolelis_cv.pdf'
@@ -23,7 +23,6 @@ const fields: TerminalField[] = [
 function useTypewriter(text: string, speed = 28) {
   const [displayed, setDisplayed] = useState('')
   useEffect(() => {
-    setDisplayed('')
     if (!text) return
     let i = 0
     const id = setInterval(() => {
@@ -31,7 +30,10 @@ function useTypewriter(text: string, speed = 28) {
       setDisplayed(text.slice(0, i))
       if (i >= text.length) clearInterval(id)
     }, speed)
-    return () => clearInterval(id)
+    return () => {
+      clearInterval(id)
+      setDisplayed('')
+    }
   }, [text, speed])
   return displayed
 }
@@ -48,7 +50,6 @@ export function Hero() {
   )
 
   useEffect(() => {
-    setAnimStep(0)
     const timers = fields.map((_, i) =>
       setTimeout(() => setAnimStep(i + 1), i * 150 + 400)
     )
@@ -130,7 +131,7 @@ export function Hero() {
       </div>
 
       {cvOpen && (
-        <Pdfmodal
+        <PdfModal
           name="Hugolelis_cv.pdf"
           issuer="Hugo de Lelis"
           file={cvUrl}

@@ -96,21 +96,15 @@
   transform: translateX(6px);
 }
 
+@media (max-width: 900px) {
+  .card { padding: 1.5rem 0; }
+  .active { padding-left: 1rem; }
+  .active::before { top: 1.5rem; bottom: 1.5rem; }
+}
+
 @media (max-width: 480px) {
-  .top {
-    gap: 0.4rem;
-  }
-
-  .year {
-    margin-left: 0;
-    width: 100%;
-  }
-
-  .arrow {
-    font-size: 1.2rem;
-  }
-
-  .card {
-    padding: 1.5rem 0;
-  }
+  .top { gap: 0.4rem; }
+  .year { margin-left: 0; width: 100%; }
+  .arrow { font-size: 1.2rem; }
+  .card { padding: 1.25rem 0; }
 }
