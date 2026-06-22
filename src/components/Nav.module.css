@@ -289,6 +289,10 @@
   border-bottom: none;
 }
 
+.mobilePagesLinks a.pageLinkActive {
+  padding-left: 0.5rem;
+}
+
 .overlay {
   position: fixed;
   inset: 0;

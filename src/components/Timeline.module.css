@@ -141,15 +141,57 @@
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .timeline { padding: 5rem 0; }
+
   .item {
-    grid-template-columns: 5rem 1fr;
-    gap: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    position: relative;
   }
+
+  .item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: calc(1rem - 1px);
+    top: 1.5rem;
+    width: 2px;
+    height: calc(100% + 1rem);
+    background: linear-gradient(to bottom, var(--border), var(--accent));
+    opacity: 0.35;
+  }
+
   .item:not(:last-child) .meta::after {
-    left: calc(5rem - 0.5px);
+    display: none;
   }
-  .year { font-size: 0.78rem; }
+
+  .meta {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0;
+    position: static;
+  }
+
+  .year {
+    margin-bottom: 0;
+    font-size: 0.78rem;
+    padding-left: 1.5rem;
+  }
+
+  .dot {
+    position: absolute;
+    left: calc(1rem - 6px);
+    top: 0.65rem;
+    width: 12px;
+    height: 12px;
+  }
+
+  .card {
+    border-left: none;
+    margin-left: 0;
+    padding: 0.35rem 0 2rem;
+  }
+
   .role { font-size: 1.15rem; }
-  .card { padding: 0 0 2rem 1rem; }
   .desc { font-size: 0.88rem; }
 }
