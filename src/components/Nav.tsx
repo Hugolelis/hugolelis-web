@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import { useScrollY } from '../hooks/useScrollY'
 import { useActiveSection } from '../hooks/useActiveSection'
@@ -13,11 +13,23 @@ export function Nav() {
   const scrollY = useScrollY()
   const [menuOpen, setMenuOpen] = useState(false)
   const [pagesOpen, setPagesOpen] = useState(false)
+  const pagesRef = useRef<HTMLLIElement>(null)
   const active = useActiveSection(SECTIONS)
 
   const path = window.location.pathname
   const onSubPage = SUB_PAGES.some(p => path === p)
   const closeMenu = () => setMenuOpen(false)
+
+  useEffect(() => {
+    if (!pagesOpen) return
+    const handleClick = (e: MouseEvent) => {
+      if (pagesRef.current && !pagesRef.current.contains(e.target as Node)) {
+        setPagesOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [pagesOpen])
 
   const handleNav = (hash: string) => {
     closeMenu()
@@ -49,7 +61,7 @@ export function Nav() {
           <li><a href={onSubPage ? '/#contato'      : '#contato'}      onClick={() => handleNav('#contato')}      className={active === 'contato'      ? styles.activeLink : ''}>{t.nav.contact}</a></li>
 
           {/* accordion pages */}
-          <li className={styles.pagesItem}>
+          <li className={styles.pagesItem} ref={pagesRef}>
             <button
               className={`${styles.pagesTrigger} ${pagesOpen ? styles.pagesTriggerOpen : ''}`}
               onClick={() => setPagesOpen(prev => !prev)}

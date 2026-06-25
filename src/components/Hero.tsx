@@ -69,7 +69,7 @@ export function Hero() {
           </h1>
           <p className={styles.sub}>{t.hero.sub}</p>
           <div className={styles.cta}>
-            <a href="#projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
+            <a href="/projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
             <a href="#contato" className="btn btn--ghost">{t.hero.cta_contact}</a>
             <button
               className="btn btn--ghost"

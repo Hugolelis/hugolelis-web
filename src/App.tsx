@@ -13,6 +13,20 @@ const Certificates = lazy(() => import('./components/Certificates').then(m => ({
 const Projects = lazy(() => import('./components/Projects').then(m => ({ default: m.Projects })))
 const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })))
 
+function Spinner() {
+  return (
+    <span style={{
+      display: 'inline-block',
+      width: 16,
+      height: 16,
+      border: '2px solid var(--border)',
+      borderTopColor: 'var(--accent)',
+      borderRadius: '50%',
+      animation: 'spin 0.6s linear infinite',
+    }} />
+  )
+}
+
 function BlogFallback() {
   return (
     <div style={{
@@ -26,15 +40,28 @@ function BlogFallback() {
       fontSize: '0.875rem',
       gap: '0.75rem',
     }}>
-      <span style={{
-        display: 'inline-block',
-        width: 16,
-        height: 16,
-        border: '2px solid var(--border)',
-        borderTopColor: 'var(--accent)',
-        borderRadius: '50%',
-        animation: 'spin 0.6s linear infinite',
-      }} />
+      <Spinner />
+      loading...
+    </div>
+  )
+}
+
+function EntryLoading() {
+  return (
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'var(--bg)',
+      zIndex: 9999,
+      color: 'var(--muted)',
+      fontFamily: 'var(--font-mono)',
+      fontSize: '0.875rem',
+      gap: '0.75rem',
+    }}>
+      <Spinner />
       loading...
     </div>
   )
@@ -47,7 +74,24 @@ export default function App() {
   const isCertificatesPage = path === '/certificados'
   const isUnknown = !isBlog && !isProjectsPage && !isCertificatesPage && path !== '/'
 
+  const isSubPage = isBlog || isProjectsPage || isCertificatesPage
+
   const [showBackToTop, setShowBackToTop] = useState(false)
+
+  const [loaded, setLoaded] = useState(() => {
+    const seen = sessionStorage.getItem('loaded') === 'true'
+    return isSubPage || seen
+  })
+
+  useEffect(() => {
+    if (!loaded) {
+      const id = setTimeout(() => {
+        sessionStorage.setItem('loaded', 'true')
+        setLoaded(true)
+      }, 800)
+      return () => clearTimeout(id)
+    }
+  }, [loaded])
 
   useEffect(() => {
     const onScroll = () => setShowBackToTop(window.scrollY > 400)
@@ -151,6 +195,7 @@ export default function App() {
         <meta property="og:url" content="https://hugolelis.dev" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
+      {!loaded && <EntryLoading />}
       <div>
         <Nav />
         <main id="main-content">
