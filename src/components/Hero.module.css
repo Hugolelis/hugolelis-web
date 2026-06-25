@@ -1,9 +1,9 @@
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8rem 3rem 5rem;
+  padding: 8rem 3rem 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -284,7 +284,7 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  .hero { padding: 6rem 1.25rem 3rem; }
+  .hero { padding: 6rem 1.25rem 1.5rem; }
   .terminal { max-width: 100%; }
   .sub { max-width: 100%; min-height: unset; }
   .title { min-height: unset; font-size: clamp(1.9rem, 8vw, 2.4rem); }
@@ -297,7 +297,7 @@
 }
 
 @media (max-width: 480px) {
-  .hero { padding: 5.5rem 1rem 3rem; }
+  .hero { padding: 5.5rem 1rem 1.5rem; }
   .label { font-size: 0.7rem; }
   .termDot { width: 10px; height: 10px; }
 }
