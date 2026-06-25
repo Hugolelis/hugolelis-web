@@ -1,5 +1,5 @@
 .about {
-  padding: 7rem 0;
+  padding: 5rem 0;
 }
 
 .inner {
@@ -46,6 +46,6 @@
 .tag:hover { border-color: var(--tag-color, var(--accent)); }
 
 @media (max-width: 900px) {
-  .about { padding: 5rem 0; }
+  .about { padding: 2rem 0 5rem; }
   .inner { grid-template-columns: 1fr; gap: 2.5rem; }
 }

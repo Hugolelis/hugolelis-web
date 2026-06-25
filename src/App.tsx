@@ -1,12 +1,17 @@
-import { useState, useCallback, useEffect, lazy, Suspense } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Hero, About, Timeline, Certificates, Projects, Contact, Footer, LoadingScreen } from './components'
+import { Nav, Hero, About, Footer } from './components'
 import styles from './components/BackToTop.module.css'
 import notFoundStyles from './components/NotFound.module.css'
 
 const Blog = lazy(() => import('./pages/Blog').then(m => ({ default: m.Blog })))
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })))
 const CertificatesPage = lazy(() => import('./pages/CertificatesPage').then(m => ({ default: m.CertificatesPage })))
+
+const Timeline = lazy(() => import('./components/Timeline').then(m => ({ default: m.Timeline })))
+const Certificates = lazy(() => import('./components/Certificates').then(m => ({ default: m.Certificates })))
+const Projects = lazy(() => import('./components/Projects').then(m => ({ default: m.Projects })))
+const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })))
 
 function BlogFallback() {
   return (
@@ -41,18 +46,6 @@ export default function App() {
   const isProjectsPage = path === '/projetos'
   const isCertificatesPage = path === '/certificados'
   const isUnknown = !isBlog && !isProjectsPage && !isCertificatesPage && path !== '/'
-
-  const isSubPage = isBlog || isProjectsPage || isCertificatesPage
-
-  const [loaded, setLoaded] = useState(() => {
-    const seen = sessionStorage.getItem('loaded') === 'true'
-    return isSubPage || seen
-  })
-
-  const handleDone = useCallback(() => {
-    sessionStorage.setItem('loaded', 'true')
-    setLoaded(true)
-  }, [])
 
   const [showBackToTop, setShowBackToTop] = useState(false)
 
@@ -159,19 +152,18 @@ export default function App() {
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <div>
-        {!loaded && <LoadingScreen onDone={handleDone} />}
-        <div style={{ visibility: loaded ? 'visible' : 'hidden' }}>
-          <Nav />
-          <main id="main-content">
-            <Hero />
-            <About />
+        <Nav />
+        <main id="main-content">
+          <Hero />
+          <About />
+          <Suspense fallback={null}>
             <Timeline />
             <Certificates />
             <Projects />
             <Contact />
-          </main>
-          <Footer />
-        </div>
+          </Suspense>
+        </main>
+        <Footer />
         {showBackToTop && (
           <button
             className={styles.backToTop}
