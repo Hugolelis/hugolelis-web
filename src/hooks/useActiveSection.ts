@@ -5,7 +5,7 @@ export function useActiveSection(ids: string[]): string {
 
     useEffect(() => {
         const onScroll = () => {
-            const midY = window.scrollY + window.innerHeight * 0.35
+            const midY = window.scrollY + window.innerHeight * 0.5
             let found = ''
             for (const id of ids) {
                 const el = document.getElementById(id)
