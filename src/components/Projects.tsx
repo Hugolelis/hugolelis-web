@@ -15,12 +15,13 @@ export function Projects() {
       <div className="container">
         <h2 className="section-title">{t.projects.title}</h2>
         <div className={styles.list}>
-          {visible.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              translations={t.projects}
-            />
+          {visible.map((project, i) => (
+            <div key={project.id} style={{ animation: `fadeUp 0.4s ease ${i * 0.08}s both` }}>
+              <ProjectCard
+                project={project}
+                translations={t.projects}
+              />
+            </div>
           ))}
         </div>
         {hasMore && (

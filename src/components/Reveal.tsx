@@ -1,0 +1,26 @@
+import { type ReactNode } from 'react'
+import { useReveal } from '../hooks/useReveal'
+
+interface Props {
+  children: ReactNode
+  delay?: number
+  className?: string
+}
+
+export function Reveal({ children, delay = 0, className }: Props) {
+  const { ref, visible } = useReveal<HTMLDivElement>(0.08)
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(20px)',
+        transition: `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  )
+}

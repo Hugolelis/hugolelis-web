@@ -1,6 +1,6 @@
 import { useState, type CSSProperties } from 'react'
 import { useApp } from '../context/AppContext'
-import { Nav } from '../components'
+import { Nav, Reveal } from '../components'
 import styles from './Blog.module.css'
 
 const TAG_COLORS: Record<string, { bg: string; color: string; border: string }> = {
@@ -33,8 +33,9 @@ export function Blog() {
     <div className={styles.page}>
       <Nav />
 
-      <main className={styles.main}>
-        <header className={styles.header}>
+        <main className={styles.main}>
+          <Reveal>
+            <header className={styles.header}>
           <div className={styles.headerAccent}>
             <span className={styles.headerLine} />
             <p className={styles.label}>{t.blog.label}</p>
@@ -46,14 +47,15 @@ export function Blog() {
             {'// lang: ' + lang.toUpperCase()}
           </div>
         </header>
+          </Reveal>
 
         <div className={styles.feed}>
           {t.blog.posts.length === 0 && <p className={styles.empty}>{t.blog.empty}</p>}
 
-          {t.blog.posts.map(post => {
+          {t.blog.posts.map((post, i) => {
             const isOpen = expanded === post.id
             return (
-              <article key={post.id} className={`${styles.card} ${isOpen ? styles.cardOpen : ''}`}>
+              <article key={post.id} className={`${styles.card} ${isOpen ? styles.cardOpen : ''}`} style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}>
                 <button
                   className={styles.cardTop}
                   onClick={() => toggle(post.id)}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Nav, PdfModal } from '../components'
+import { Nav, PdfModal, Reveal } from '../components'
 import { useApp } from '../context/AppContext'
 import styles from './CertificatesPage.module.css'
 
@@ -10,18 +10,21 @@ export function CertificatesPage() {
   return (
     <div className={styles.page}>
       <Nav />
-      <main className={styles.main}>
-        <header className={styles.header}>
-          <span className={styles.count}>{t.certificates.count.replace('{n}', String(t.certificates.items.length))}</span>
-          <h1 className={styles.title}>{t.certificates.title}</h1>
-        </header>
-        <div className={styles.grid}>
-          {t.certificates.items.map((cert, i) => (
-            <button
-              key={i}
-              className={styles.card}
-              onClick={() => setSelected(cert)}
-            >
+        <main className={styles.main}>
+          <Reveal>
+            <header className={styles.header}>
+              <span className={styles.count}>{t.certificates.count.replace('{n}', String(t.certificates.items.length))}</span>
+              <h1 className={styles.title}>{t.certificates.title}</h1>
+            </header>
+          </Reveal>
+          <div className={styles.grid}>
+            {t.certificates.items.map((cert, i) => (
+              <button
+                key={i}
+                className={styles.card}
+                style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}
+                onClick={() => setSelected(cert)}
+              >
               <div className={styles.icon}>⟨/⟩</div>
               <div className={styles.info}>
                 <span className={styles.name}>{cert.name}</span>

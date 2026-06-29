@@ -22,11 +22,11 @@ export function About() {
           <div className={styles.skillsBlock}>
             <p className={styles.skillsLabel}>{t.about.skills_title}</p>
             <div className={styles.skillsGrid}>
-              {skills.map((s) => (
+              {skills.map((s, i) => (
                 <span
                   key={s.name}
                   className={styles.tag}
-                  style={{ '--tag-color': categoryColors[s.category] } as React.CSSProperties}
+                  style={{ '--tag-color': categoryColors[s.category], animation: `fadeUp 0.3s ease ${i * 0.04}s both` } as React.CSSProperties}
                 >
                   {s.name}
                 </span>

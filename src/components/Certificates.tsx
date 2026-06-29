@@ -28,6 +28,7 @@ export function Certificates() {
             <button
               key={i}
               className={styles.card}
+              style={{ animation: `fadeUp 0.4s ease ${i * 0.08}s both` }}
               onClick={() => setSelected(cert)}
             >
               <div className={styles.icon}>⟨/⟩</div>
