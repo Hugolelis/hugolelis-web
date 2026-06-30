@@ -187,14 +187,14 @@
 
 .cardTop:hover .chevron {
   transform: rotate(180deg);
-  color: #fff;
-  border-color: #fff;
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .chevronOpen {
   transform: rotate(180deg);
-  color: #fff;
-  border-color: #fff;
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ── Body ── */

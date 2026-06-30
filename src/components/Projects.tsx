@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import { projects } from '../data'
 import { ProjectCard } from './ProjectCard'
@@ -9,6 +10,15 @@ export function Projects() {
   const { t } = useApp()
   const visible = projects.slice(0, LIMIT)
   const hasMore = projects.length > LIMIT
+
+  useEffect(() => {
+    const target = sessionStorage.getItem('scrollTo')
+    if (target === '#projetos') {
+      sessionStorage.removeItem('scrollTo')
+      const el = document.getElementById('projetos')
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
+    }
+  }, [])
 
   return (
     <section id="projetos" className={styles.projects}>

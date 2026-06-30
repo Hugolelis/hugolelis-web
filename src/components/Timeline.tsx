@@ -1,8 +1,18 @@
+import { useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import styles from './Timeline.module.css'
 
 export function Timeline() {
   const { t } = useApp()
+
+  useEffect(() => {
+    const target = sessionStorage.getItem('scrollTo')
+    if (target === '#trajetoria') {
+      sessionStorage.removeItem('scrollTo')
+      const el = document.getElementById('trajetoria')
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
+    }
+  }, [])
 
   return (
     <section id="trajetoria" className={styles.timeline}>

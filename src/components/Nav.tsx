@@ -33,7 +33,10 @@ export function Nav() {
 
   const handleNav = (hash: string) => {
     closeMenu()
-    if (onSubPage) window.location.href = `/${hash}`
+    if (onSubPage) {
+      sessionStorage.setItem('scrollTo', hash)
+      window.location.href = `/${hash}`
+    }
   }
 
   const menuLabel = menuOpen

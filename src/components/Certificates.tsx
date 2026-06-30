@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import { PdfModal } from './PdfModal'
 import styles from './Certificates.module.css'
@@ -18,6 +18,15 @@ export function Certificates() {
   const items = t.certificates.items
   const visible = items.slice(0, LIMIT)
   const hasMore = items.length > LIMIT
+
+  useEffect(() => {
+    const target = sessionStorage.getItem('scrollTo')
+    if (target === '#certificados') {
+      sessionStorage.removeItem('scrollTo')
+      const el = document.getElementById('certificados')
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
+    }
+  }, [])
 
   return (
     <section id="certificados" className={styles.certificates}>

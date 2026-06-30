@@ -1,8 +1,18 @@
+import { useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import styles from './Contact.module.css'
 
 export function Contact() {
   const { t } = useApp()
+
+  useEffect(() => {
+    const target = sessionStorage.getItem('scrollTo')
+    if (target === '#contato') {
+      sessionStorage.removeItem('scrollTo')
+      const el = document.getElementById('contato')
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
+    }
+  }, [])
 
   return (
     <section id="contato" className={styles.contact}>

@@ -84,6 +84,10 @@ export default function App() {
   })
 
   useEffect(() => {
+    if (!sessionStorage.getItem('scrollTo')) window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     if (!loaded) {
       const id = setTimeout(() => {
         sessionStorage.setItem('loaded', 'true')
