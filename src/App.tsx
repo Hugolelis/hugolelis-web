@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Hero, About, Footer, Reveal } from './components'
+import { Nav, Hero, About, Footer, Reveal, Particles } from './components'
 import styles from './components/BackToTop.module.css'
 import notFoundStyles from './components/NotFound.module.css'
 
@@ -106,6 +106,7 @@ export default function App() {
   if (isUnknown) {
     return (
       <>
+        <Particles />
         <Helmet>
           <title>404 — Página não encontrada</title>
           <meta name="robots" content="noindex" />
@@ -127,6 +128,7 @@ export default function App() {
   if (isBlog) {
     return (
       <>
+        <Particles />
         <Helmet>
           <title>{'Blog — Hugo de Lelis'}</title>
           <meta name="description" content="Thoughts on development, systems and technology by Hugo de Lelis." />
@@ -145,6 +147,7 @@ export default function App() {
   if (isProjectsPage) {
     return (
       <>
+        <Particles />
         <Helmet>
           <title>{'Projetos — Hugo de Lelis'}</title>
           <meta name="description" content="Projetos de Hugo de Lelis — Software Developer." />
@@ -162,6 +165,7 @@ export default function App() {
   if (isCertificatesPage) {
     return (
       <>
+        <Particles />
         <Helmet>
           <title>{'Certificados — Hugo de Lelis'}</title>
           <meta name="description" content="Certificados de Hugo de Lelis — Software Developer." />
@@ -202,6 +206,7 @@ export default function App() {
       {!loaded && <EntryLoading />}
       <div>
         <Nav />
+        <Particles />
         <main id="main-content">
           <Hero />
           <Reveal><About /></Reveal>
