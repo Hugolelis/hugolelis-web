@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Hero, About, Footer, Reveal, Particles } from './components'
+import { Nav, Hero, About, Footer, Reveal, Particles, TechMarquee } from './components'
 import styles from './components/BackToTop.module.css'
 import notFoundStyles from './components/NotFound.module.css'
 
@@ -210,6 +210,7 @@ export default function App() {
         <main id="main-content">
           <Hero />
           <Reveal><About /></Reveal>
+          <TechMarquee />
           <Suspense fallback={null}>
             <Reveal delay={0.05}><Timeline /></Reveal>
             <Reveal delay={0.1}><Certificates /></Reveal>
