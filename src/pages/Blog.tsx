@@ -55,7 +55,7 @@ export function Blog() {
           {t.blog.posts.map((post, i) => {
             const isOpen = expanded === post.id
             return (
-              <article key={post.id} className={`${styles.card} ${isOpen ? styles.cardOpen : ''}`} style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}>
+              <article key={post.id} data-parallax data-parallax-speed="0.05" className={`${styles.card} ${isOpen ? styles.cardOpen : ''}`} style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}>
                 <button
                   className={styles.cardTop}
                   onClick={() => toggle(post.id)}

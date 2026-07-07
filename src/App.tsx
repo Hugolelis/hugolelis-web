@@ -204,7 +204,7 @@ export default function App() {
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       {!loaded && <EntryLoading />}
-      <div>
+      <div style={{ overflowX: 'hidden' }}>
         <Nav />
         <Particles />
         <main id="main-content">

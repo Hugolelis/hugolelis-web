@@ -16,7 +16,7 @@ export function Contact() {
 
   return (
     <section id="contato" className={styles.contact}>
-      <div className={`container ${styles.inner}`}>
+      <div className={`container ${styles.inner}`} data-parallax data-parallax-speed="0.05">
         <h2 className="section-title">{t.contact.title}</h2>
         <p className={styles.sub}>{t.contact.sub}</p>
         <div className={styles.social}>

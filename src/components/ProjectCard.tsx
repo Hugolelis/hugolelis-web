@@ -26,6 +26,8 @@ export function ProjectCard({ project, translations }: Props) {
   return (
     <a href={project.link} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
       <article
+        data-parallax
+        data-parallax-speed="0.06"
         className={`${styles.card} ${hovered ? styles.active : ''}`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}

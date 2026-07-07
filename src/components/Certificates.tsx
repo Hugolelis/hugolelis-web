@@ -36,6 +36,8 @@ export function Certificates() {
           {visible.map((cert, i) => (
             <button
               key={i}
+              data-parallax
+              data-parallax-speed="0.06"
               className={styles.card}
               style={{ animation: `fadeUp 0.4s ease ${i * 0.08}s both` }}
               onClick={() => setSelected(cert)}

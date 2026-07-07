@@ -59,9 +59,9 @@ export function Hero() {
   return (
     <section className={styles.hero} id='hero'>
       <div className={styles.gridBg} aria-hidden />
-      <div className={styles.layout}>
+      <div className={styles.layout} data-parallax data-parallax-speed="0.06">
 
-        <div className={styles.leftCol}>
+        <div className={styles.leftCol} data-parallax data-parallax-speed="0.05">
           <p className={styles.label}>{roleValue}</p>
           <h1 className={styles.title}>
             <span className={styles.accent}>{displayedTitle}</span>
@@ -80,7 +80,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className={styles.terminal}>
+        <div className={styles.terminal} data-parallax data-parallax-speed="0.07">
           <div className={styles.termBar}>
             <span className={styles.termDot} style={{ background: '#ff5f57' }} />
             <span className={styles.termDot} style={{ background: '#ffbd2e' }} />

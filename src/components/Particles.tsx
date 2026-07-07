@@ -5,62 +5,55 @@ function isTouchDevice(): boolean {
 }
 
 export function Particles() {
-  const elRef = useRef<HTMLDivElement>(null)
-  const posRef = useRef({ x: -9999, y: -9999 })
+  const posRef = useRef({ x: 0.3, y: 0.2 })
+  const mounted = useRef(false)
 
   useEffect(() => {
     if (isTouchDevice()) return
-
-    const el = elRef.current
-    if (!el) return
+    mounted.current = true
 
     let frame = 0
+
     const onMouse = (e: MouseEvent) => {
-      posRef.current = { x: e.clientX, y: e.clientY }
+      const cx = window.innerWidth / 2
+      const cy = window.innerHeight / 2
+      posRef.current = {
+        x: (e.clientX - cx) / cx,
+        y: (e.clientY - cy) / cy,
+      }
       cancelAnimationFrame(frame)
       frame = requestAnimationFrame(update)
     }
 
     const update = () => {
+      if (!mounted.current) return
       const { x, y } = posRef.current
-      const target = document.elementFromPoint(x, y)
-      const tag = target?.tagName?.toLowerCase() ?? ''
-      const isInteractive = ['a', 'button', 'input', 'textarea', 'select'].includes(tag) ||
-        (target instanceof HTMLElement && getComputedStyle(target).cursor === 'pointer')
-
-      if (isInteractive) {
-        el.style.background = ''
-        return
+      const els = document.querySelectorAll<HTMLElement>('[data-parallax]')
+      for (const el of els) {
+        const speed = parseFloat(el.dataset.parallaxSpeed ?? '0.03')
+        el.style.translate = `${x * speed * 100}px ${y * speed * 100}px`
       }
+    }
 
-      const theme = document.documentElement.getAttribute('data-theme')
-      const tint = theme === 'light' ? 'rgba(0,0,0,0.07)' : 'rgba(255,255,255,0.065)'
-      el.style.background = `radial-gradient(120px at ${x}px ${y}px, ${tint} 0%, transparent 70%)`
+    const reset = () => {
+      const els = document.querySelectorAll<HTMLElement>('[data-parallax]')
+      for (const el of els) {
+        el.style.translate = ''
+      }
     }
 
     window.addEventListener('mousemove', onMouse, { passive: true })
-    update()
-
-    const mo = new MutationObserver(update)
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+    window.addEventListener('scroll', update, { passive: true })
+    frame = requestAnimationFrame(update)
 
     return () => {
+      mounted.current = false
       cancelAnimationFrame(frame)
-      mo.disconnect()
+      reset()
       window.removeEventListener('mousemove', onMouse)
+      window.removeEventListener('scroll', update)
     }
   }, [])
 
-  return (
-    <div
-      ref={elRef}
-      aria-hidden
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 3,
-        pointerEvents: 'none',
-      }}
-    />
-  )
+  return null
 }
