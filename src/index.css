@@ -130,7 +130,6 @@ body {
 .btn--primary:hover { background: var(--accent-dim); }
 .btn--ghost { border: 1px solid var(--border); color: var(--text); background: none; }
 .btn--ghost:hover { border-color: #888; }
-.btn--lg { padding: 1rem 2.5rem; font-size: 1rem; }
 
 @keyframes spin {
   to { transform: rotate(360deg); }

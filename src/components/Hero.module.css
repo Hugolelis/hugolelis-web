@@ -161,39 +161,12 @@
 .termValue { color: var(--term-value); flex: 1; }
 .termComma { color: var(--term-punct); }
 
-.termEdit {
-  font-size: 0.65rem;
-  color: var(--term-muted);
-  margin-left: 0.5rem;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.termLine:hover .termEdit { opacity: 1; }
-
-.termInput {
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--term-input);
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  flex: 1;
-  caret-color: var(--term-key);
-  min-width: 60px;
-}
-
 .termFooter {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   border-top: 1px solid var(--term-border);
   display: flex;
   align-items: center;
-}
-
-.termHint {
-  font-size: 0.72rem;
-  color: var(--term-muted);
-  letter-spacing: 0.04em;
 }
 
 .termSuccess {
@@ -212,28 +185,6 @@
   background: #4ade80;
   animation: pulse 1.5s ease infinite;
 }
-
-.termRun {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(232,255,71,0.08);
-  border: 1px solid rgba(232,255,71,0.25);
-  color: #e8ff47;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 5px;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  transition: background 0.2s, border-color 0.2s;
-}
-.termRun:hover {
-  background: rgba(232,255,71,0.15);
-  border-color: rgba(232,255,71,0.5);
-}
-
-.termRunIcon { font-size: 0.6rem; }
 
 /* ── Badge ── */
 .badge {
@@ -262,11 +213,6 @@
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulseCursor {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.15; }
 }
 
 @keyframes pulseCursor {
