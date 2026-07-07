@@ -53,7 +53,18 @@ export function Nav() {
         {lang === 'pt' ? 'Pular para o conteúdo' : 'Skip to content'}
       </a>
       <nav className={`${styles.nav} ${scrollY > 40 || onSubPage ? styles.scrolled : ''}`} aria-label={lang === 'pt' ? 'Navegação principal' : 'Main navigation'}>
-        <a href={onSubPage ? '/' : '#hero'} className={styles.logo} aria-label="Voltar ao início">{'<Hugo />'}</a>
+        <a href={onSubPage ? '/' : '#hero'} className={styles.logo} aria-label="Voltar ao início">
+          <svg viewBox="0 0 32 32" width="26" height="26" fill="none" style={{ display: 'block', color: 'var(--accent)' }}>
+            <rect x="6" y="7" width="5" height="18" rx="1" fill="currentColor" opacity="0.15" />
+            <rect x="21" y="7" width="5" height="18" rx="1" fill="currentColor" opacity="0.15" />
+            <rect x="6" y="13" width="20" height="6" rx="1" fill="currentColor" />
+            <rect x="6" y="7" width="5" height="6" rx="1" fill="currentColor" opacity="0.35" />
+            <rect x="6" y="19" width="5" height="6" rx="1" fill="currentColor" opacity="0.35" />
+            <rect x="21" y="7" width="5" height="6" rx="1" fill="currentColor" opacity="0.35" />
+            <rect x="21" y="19" width="5" height="6" rx="1" fill="currentColor" opacity="0.35" />
+            <circle cx="27" cy="26" r="1.5" fill="currentColor" />
+          </svg>
+        </a>
 
         <ul className={styles.links} role="list">
           <li><a href={onSubPage ? '/#hero'         : '#hero'}         onClick={() => handleNav('#hero')}         className={active === 'hero'         ? styles.activeLink : ''}>{t.nav.hero}</a></li>

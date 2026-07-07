@@ -65,7 +65,7 @@ export function Hero() {
           <p className={styles.label}>{roleValue}</p>
           <h1 className={styles.title}>
             <span className={styles.accent}>{displayedTitle}</span>
-            <span className={styles.cursor} />
+            <span className={styles.cursor}>_</span>
           </h1>
           <p className={styles.sub}>{t.hero.sub}</p>
           <div className={styles.cta}>

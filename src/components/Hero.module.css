@@ -62,13 +62,9 @@
 .accent { color: var(--accent); }
 
 .cursor {
-  display: inline-block;
-  width: 3px;
-  height: 1em;
-  background: var(--accent);
-  margin-left: 3px;
-  vertical-align: text-bottom;
-  animation: blink 1s step-end infinite;
+  animation: pulseCursor 1.4s ease-in-out infinite;
+  font-weight: 100;
+  margin-left: 1px;
 }
 
 .sub {
@@ -268,9 +264,14 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes blink {
+@keyframes pulseCursor {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  50%      { opacity: 0.15; }
+}
+
+@keyframes pulseCursor {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 0.1; }
 }
 
 @keyframes pulse {
