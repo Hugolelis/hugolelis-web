@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 function isTouchDevice(): boolean {
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 900
 }
 
 export function Particles() {

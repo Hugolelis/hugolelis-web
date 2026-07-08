@@ -35,7 +35,7 @@ export function Projects() {
           ))}
         </div>
         {hasMore && (
-          <a href="/projetos" className={styles.viewAll}>
+          <a href="/projetos" className={styles.viewAll} data-parallax data-parallax-speed="0.04">
             <span>{t.projects.viewAll}</span>
             <span className={styles.viewArrow}>→</span>
           </a>

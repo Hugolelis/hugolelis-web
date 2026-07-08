@@ -55,7 +55,7 @@ export function Certificates() {
           ))}
         </div>
         {hasMore && (
-          <a href="/certificados" className={styles.viewAll}>
+          <a href="/certificados" className={styles.viewAll} data-parallax data-parallax-speed="0.04">
             <span>{t.certificates.viewAll}</span>
             <span className={styles.viewArrow}>→</span>
           </a>

@@ -16,10 +16,10 @@ export function Contact() {
 
   return (
     <section id="contato" className={styles.contact}>
-      <div className={`container ${styles.inner}`} data-parallax data-parallax-speed="0.05">
+      <div className={`container ${styles.inner}`}>
         <h2 className="section-title">{t.contact.title}</h2>
         <p className={styles.sub}>{t.contact.sub}</p>
-        <div className={styles.social}>
+        <div className={styles.social} data-parallax data-parallax-speed="0.04">
           <a href="mailto:hugodelelis05@gmail.com" aria-label="Email">
             <span className={styles.socialIcon}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

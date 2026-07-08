@@ -88,6 +88,10 @@
 
 html { scroll-behavior: smooth; }
 
+[data-parallax] {
+  transition: translate 0.08s ease-out;
+}
+
 body {
   background: var(--bg);
   color: var(--text);

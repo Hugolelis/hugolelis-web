@@ -14,7 +14,7 @@ export function About() {
   return (
     <section id="sobre" className={styles.about}>
       <div className="container">
-          <div className={styles.inner} data-parallax data-parallax-speed="0.05">
+          <div className={styles.inner}>
           <div className={styles.text}>
             <h2 className="section-title">{t.about.title}</h2>
             <p>{t.about.p1}</p>
@@ -25,6 +25,8 @@ export function About() {
               {skills.map((s, i) => (
                 <span
                   key={s.name}
+                  data-parallax
+                  data-parallax-speed="0.05"
                   className={styles.tag}
                   style={{ '--tag-color': categoryColors[s.category], animation: `fadeUp 0.3s ease ${i * 0.04}s both` } as React.CSSProperties}
                 >

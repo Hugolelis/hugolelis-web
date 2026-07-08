@@ -59,16 +59,16 @@ export function Hero() {
   return (
     <section className={styles.hero} id='hero'>
       <div className={styles.gridBg} aria-hidden />
-      <div className={styles.layout} data-parallax data-parallax-speed="0.06">
+      <div className={styles.layout}>
 
-        <div className={styles.leftCol} data-parallax data-parallax-speed="0.05">
+        <div className={styles.leftCol}>
           <p className={styles.label}>{roleValue}</p>
           <h1 className={styles.title}>
             <span className={styles.accent}>{displayedTitle}</span>
             <span className={styles.cursor}>_</span>
           </h1>
           <p className={styles.sub}>{t.hero.sub}</p>
-          <div className={styles.cta}>
+          <div className={styles.cta} data-parallax data-parallax-speed="0.04">
             <a href="/projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
             <a href="#contato" className="btn btn--ghost">{t.hero.cta_contact}</a>
             <button
