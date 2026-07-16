@@ -21,11 +21,9 @@ export function Timeline() {
         <div className={styles.track}>
           {t.timeline.items.map((item, i) => (
             <div key={i} className={styles.item} data-parallax data-parallax-speed="0.05" style={{ animation: `fadeUp 0.4s ease ${i * 0.1}s both` }}>
-              <div className={styles.meta}>
+              <div className={styles.dot} />
+              <div className={styles.content}>
                 <span className={styles.year}>{item.year}</span>
-                <div className={styles.dot} />
-              </div>
-              <div className={styles.card}>
                 <span className={styles.tag}>{item.type}</span>
                 <h3 className={styles.role}>{item.role}</h3>
                 <p className={styles.place}>{item.place}</p>
