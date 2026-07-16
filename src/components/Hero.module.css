@@ -1,5 +1,5 @@
 .hero {
-  min-height: calc(100vh - 200px);
+  min-height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -232,7 +232,7 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  .hero { padding: 6rem 1.25rem 1rem; min-height: calc(100vh - 80px); }
+  .hero { padding: 6rem 1.25rem 1rem; min-height: 100vh; }
   .terminal { max-width: 100%; }
   .sub { max-width: 100%; min-height: unset; }
   .title { min-height: unset; font-size: clamp(1.9rem, 8vw, 2.4rem); }

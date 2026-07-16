@@ -1,23 +1,47 @@
 .about {
   padding: 7rem 0 0;
-  scroll-margin-top: 35vh;
+  scroll-margin-top: 50vh;
 }
 
 .inner {
-  max-width: 680px;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  max-width: 780px;
   margin: 0 auto;
-  text-align: center;
   padding-bottom: 5rem;
+}
+
+.avatarCol {
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.textCol {
+  flex: 1;
+}
+
+.textCol :global(.section-title) {
+  margin-bottom: 0;
 }
 
 .text {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.8;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 @media (max-width: 900px) {
   .about { padding: 5rem 0 0; }
+  .inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .avatar { width: 100px; height: 100px; }
   .text { font-size: 0.95rem; }
 }
