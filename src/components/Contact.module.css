@@ -55,4 +55,6 @@
 @media (max-width: 900px) {
   .contact { padding: 5rem 0; }
   .sub { font-size: 0.95rem; }
+  .social { flex-direction: column; }
+  .social a { width: 100%; justify-content: center; }
 }

@@ -4,7 +4,6 @@ import { Nav, Hero, About, Footer, Reveal, Particles, TechMarquee } from './comp
 import styles from './components/BackToTop.module.css'
 import notFoundStyles from './components/NotFound.module.css'
 
-const Blog = lazy(() => import('./pages/Blog').then(m => ({ default: m.Blog })))
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })))
 const CertificatesPage = lazy(() => import('./pages/CertificatesPage').then(m => ({ default: m.CertificatesPage })))
 
@@ -24,25 +23,6 @@ function Spinner() {
       borderRadius: '50%',
       animation: 'spin 0.6s linear infinite',
     }} />
-  )
-}
-
-function BlogFallback() {
-  return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '100vh',
-      background: 'var(--bg)',
-      color: 'var(--muted)',
-      fontFamily: 'var(--font-mono)',
-      fontSize: '0.875rem',
-      gap: '0.75rem',
-    }}>
-      <Spinner />
-      loading...
-    </div>
   )
 }
 
@@ -69,12 +49,11 @@ function EntryLoading() {
 
 export default function App() {
   const path = window.location.pathname
-  const isBlog = path === '/blog'
   const isProjectsPage = path === '/projetos'
   const isCertificatesPage = path === '/certificados'
-  const isUnknown = !isBlog && !isProjectsPage && !isCertificatesPage && path !== '/'
+  const isUnknown = !isProjectsPage && !isCertificatesPage && path !== '/'
 
-  const isSubPage = isBlog || isProjectsPage || isCertificatesPage
+  const isSubPage = isProjectsPage || isCertificatesPage
 
   const [showBackToTop, setShowBackToTop] = useState(false)
 
@@ -125,25 +104,6 @@ export default function App() {
     )
   }
 
-  if (isBlog) {
-    return (
-      <>
-        <Particles />
-        <Helmet>
-          <title>{'Blog — Hugo de Lelis'}</title>
-          <meta name="description" content="Thoughts on development, systems and technology by Hugo de Lelis." />
-          <meta property="og:title" content="Blog — Hugo de Lelis" />
-          <meta property="og:description" content="Thoughts on development, systems and technology." />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content={window.location.href} />
-        </Helmet>
-        <Suspense fallback={<BlogFallback />}>
-          <Blog />
-        </Suspense>
-      </>
-    )
-  }
-
   if (isProjectsPage) {
     return (
       <>
@@ -155,7 +115,7 @@ export default function App() {
           <meta property="og:type" content="website" />
           <meta property="og:url" content={window.location.href} />
         </Helmet>
-        <Suspense fallback={<BlogFallback />}>
+        <Suspense fallback={null}>
           <ProjectsPage />
         </Suspense>
       </>
@@ -173,7 +133,7 @@ export default function App() {
           <meta property="og:type" content="website" />
           <meta property="og:url" content={window.location.href} />
         </Helmet>
-        <Suspense fallback={<BlogFallback />}>
+        <Suspense fallback={null}>
           <CertificatesPage />
         </Suspense>
       </>

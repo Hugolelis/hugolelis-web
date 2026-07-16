@@ -92,38 +92,6 @@ export const pt = {
     sub: 'Quer trocar uma ideia sobre sistemas?',
     cta: 'Enviar e-mail',
   },
-  blog: {
-    label: '# posts linkedin',
-    sub: 'Pensamentos sobre desenvolvimento, sistemas e tecnologia.',
-    empty: 'Nenhum post ainda.',
-    linkedin: 'Ver no LinkedIn →',
-    posts: [
-      {
-        id: 1,
-        date: '2026-05-07',
-        title: 'Lancei meu portfólio!',
-        content: `Um espaço onde reúno meus projetos, experiências e trajetória como desenvolvedor.\n\nO projeto conta com:\n→ React + TypeScript\n→ Animação de loading personalizada\n→ Design responsivo\n→ Suporte a PT-BR e EN\n→ Tema claro e escuro\n→ Hospedagem na Vercel`,
-        tags: ['React', 'TypeScript', 'Vercel'],
-        linkedinUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7456332957394477058/',
-      },
-      {
-        id: 2,
-        date: '2026-04-28',
-        title: 'Você organiza seu projeto por responsabilidade ou por funcionalidade?',
-        content: `Essa decisão impacta diretamente a escalabilidade, o entendimento e a manutenção do código e é mais polêmica do que parece.\n\n🔍 Minha visão\nNão existe resposta certa. Existe o contexto certo.\n\nEm projetos pequenos, organizar por responsabilidade é simples, intuitivo e funciona bem. Mas conforme o software escala, a organização por funcionalidade tende a ganhar pela facilidade de encontrar e migrar recursos.\n\n⚠️ Minha conclusão\nO verdadeiro problema não é qual estilo você escolhe. É misturar estilos sem critério e acordar com um código que dificulte a vida do desenvolvedor.`,
-        tags: ['Arquitetura', 'Boas Práticas'],
-        linkedinUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7443682520711421952/',
-      },
-      {
-        id: 3,
-        date: '2026-04-14',
-        title: 'Você já abriu um JSON com 300 linhas e tentou entender?',
-        content: `Isso acontece o tempo todo:\n• Debugar uma resposta de API\n• Revisar um payload\n• Entender um schema sem contexto\n\n🚀 O JSON Crack resolve isso.\n\nÉ uma ferramenta que transforma JSON em grafo visual interativo. Cola o conteúdo, ela mapeia a estrutura, organiza os nós e entrega um diagrama navegável em segundos — sem configuração, sem instalação.\n\nE não para no JSON, a ferramenta também lê CSV, XML e YAML com a mesma facilidade.`,
-        tags: ['Ferramentas', 'JSON', 'Dev Tips'],
-        linkedinUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7449947535521009664/',
-      },
-    ],
-  },
   footer: 'Desenvolvido @ Hugolelis',
 }
 

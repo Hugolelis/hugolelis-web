@@ -6,7 +6,7 @@ import styles from './Nav.module.css'
 
 const SECTIONS = ['hero', 'sobre', 'trajetoria', 'certificados', 'projetos', 'contato']
 
-const SUB_PAGES = ['/blog', '/projetos', '/certificados'] as const
+const SUB_PAGES = ['/projetos', '/certificados'] as const
 
 export function Nav() {
   const { t, theme, toggleTheme, lang, toggleLang } = useApp()
@@ -86,13 +86,6 @@ export function Nav() {
             </button>
             <div className={`${styles.pagesDropdown} ${pagesOpen ? styles.pagesDropdownOpen : ''}`}>
               <a
-                href="/blog"
-                className={`${styles.pageLink} ${isPageActive('/blog') ? styles.pageLinkActive : ''}`}
-                onClick={closeMenu}
-              >
-                Blog
-              </a>
-              <a
                 href="/projetos"
                 className={`${styles.pageLink} ${isPageActive('/projetos') ? styles.pageLinkActive : ''}`}
                 onClick={closeMenu}
@@ -148,7 +141,6 @@ export function Nav() {
         <div className={styles.mobilePagesSection}>
           <span className={styles.mobilePagesLabel}>{pageLabel}</span>
           <div className={styles.mobilePagesLinks}>
-            <a href="/blog" className={isPageActive('/blog') ? styles.pageLinkActive : ''} onClick={closeMenu}>Blog</a>
             <a href="/projetos" className={isPageActive('/projetos') ? styles.pageLinkActive : ''} onClick={closeMenu}>{t.nav.projects}</a>
             <a href="/certificados" className={isPageActive('/certificados') ? styles.pageLinkActive : ''} onClick={closeMenu}>{t.nav.certificates}</a>
           </div>
