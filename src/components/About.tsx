@@ -1,4 +1,5 @@
 import { useApp } from '../context/AppContext'
+import { TechMarquee } from './TechMarquee'
 import styles from './About.module.css'
 
 export function About() {
@@ -12,6 +13,7 @@ export function About() {
           <p className={styles.text}>{t.about.p1}</p>
         </div>
       </div>
+      <TechMarquee />
     </section>
   )
 }
