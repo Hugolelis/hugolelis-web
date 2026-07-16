@@ -23,8 +23,8 @@ export function About() {
             <p className={styles.text}>{t.about.p1}</p>
           </div>
         </div>
+        <TechMarquee />
       </div>
-      <TechMarquee />
     </section>
   )
 }

@@ -144,19 +144,6 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-33.333%); }
-}
-
-.marquee-track {
-  animation: marquee 50s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
 @media (max-width: 900px) {
   .container { padding: 0 1.5rem; }
 }

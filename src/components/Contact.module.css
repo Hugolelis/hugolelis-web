@@ -20,10 +20,9 @@
 .social {
   margin-top: 2rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .social a {
@@ -37,6 +36,9 @@
   text-decoration: none;
   font-size: 0.9rem;
   transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+  max-width: 320px;
+  justify-content: center;
 }
 
 .social a:hover {
@@ -55,6 +57,4 @@
 @media (max-width: 900px) {
   .contact { padding: 5rem 0; }
   .sub { font-size: 0.95rem; }
-  .social { flex-direction: column; }
-  .social a { width: 100%; justify-content: center; }
 }

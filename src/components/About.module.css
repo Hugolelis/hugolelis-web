@@ -1,15 +1,17 @@
 .about {
   padding: 7rem 0 0;
-  scroll-margin-top: 50vh;
+  scroll-margin-top: 15vh;
 }
 
 .inner {
   display: flex;
-  gap: 3rem;
+  flex-direction: column;
   align-items: center;
+  gap: 1.5rem;
   max-width: 780px;
   margin: 0 auto;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
+  text-align: center;
 }
 
 .avatarCol {
@@ -41,7 +43,6 @@
 
 @media (max-width: 900px) {
   .about { padding: 5rem 0 0; }
-  .inner { flex-direction: column; gap: 1.5rem; text-align: center; }
   .avatar { width: 100px; height: 100px; }
   .text { font-size: 0.95rem; }
 }

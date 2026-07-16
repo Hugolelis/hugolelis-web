@@ -13,7 +13,9 @@ export const skills: Skill[] = [
   { name: 'PostgreSQL', category: 'backend' },
   { name: 'MySQL', category: 'backend' },
   { name: 'Docker', category: 'infra' },
-  { name: 'Git', category: 'tools' },
-  { name: 'Linux', category: 'tools' },
+  { name: 'Git', category: 'infra' },
+  { name: 'Linux', category: 'infra' },
   { name: 'REST', category: 'tools' },
+  { name: 'Scrum', category: 'tools' },
+  { name: 'Kanban', category: 'tools' },
 ]

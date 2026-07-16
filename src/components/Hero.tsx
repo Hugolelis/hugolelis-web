@@ -130,6 +130,12 @@ export function Hero() {
         <span className={styles.dot} />
       </div>
 
+      <div className={styles.scrollArrow} aria-hidden>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+        </svg>
+      </div>
+
       {cvOpen && (
         <PdfModal
           name="Hugolelis_cv.pdf"
