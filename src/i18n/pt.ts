@@ -23,6 +23,9 @@ export const pt = {
     title: 'Sobre mim',
     p1: 'Sou Hugo, desenvolvedor de software com foco em arquitetura de APIs, bancos de dados relacionais e sistemas distribuídos. Gosto de resolver problemas difíceis com soluções simples e bem estruturadas.',
     skills_title: 'Stack principal',
+    cat_backend: 'Backend',
+    cat_infra: 'Infra',
+    cat_tools: 'Metodologias',
   },
   projects: {
     title: 'Projetos',

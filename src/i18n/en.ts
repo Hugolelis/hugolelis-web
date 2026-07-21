@@ -25,6 +25,9 @@ export const en: Translations = {
     title: 'About me',
     p1: "I'm Hugo, a software developer focused on API architecture, relational databases, and distributed systems. I enjoy solving hard problems with simple, well-structured solutions.",
     skills_title: 'Core stack',
+    cat_backend: 'Backend',
+    cat_infra: 'Infra',
+    cat_tools: 'Methodologies',
   },
   projects: {
     title: 'Projects',

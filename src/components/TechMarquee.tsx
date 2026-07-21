@@ -1,10 +1,11 @@
 import { skills } from '../data'
+import { useApp } from '../context/AppContext'
 import styles from './TechMarquee.module.css'
 
-const catLabel: Record<string, string> = {
-  backend: 'Backend',
-  infra: 'Infra',
-  tools: 'Tools',
+const catI18nKey: Record<string, string> = {
+  backend: 'cat_backend',
+  infra: 'cat_infra',
+  tools: 'cat_tools',
 }
 
 const catColors: Record<string, string> = {
@@ -19,12 +20,13 @@ const groups = skills.reduce<Record<string, typeof skills>>((acc, s) => {
 }, {})
 
 export function TechMarquee() {
+  const { t } = useApp()
   return (
     <div className={styles.wrapper}>
       {Object.entries(groups).map(([cat, items]) => (
         <div key={cat} className={styles.group} data-parallax data-parallax-speed="0.04">
           <div className={styles.header} style={{ color: catColors[cat], borderBottomColor: catColors[cat] }}>
-            {catLabel[cat]}
+            {t.about[catI18nKey[cat] as keyof typeof t.about] as string}
           </div>
           <div className={styles.body}>
             {items.map((s) => (
