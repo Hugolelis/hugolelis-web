@@ -19,7 +19,7 @@ export function Contact() {
       <div className={`container ${styles.inner}`}>
         <h2 className="section-title">{t.contact.title}</h2>
         <p className={styles.sub}>{t.contact.sub}</p>
-        <div className={styles.social} data-parallax data-parallax-speed="0.04">
+        <div className={styles.social}>
           <a href="mailto:hugodelelis05@gmail.com" aria-label="Email">
             <span className={styles.socialIcon}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

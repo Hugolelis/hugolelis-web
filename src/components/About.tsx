@@ -10,13 +10,10 @@ export function About() {
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.avatarCol}>
-            <img
-              src="/avatar.png"
-              alt=""
-              className={styles.avatar}
-              data-parallax
-              data-parallax-speed="0.05"
-            />
+            <div className={styles.avatarWrap}>
+              <div className={styles.avatarRing} aria-hidden />
+              <img src="/avatar.png" alt="" className={styles.avatar} />
+            </div>
           </div>
           <div className={styles.textCol}>
             <h2 className="section-title">{t.about.title}</h2>

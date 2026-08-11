@@ -6,6 +6,7 @@ export interface Project {
   descriptionKey: string
   year: string
   link?: string
+  image?: string
 }
 
 export interface Skill {

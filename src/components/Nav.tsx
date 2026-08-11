@@ -86,18 +86,18 @@ export function Nav() {
             </button>
             <div className={`${styles.pagesDropdown} ${pagesOpen ? styles.pagesDropdownOpen : ''}`}>
               <a
-                href="/projetos"
-                className={`${styles.pageLink} ${isPageActive('/projetos') ? styles.pageLinkActive : ''}`}
-                onClick={closeMenu}
-              >
-                {t.nav.projects}
-              </a>
-              <a
                 href="/certificados"
                 className={`${styles.pageLink} ${isPageActive('/certificados') ? styles.pageLinkActive : ''}`}
                 onClick={closeMenu}
               >
                 {t.nav.certificates}
+              </a>
+              <a
+                href="/projetos"
+                className={`${styles.pageLink} ${isPageActive('/projetos') ? styles.pageLinkActive : ''}`}
+                onClick={closeMenu}
+              >
+                {t.nav.projects}
               </a>
             </div>
           </li>
@@ -141,8 +141,8 @@ export function Nav() {
         <div className={styles.mobilePagesSection}>
           <span className={styles.mobilePagesLabel}>{pageLabel}</span>
           <div className={styles.mobilePagesLinks}>
-            <a href="/projetos" className={isPageActive('/projetos') ? styles.pageLinkActive : ''} onClick={closeMenu}>{t.nav.projects}</a>
             <a href="/certificados" className={isPageActive('/certificados') ? styles.pageLinkActive : ''} onClick={closeMenu}>{t.nav.certificates}</a>
+            <a href="/projetos" className={isPageActive('/projetos') ? styles.pageLinkActive : ''} onClick={closeMenu}>{t.nav.projects}</a>
           </div>
         </div>
       </div>

@@ -36,8 +36,6 @@ export function Certificates() {
           {visible.map((cert, i) => (
             <button
               key={i}
-              data-parallax
-              data-parallax-speed="0.06"
               className={styles.card}
               style={{ animation: `fadeUp 0.4s ease ${i * 0.08}s both` }}
               onClick={() => setSelected(cert)}
@@ -55,7 +53,7 @@ export function Certificates() {
           ))}
         </div>
         {hasMore && (
-          <a href="/certificados" className={styles.viewAll} data-parallax data-parallax-speed="0.04">
+          <a href="/certificados" className={styles.viewAll}>
             <span>{t.certificates.viewAll}</span>
             <span className={styles.viewArrow}>→</span>
           </a>

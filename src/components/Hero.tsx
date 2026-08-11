@@ -59,6 +59,8 @@ export function Hero() {
   return (
     <section className={styles.hero} id='hero'>
       <div className={styles.gridBg} aria-hidden />
+      <div className={styles.orb} style={{ background: 'var(--accent-term)' }} aria-hidden />
+      <div className={styles.orbBlue} style={{ background: 'var(--accent-blue)' }} aria-hidden />
       <div className={styles.layout}>
 
         <div className={styles.leftCol}>
@@ -68,7 +70,7 @@ export function Hero() {
             <span className={styles.cursor}>_</span>
           </h1>
           <p className={styles.sub}>{t.hero.sub}</p>
-          <div className={styles.cta} data-parallax data-parallax-speed="0.04">
+          <div className={styles.cta}>
             <a href="/projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
             <a href="#contato" className="btn btn--ghost">{t.hero.cta_contact}</a>
             <button
@@ -80,7 +82,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className={styles.terminal} data-parallax data-parallax-speed="0.07">
+        <div className={styles.terminal}>
           <div className={styles.termBar}>
             <span className={styles.termDot} style={{ background: '#ff5f57' }} />
             <span className={styles.termDot} style={{ background: '#ffbd2e' }} />

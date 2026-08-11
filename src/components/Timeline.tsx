@@ -20,7 +20,7 @@ export function Timeline() {
         <h2 className="section-title">{t.timeline.title}</h2>
         <div className={styles.track}>
           {t.timeline.items.map((item, i) => (
-            <div key={i} className={styles.item} data-parallax data-parallax-speed="0.05" style={{ animation: `fadeUp 0.4s ease ${i * 0.1}s both` }}>
+            <div key={i} className={styles.item} style={{ animation: `fadeUp 0.4s ease ${i * 0.1}s both` }}>
               <div className={styles.dot} />
               <div className={styles.content}>
                 <span className={styles.year}>{item.year}</span>
