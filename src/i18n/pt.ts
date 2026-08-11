@@ -13,7 +13,7 @@ export const pt = {
     title1: 'Construindo',
     title2: 'sistemas',
     title3: 'que escalam.',
-    sub: 'Transformo regras de negócio complexas em APIs robustas, performáticas e fáceis de manter.',
+    sub: 'Transformo problemas complexos em código limpo, performático e fácil de manter.',
     cta_projects: 'Ver projetos',
     cta_contact: 'Falar comigo',
     cta_cv: 'Baixar currículo',
@@ -21,7 +21,7 @@ export const pt = {
   },
   about: {
     title: 'Sobre mim',
-    p1: 'Sou Hugo, desenvolvedor de software com foco em arquitetura de APIs, bancos de dados relacionais e sistemas distribuídos. Gosto de resolver problemas difíceis com soluções simples e bem estruturadas.',
+    p1: 'Sou Hugo, desenvolvedor de software apaixonado por backend, sistemas distribuídos e soluções bem arquitetadas. Gosto de resolver problemas difíceis com código simples e bem estruturado.',
     skills_title: 'Stack principal',
     cat_backend: 'Backend',
     cat_infra: 'Infra',
@@ -31,6 +31,8 @@ export const pt = {
     title: 'Projetos',
     viewAll: 'Ver todos os projetos',
     count: '{n} projetos',
+    viewCode: 'Ver código',
+    viewDeploy: 'Ver deploy',
 
     p1_title: 'Generator',
     p1_desc: 'API REST robusta com geração de CPF, encurtador de URL, gerador de senhas, UUID, serviços de data e números sorteados.',

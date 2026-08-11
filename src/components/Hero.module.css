@@ -201,14 +201,6 @@
   letter-spacing: 0.04em;
 }
 
-.termSuccessDot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #4ade80;
-  animation: pulse 1.5s ease infinite;
-}
-
 /* ── Badge ── */
 .badge {
   position: absolute;
@@ -229,7 +221,21 @@
   width: 8px; height: 8px;
   border-radius: 50%;
   background: #4ade80;
-  animation: pulse 2s ease infinite;
+  position: relative;
+}
+
+.dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid #4ade80;
+  animation: ping 1.6s ease-out infinite;
+}
+
+@keyframes ping {
+  0%   { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2);   opacity: 0; }
 }
 
 /* ── Animations ── */

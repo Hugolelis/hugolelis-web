@@ -118,7 +118,6 @@ export function Hero() {
 
             <div className={styles.termFooter}>
               <span className={styles.termSuccess}>
-                <span className={styles.termSuccessDot} />
                 {lang === 'pt' ? 'configuração carregada' : 'config loaded'}
               </span>
             </div>
