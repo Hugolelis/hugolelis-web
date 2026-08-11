@@ -99,5 +99,5 @@ export const en: Translations = {
     sub: 'Want to chat about systems?',
     cta: 'Send an email',
   },
-  footer: 'Developed @ Hugolelis',
+  footer: 'Developed by @Hugolelis',
 }

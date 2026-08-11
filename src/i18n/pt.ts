@@ -97,7 +97,7 @@ export const pt = {
     sub: 'Quer trocar uma ideia sobre sistemas?',
     cta: 'Enviar e-mail',
   },
-  footer: 'Desenvolvido @ Hugolelis',
+  footer: 'Desenvolvido por @Hugolelis',
 }
 
 export type Translations = typeof pt
