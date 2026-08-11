@@ -23,7 +23,7 @@ export const pt = {
     title: 'Sobre mim',
     p1: 'Sou Hugo, desenvolvedor de software apaixonado por backend, sistemas distribuídos e soluções bem arquitetadas. Gosto de resolver problemas difíceis com código simples e bem estruturado.',
     skills_title: 'Stack principal',
-    cat_backend: 'Backend',
+    cat_backend: 'Tecnologias',
     cat_infra: 'Infra',
     cat_tools: 'Metodologias',
   },
