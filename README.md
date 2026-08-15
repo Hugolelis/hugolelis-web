@@ -2,13 +2,12 @@
 
 <div align="left">
 
-[![License](https://img.shields.io/badge/License-MIT-1a1a2e?style=for-the-badge&logoColor=white)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Live-1a1a2e?style=for-the-badge&logoColor=white)]()
 [![Version](https://img.shields.io/badge/Version-2.0.0-1a1a2e?style=for-the-badge&logoColor=white)]()
 
 </div>
 
-> **Portfolio** is a personal portfolio website built with React and TypeScript. It showcases professional experience, projects, certificates, and blog posts — with full bilingual support (Portuguese and English), dark/light themes, and a terminal-inspired design.
+> **Portfolio** is a personal portfolio website built with React and TypeScript. It showcases professional experience, projects and certificates, with bilingual support (Portuguese and English), dark/light themes and a terminal-inspired design.
 
 ---
 
@@ -21,7 +20,6 @@
 - [Project Structure](#project-structure)
 - [Scripts](#scripts)
 - [Deployment](#deployment)
-- [License](#license)
 
 ---
 
@@ -35,10 +33,9 @@
 | **Interactive timeline** | Career and education history with dark mode support |
 | **Project showcase** | Cards with type badges (API, CLI), tech tags, and GitHub links |
 | **Certificate viewer** | Inline PDF modal with mobile download fallback |
-| **Blog page** | Dedicated `/blog` route with LinkedIn posts, tags, and expandable content |
 | **CV download** | PDF preview directly in the browser |
 | **Responsive design** | Adaptive layout, hamburger menu, and mobile-friendly components |
-| **Loading screen** | Animated terminal boot sequence with progress bar |
+| **Interactive hero** | Animated ShapeGrid background with cursor hover trail |
 
 ---
 
@@ -111,18 +108,17 @@ npm run lint
 
 ```
 src/
-├── assets/                  # Static images and icons
 ├── components/
 │   ├── About.tsx            # About me section with skills
 │   ├── Certificates.tsx     # Certificate grid
 │   ├── Contact.tsx          # Contact information
 │   ├── Footer.tsx           # Footer
 │   ├── Hero.tsx             # Terminal-inspired hero section
-│   ├── LoadingScreen.tsx    # Animated boot screen
 │   ├── Nav.tsx              # Navigation with scroll spy
 │   ├── PdfModal.tsx         # PDF viewer modal
 │   ├── ProjectCard.tsx      # Individual project card
 │   ├── Projects.tsx         # Projects section
+│   ├── ShapeGrid.tsx        # Interactive hero background
 │   └── Timeline.tsx         # Career timeline
 ├── context/                 # React Context (theme, language, translations)
 ├── data/                    # Static data (projects, skills)
@@ -130,7 +126,7 @@ src/
 │   ├── useActiveSection.ts  # IntersectionObserver for nav
 │   └── useScrollY.ts        # Scroll position tracking
 ├── i18n/                    # Translations (pt.ts, en.ts)
-├── pages/                   # Pages (Blog)
+├── pages/                   # Projects and certificates pages
 ├── types/                   # TypeScript interfaces
 ├── App.tsx                  # Root component
 ├── index.css                # Global styles and CSS custom properties
@@ -155,9 +151,3 @@ src/
 The project is configured for **Vercel** deployment with SPA rewrites via `vercel.json`.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Hugolelis/Portfolio)
-
----
-
-## License
-
-Distributed under the **MIT License**. See [LICENSE](LICENSE) for more information.

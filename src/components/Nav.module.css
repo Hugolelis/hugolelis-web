@@ -6,12 +6,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 3rem;
-  transition: background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s;
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s, border-color 0.3s;
 }
 
 .scrolled {
-  background: var(--nav-bg);
-  backdrop-filter: blur(14px);
+  background: var(--nav-bg-scrolled);
   border-bottom: 1px solid var(--border);
 }
 
@@ -71,8 +74,9 @@
   font-family: var(--font-body);
   font-size: 0.9rem;
   letter-spacing: 0.04em;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
+  min-height: 2rem;
+  padding: 0 0.65rem;
+  border-radius: var(--button-radius);
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s;
 }
@@ -151,8 +155,10 @@
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  padding: 0.35rem 0.7rem;
-  border-radius: 4px;
+  min-width: 2.25rem;
+  height: 2rem;
+  padding: 0 0.65rem;
+  border-radius: var(--button-radius);
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s;
   letter-spacing: 0.06em;
@@ -173,7 +179,7 @@
   height: 2rem;
   background: none;
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: var(--button-radius);
   cursor: pointer;
   padding: 0.3rem 0.4rem;
   transition: border-color 0.2s;

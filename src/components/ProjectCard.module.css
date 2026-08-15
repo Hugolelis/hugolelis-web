@@ -8,23 +8,10 @@
   overflow: hidden;
 }
 
-.card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  background: linear-gradient(135deg, var(--accent-dim) 0%, transparent 50%);
-}
-
 .active {
   border-color: var(--accent-dim);
   box-shadow: 0 4px 20px var(--term-shadow);
 }
-
-.active::after { opacity: 0.04; }
 
 /* ── Media ── */
 
@@ -55,15 +42,15 @@
 }
 
 .mediaApi {
-  background: linear-gradient(135deg, var(--tag-api-bg) 0%, transparent 70%);
+  background: var(--project-api-gradient);
 }
 
 .mediaCli {
-  background: linear-gradient(135deg, var(--tag-cli-bg) 0%, transparent 70%);
+  background: var(--project-cli-gradient);
 }
 
 .mediaDefault {
-  background: linear-gradient(135deg, var(--tag-default-bg) 0%, transparent 70%);
+  background: var(--project-default-gradient);
 }
 
 .badge {
@@ -188,23 +175,25 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.55rem 1rem;
-  border-radius: 6px;
+  min-height: var(--button-height);
+  padding: var(--button-padding);
+  border-radius: var(--button-radius);
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--surface);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: var(--button-font-size);
   font-weight: 500;
+  line-height: 1;
   text-decoration: none;
+  appearance: none;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, color 0.2s, opacity 0.2s;
+  transition: border-color 0.2s, color 0.2s, opacity 0.2s;
 }
 
 .btn:hover {
   border-color: var(--accent);
-  color: var(--accent);
-  background: var(--surface);
+  color: var(--text);
 }
 
 .btn:disabled {
@@ -215,7 +204,6 @@
 .btn:disabled:hover {
   border-color: var(--border);
   color: var(--text);
-  background: var(--bg);
 }
 
 @media (max-width: 900px) {

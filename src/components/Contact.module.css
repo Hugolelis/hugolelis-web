@@ -29,12 +29,16 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  min-height: var(--button-height);
+  padding: var(--button-padding);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--button-radius);
+  background: var(--surface);
   color: var(--text);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: var(--button-font-size);
+  font-weight: 500;
+  line-height: 1;
   transition: border-color 0.2s, background 0.2s;
   width: 100%;
   max-width: 320px;
@@ -43,7 +47,7 @@
 
 .social a:hover {
   border-color: var(--accent);
-  background: var(--surface);
+  background: var(--bg);
 }
 
 .socialIcon {

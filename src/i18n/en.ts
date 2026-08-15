@@ -11,10 +11,6 @@ export const en: Translations = {
     pages: 'Pages',
   },
   hero: {
-    role: 'Software Developer',
-    title1: 'Building',
-    title2: 'systems',
-    title3: 'that scale.',
     sub: 'I turn complex problems into clean, performant code that is easy to maintain.',
     cta_projects: 'View projects',
     cta_contact: 'Get in touch',

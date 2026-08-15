@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import { PdfModal } from './PdfModal'
+import ShapeGrid from './ShapeGrid'
 import styles from './Hero.module.css'
 
 import cvUrl from '/Hugolelis_cv.pdf'
@@ -39,7 +40,7 @@ function useTypewriter(text: string, speed = 28) {
 }
 
 export function Hero() {
-  const { t, lang } = useApp()
+  const { t, lang, theme } = useApp()
   const [animStep, setAnimStep] = useState(0)
   const [cvOpen, setCvOpen] = useState(false)
 
@@ -58,9 +59,17 @@ export function Hero() {
 
   return (
     <section className={styles.hero} id='hero'>
-      <div className={styles.gridBg} aria-hidden />
-      <div className={styles.orb} style={{ background: 'var(--accent-term)' }} aria-hidden />
-      <div className={styles.orbBlue} style={{ background: 'var(--accent-blue)' }} aria-hidden />
+      <div className={styles.shapeGrid} aria-hidden>
+        <ShapeGrid
+          speed={0.5}
+          squareSize={40}
+          direction="diagonal"
+          borderColor={theme === 'light' ? 'rgba(66, 66, 66, 0.1)' : 'rgba(255, 255, 255, 0.09)'}
+          hoverFillColor={theme === 'light' ? 'rgba(168, 85, 247, 0.12)' : 'rgba(168, 85, 247, 0.2)'}
+          shape="square"
+          hoverTrailAmount={5}
+        />
+      </div>
       <div className={styles.layout}>
 
         <div className={styles.leftCol}>

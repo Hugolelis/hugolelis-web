@@ -9,10 +9,6 @@ export const pt = {
     pages: 'Páginas',
   },
   hero: {
-    role: 'Desenvolvedor de Software',
-    title1: 'Construindo',
-    title2: 'sistemas',
-    title3: 'que escalam.',
     sub: 'Transformo problemas complexos em código limpo, performático e fácil de manter.',
     cta_projects: 'Ver projetos',
     cta_contact: 'Falar comigo',

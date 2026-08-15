@@ -107,33 +107,38 @@
   align-items: center;
   gap: 0.5rem;
   background: var(--accent);
+  border: 1px solid var(--accent);
   color: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  padding: 0.65rem 1.5rem;
-  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: var(--button-font-size);
+  font-weight: 500;
+  min-height: var(--button-height);
+  padding: var(--button-padding);
+  border-radius: var(--button-radius);
   text-decoration: none;
-  transition: opacity 0.2s;
+  transition: background 0.2s, border-color 0.2s;
   width: 100%;
   max-width: 220px;
   justify-content: center;
 }
 
-.fallbackBtn:hover { opacity: 0.85; }
+.fallbackBtn:hover { background: var(--accent-dim); border-color: var(--accent-dim); }
 
 .fallbackBtnOutline {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: transparent;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  padding: 0.65rem 1.5rem;
-  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--button-font-size);
+  font-weight: 500;
+  min-height: var(--button-height);
+  padding: var(--button-padding);
+  border-radius: var(--button-radius);
   border: 1px solid var(--border);
   text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
   width: 100%;
   max-width: 220px;
   justify-content: center;
@@ -142,6 +147,7 @@
 .fallbackBtnOutline:hover {
   border-color: var(--accent);
   color: var(--accent);
+  background: var(--bg);
 }
 
 @media (max-width: 900px) {

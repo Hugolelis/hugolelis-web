@@ -64,8 +64,8 @@
   padding: 0.15rem 0.5rem;
   border-radius: 3px;
   margin-left: 0.5rem;
-  background: var(--tag-api-bg);
-  color: var(--tag-api-color);
+  background: var(--timeline-tag-bg);
+  color: var(--timeline-tag-color);
 }
 
 .role {
