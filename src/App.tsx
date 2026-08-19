@@ -107,9 +107,9 @@ export default function App() {
     return (
       <>
         <Helmet>
-          <title>{'Projetos — Hugo de Lelis'}</title>
-          <meta name="description" content="Projetos de Hugo de Lelis — Software Developer." />
-          <meta property="og:title" content="Projetos — Hugo de Lelis" />
+          <title>{'Hugo | Projetos'}</title>
+          <meta name="description" content="Projetos de Hugo de Lelis | Software Developer." />
+          <meta property="og:title" content="Hugo | Projetos" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content={window.location.href} />
         </Helmet>
@@ -124,9 +124,9 @@ export default function App() {
     return (
       <>
         <Helmet>
-          <title>{'Certificados — Hugo de Lelis'}</title>
-          <meta name="description" content="Certificados de Hugo de Lelis — Software Developer." />
-          <meta property="og:title" content="Certificados — Hugo de Lelis" />
+          <title>{'Hugo | Certificados'}</title>
+          <meta name="description" content="Certificados de Hugo de Lelis | Software Developer." />
+          <meta property="og:title" content="Hugo | Certificados" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content={window.location.href} />
         </Helmet>
@@ -152,10 +152,10 @@ export default function App() {
   return (
     <>
       <Helmet>
-        <title>{'Hugo — Software Developer'}</title>
-        <meta name="description" content="Portfolio de Hugo de Lelis — Software Developer especializado em APIs, bancos de dados relacionais e sistemas distribuídos." />
-        <meta property="og:title" content="Hugo — Software Developer" />
-        <meta property="og:description" content="Portfolio de Hugo de Lelis — Software Developer especializado em APIs, bancos de dados relacionais e sistemas distribuídos." />
+        <title>{'Hugo | Software Developer'}</title>
+        <meta name="description" content="Portfolio de Hugo de Lelis | Software Developer especializado em APIs, bancos de dados relacionais e sistemas distribuídos." />
+        <meta property="og:title" content="Hugo | Software Developer" />
+        <meta property="og:description" content="Portfolio de Hugo de Lelis | Software Developer especializado em APIs, bancos de dados relacionais e sistemas distribuídos." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hugolelis.dev" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
