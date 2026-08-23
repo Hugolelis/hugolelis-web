@@ -288,7 +288,17 @@
     padding-inline: 0.75rem;
   }
   .cta a { text-align: center; }
-  .emailCta { flex-wrap: wrap; gap: 0.35rem 0.65rem; }
+  .emailCta {
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+  }
+  .emailArrow {
+    position: absolute;
+    right: 0.8rem;
+    margin-left: 0;
+  }
   .termBody { padding: 1rem 1rem 0.75rem; }
   .termKey  { min-width: 75px; }
   .termLine, .termComment { font-size: 0.76rem; }

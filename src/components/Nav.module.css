@@ -118,11 +118,23 @@
   transition: transform 0.2s ease;
 }
 
-.links a:hover,
+.links a:hover {
+  color: var(--text);
+}
+
 .contactTrigger:hover {
   border-color: var(--accent-dim);
   background: var(--accent-dim);
   color: var(--bg);
+}
+
+.links a.active {
+  color: var(--text);
+}
+
+.links a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .links a:hover::after,
@@ -385,6 +397,11 @@
 
   .mobileMenu a:hover,
   .mobileContactTrigger:hover {
+    background: var(--term-hover);
+    color: var(--text);
+  }
+
+  .mobileMenu a.active {
     background: var(--term-hover);
     color: var(--text);
   }

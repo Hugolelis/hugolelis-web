@@ -10,13 +10,16 @@ export function Nav() {
   const scrollY = useScrollY()
   const [contactOpen, setContactOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
   const contactDialogRef = useRef<HTMLDivElement>(null)
-  const onSubPage = SUB_PAGES.some(page => window.location.pathname === page)
+  const currentPath = window.location.pathname
+  const onSubPage = SUB_PAGES.some(page => currentPath === page)
 
   const closeMenu = () => setMenuOpen(false)
 
   useEffect(() => {
-    if (!contactOpen) return
+    if (!contactOpen && !menuOpen) return
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -26,8 +29,14 @@ export function Nav() {
     }
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (contactDialogRef.current && !contactDialogRef.current.contains(event.target as Node)) {
+      const target = event.target as Node
+
+      if (contactOpen && contactDialogRef.current && !contactDialogRef.current.contains(target)) {
         setContactOpen(false)
+      }
+
+      if (menuOpen && !navRef.current?.contains(target) && !mobileMenuRef.current?.contains(target)) {
+        setMenuOpen(false)
       }
     }
 
@@ -37,7 +46,7 @@ export function Nav() {
       document.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('pointerdown', handlePointerDown)
     }
-  }, [contactOpen])
+  }, [contactOpen, menuOpen])
 
   return (
     <>
@@ -46,6 +55,7 @@ export function Nav() {
       </a>
 
       <nav
+        ref={navRef}
         className={`${styles.nav} ${scrollY > 40 || onSubPage ? styles.scrolled : ''}`}
         aria-label={lang === 'pt' ? 'Navegação principal' : 'Main navigation'}
       >
@@ -64,10 +74,10 @@ export function Nav() {
 
         <div className={styles.right}>
           <div className={styles.links}>
-            <a href={onSubPage ? '/#hero' : '#hero'}>{t.nav.about}</a>
-            <a href="/projetos">{t.nav.projects}</a>
-            <a href="/certificados">{t.nav.certificates}</a>
-            <a href="/linkedin">LinkedIn</a>
+            <a href={onSubPage ? '/#hero' : '#hero'} className={currentPath === '/' ? styles.active : undefined} aria-current={currentPath === '/' ? 'page' : undefined}>{t.nav.about}</a>
+            <a href="/projetos" className={currentPath === '/projetos' ? styles.active : undefined} aria-current={currentPath === '/projetos' ? 'page' : undefined}>{t.nav.projects}</a>
+            <a href="/certificados" className={currentPath === '/certificados' ? styles.active : undefined} aria-current={currentPath === '/certificados' ? 'page' : undefined}>{t.nav.certificates}</a>
+            <a href="/linkedin" className={currentPath === '/linkedin' ? styles.active : undefined} aria-current={currentPath === '/linkedin' ? 'page' : undefined}>LinkedIn</a>
             <button className={styles.contactTrigger} onClick={() => setContactOpen(true)}>
               {t.nav.media}
             </button>
@@ -106,11 +116,11 @@ export function Nav() {
       </nav>
 
       {menuOpen && (
-        <div id="mobile-navigation" className={styles.mobileMenu}>
-          <a href={onSubPage ? '/#hero' : '#hero'} onClick={closeMenu}>{t.nav.about}</a>
-          <a href="/projetos" onClick={closeMenu}>{t.nav.projects}</a>
-          <a href="/certificados" onClick={closeMenu}>{t.nav.certificates}</a>
-          <a href="/linkedin" onClick={closeMenu}>LinkedIn</a>
+        <div ref={mobileMenuRef} id="mobile-navigation" className={styles.mobileMenu}>
+          <a href={onSubPage ? '/#hero' : '#hero'} className={currentPath === '/' ? styles.active : undefined} aria-current={currentPath === '/' ? 'page' : undefined} onClick={closeMenu}>{t.nav.about}</a>
+          <a href="/projetos" className={currentPath === '/projetos' ? styles.active : undefined} aria-current={currentPath === '/projetos' ? 'page' : undefined} onClick={closeMenu}>{t.nav.projects}</a>
+          <a href="/certificados" className={currentPath === '/certificados' ? styles.active : undefined} aria-current={currentPath === '/certificados' ? 'page' : undefined} onClick={closeMenu}>{t.nav.certificates}</a>
+          <a href="/linkedin" className={currentPath === '/linkedin' ? styles.active : undefined} aria-current={currentPath === '/linkedin' ? 'page' : undefined} onClick={closeMenu}>LinkedIn</a>
           <button
             className={styles.mobileContactTrigger}
             onClick={() => {
