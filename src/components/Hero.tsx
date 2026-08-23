@@ -6,6 +6,8 @@ import styles from './Hero.module.css'
 
 import cvUrl from '/Hugolelis_cv.pdf'
 
+const email = 'hugodelelis05@gmail.com'
+
 interface TerminalField {
   key: string
   labelPt: string
@@ -88,6 +90,14 @@ export function Hero() {
             >
               {t.hero.cta_cv}
             </button>
+            <a
+              href={`mailto:${email}`}
+              className={`btn btn--ghost ${styles.emailCta}`}
+              aria-label={`${t.hero.cta_email}: ${email}`}
+            >
+              <span>{t.hero.cta_email}</span>
+              <span className={styles.emailArrow} aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
 

@@ -70,7 +70,7 @@ export function PdfModal({ name, issuer, file, onClose }: PdfModalProps) {
             {isMobile ? (
             <div className={styles.mobileFallback}>
                 <p className={styles.fallbackText}>
-                Visualização não disponível.
+                Preview unavailable.
                 </p>
                 <a
                 href={file}

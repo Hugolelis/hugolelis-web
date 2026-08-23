@@ -4,7 +4,7 @@ import { useApp } from '../context/AppContext'
 import styles from './CertificatesPage.module.css'
 
 export function CertificatesPage() {
-  const { t } = useApp()
+  const { t, lang } = useApp()
   const [selected, setSelected] = useState<{ name: string; issuer: string; year: string; file: string } | null>(null)
 
   return (
@@ -17,7 +17,7 @@ export function CertificatesPage() {
               <h1 className={styles.title}>{t.certificates.title}</h1>
             </header>
           </Reveal>
-          <div className={styles.grid}>
+        <div className={styles.grid}>
             {t.certificates.items.map((cert, i) => (
               <button
                 key={i}
@@ -36,6 +36,12 @@ export function CertificatesPage() {
               </div>
             </button>
           ))}
+        </div>
+        <div className={styles.profileCta}>
+          <span>{lang === 'pt' ? 'Quer ver meu perfil?' : 'Want to see my profile?'}</span>
+          <a href="https://github.com/Hugolelis" target="_blank" rel="noreferrer">
+            {lang === 'pt' ? 'Acessar GitHub' : 'Visit GitHub'} <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </main>
 

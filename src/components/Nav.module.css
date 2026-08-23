@@ -8,17 +8,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 3rem;
-  background: color-mix(in srgb, var(--bg) 35%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: var(--bg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
-  transition: background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s;
+  transition: background 0.3s, border-bottom 0.3s;
 }
 
 .scrolled {
-  background: var(--nav-bg);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: var(--bg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border-bottom: 1px solid var(--border);
 }
 
@@ -51,10 +51,16 @@
 }
 
 .contactTrigger {
-  padding: 0;
-  border: 0;
-  background: none;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--bg);
   cursor: pointer;
+}
+
+.contactTrigger::after {
+  display: none;
 }
 
 .menuToggle {
@@ -114,7 +120,9 @@
 
 .links a:hover,
 .contactTrigger:hover {
-  color: var(--text);
+  border-color: var(--accent-dim);
+  background: var(--accent-dim);
+  color: var(--bg);
 }
 
 .links a:hover::after,
@@ -379,5 +387,15 @@
   .mobileContactTrigger:hover {
     background: var(--term-hover);
     color: var(--text);
+  }
+
+  .mobileContactTrigger {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+
+  .mobileContactTrigger:hover {
+    background: var(--accent);
+    color: var(--bg);
   }
 }

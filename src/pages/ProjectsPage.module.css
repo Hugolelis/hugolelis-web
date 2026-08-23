@@ -44,10 +44,39 @@
   display: flex;
 }
 
+.profileCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.profileCta a {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.profileCta a:hover {
+  color: var(--text);
+}
+
 @media (max-width: 900px) {
   .main { padding: 6rem 1.25rem 4rem; }
 
   .list {
     grid-template-columns: 1fr;
+  }
+
+  .profileCta {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }

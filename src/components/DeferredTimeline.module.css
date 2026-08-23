@@ -1,7 +1,17 @@
 .slot {
-  min-height: clamp(360px, 50vh, 560px);
+  min-height: 880px;
 }
 
 .loading {
-  min-height: clamp(360px, 50vh, 560px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 880px;
+}
+
+@media (max-width: 900px) {
+  .slot,
+  .loading {
+    min-height: 1040px;
+  }
 }

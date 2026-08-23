@@ -49,7 +49,7 @@ export function Nav() {
         className={`${styles.nav} ${scrollY > 40 || onSubPage ? styles.scrolled : ''}`}
         aria-label={lang === 'pt' ? 'Navegação principal' : 'Main navigation'}
       >
-        <a href={onSubPage ? '/' : '#hero'} className={styles.logo} aria-label="Voltar ao início">
+        <a href={onSubPage ? '/' : '#hero'} className={styles.logo} aria-label={lang === 'pt' ? 'Voltar ao início' : 'Back to home'}>
           <svg viewBox="0 0 32 32" width="26" height="26" fill="none" style={{ display: 'block', color: 'var(--accent)' }}>
             <rect x="6" y="7" width="5" height="18" rx="1" fill="currentColor" opacity="0.15" />
             <rect x="21" y="7" width="5" height="18" rx="1" fill="currentColor" opacity="0.15" />
@@ -69,7 +69,7 @@ export function Nav() {
             <a href="/certificados">{t.nav.certificates}</a>
             <a href="/linkedin">LinkedIn</a>
             <button className={styles.contactTrigger} onClick={() => setContactOpen(true)}>
-              {lang === 'pt' ? 'Contato' : 'Talk'}
+              {t.nav.media}
             </button>
           </div>
 
@@ -118,7 +118,7 @@ export function Nav() {
               setContactOpen(true)
             }}
           >
-            {lang === 'pt' ? 'Contato' : 'Talk'}
+            {t.nav.media}
           </button>
         </div>
       )}
@@ -134,9 +134,9 @@ export function Nav() {
           >
             <div className={styles.contactHeader}>
               <div>
-                <span className={styles.contactEyebrow}>CONTACT</span>
+                <span className={styles.contactEyebrow}>{t.nav.social}</span>
                 <h2 id="contact-dialog-title">
-                  {lang === 'pt' ? 'Vamos conversar?' : "Let's talk?"}
+                  {t.nav.media}
                 </h2>
               </div>
               <button
@@ -152,7 +152,7 @@ export function Nav() {
               <a href="mailto:hugodelelis05@gmail.com">
                 <span className={styles.socialName}>
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5zm1.5 1.5v.25l7.5 4.7 7.5-4.7V6.5L12 11.2 4.5 6.5z" /></svg>
-                  Email
+                  {t.nav.email}
                 </span>
                 <span aria-hidden="true">↗</span>
               </a>

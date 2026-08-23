@@ -5,11 +5,18 @@ export const en: Translations = {
     about: 'About',
     certificates: 'Certificates',
     projects: 'Projects',
+    media: 'Media',
+    social: 'SOCIAL',
+    email: 'Email',
+  },
+  footer: {
+    role: 'Hugo | Software Developer',
   },
   hero: {
     sub: 'I turn complex problems into clean, performant code that is easy to maintain.',
     cta_projects: 'View projects',
     cta_cv: 'Download CV',
+    cta_email: 'Send email',
     available: 'code',
   },
   projects: {
