@@ -59,6 +59,7 @@
 
 .card:hover .arrow {
   color: var(--accent);
+  transform: translate(2px, -2px);
 }
 
 .icon {
@@ -110,7 +111,7 @@
 .arrow {
   font-size: 1rem;
   color: var(--muted);
-  transition: color 0.2s;
+  transition: color 0.2s, transform 0.2s;
 }
 
 @media (max-width: 900px) {

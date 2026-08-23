@@ -16,8 +16,9 @@ interface TerminalField {
 
 const fields: TerminalField[] = [
   { key: 'name',     labelPt: 'nome',        labelEn: 'name',     valuePt: 'Hugo de Lelis',            valueEn: 'Hugo de Lelis' },
-  { key: 'role',     labelPt: 'cargo',       labelEn: 'role',     valuePt: 'Desenvolvedor de Software', valueEn: 'Software Developer' },
   { key: 'stack',    labelPt: 'stack',       labelEn: 'stack',    valuePt: 'Python · Node · C++',       valueEn: 'Python · Node · C++' },
+  { key: 'database', labelPt: 'dados',       labelEn: 'data',     valuePt: 'PostgreSQL · MySQL',       valueEn: 'PostgreSQL · MySQL' },
+  { key: 'infra',    labelPt: 'infra',       labelEn: 'infra',    valuePt: 'Docker · Linux · Git',      valueEn: 'Docker · Linux · Git' },
   { key: 'location', labelPt: 'localizacao', labelEn: 'location', valuePt: 'Brasil',                    valueEn: 'Brazil' },
 ]
 
@@ -44,7 +45,7 @@ export function Hero() {
   const [animStep, setAnimStep] = useState(0)
   const [cvOpen, setCvOpen] = useState(false)
 
-  const roleValue = lang === 'pt' ? fields[1].valuePt : fields[1].valueEn
+  const roleValue = lang === 'pt' ? 'Desenvolvedor de Software' : 'Software Developer'
   const displayedTitle = useTypewriter(
     lang === 'pt' ? 'Código que escala.' : 'Code that scales.',
     30
@@ -81,7 +82,6 @@ export function Hero() {
           <p className={styles.sub}>{t.hero.sub}</p>
           <div className={styles.cta}>
             <a href="/projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
-            <a href="#contato" className="btn btn--ghost">{t.hero.cta_contact}</a>
             <button
               className="btn btn--ghost"
               onClick={() => setCvOpen(true)}

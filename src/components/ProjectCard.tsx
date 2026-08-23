@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import type { Project } from '../types'
 import type { Translations } from '../i18n'
 import styles from './ProjectCard.module.css'
@@ -8,27 +7,21 @@ interface Props {
   translations: Translations['projects']
 }
 
-const TYPE_STYLE: Record<Project['type'], { dot: string; label: string; media: string }> = {
-  API:   { dot: styles.dotApi,   label: 'API', media: styles.mediaApi },
-  CLI:   { dot: styles.dotCli,   label: 'CLI', media: styles.mediaCli },
-  WEB:   { dot: styles.dotWeb,   label: 'WEB', media: styles.mediaApi },
-  LIB:   { dot: styles.dotLib,   label: 'LIB', media: styles.mediaDefault },
-  OTHER: { dot: styles.dotOther, label: '',   media: styles.mediaDefault },
+const TYPE_STYLE: Record<Project['type'], { dot: string; label: string }> = {
+  API:   { dot: styles.dotApi,   label: 'API' },
+  CLI:   { dot: styles.dotCli,   label: 'CLI' },
+  WEB:   { dot: styles.dotWeb,   label: 'WEB' },
+  LIB:   { dot: styles.dotLib,   label: 'LIB' },
+  OTHER: { dot: styles.dotOther, label: '' },
 }
 
 export function ProjectCard({ project, translations }: Props) {
-  const [hovered, setHovered] = useState(false)
-
   const title = translations[project.titleKey as keyof typeof translations]
   const description = translations[project.descriptionKey as keyof typeof translations]
   const t = TYPE_STYLE[project.type] ?? TYPE_STYLE.OTHER
 
   return (
-    <article
-      className={`${styles.card} ${hovered ? styles.active : ''}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <article className={styles.card}>
       <div className={styles.content}>
         <div className={styles.top}>
           <span className={`${styles.dot} ${t.dot}`} />
@@ -43,7 +36,13 @@ export function ProjectCard({ project, translations }: Props) {
             <img src={project.image} alt={title} loading="lazy" />
           </div>
         ) : (
-          <div className={`${styles.media} ${styles.mediaFallback} ${t.media}`}>
+          <div className={`${styles.media} ${styles.mediaFallback}`}>
+            <img
+              className={styles.fallbackImage}
+              src="/project-placeholder.svg"
+              alt=""
+              aria-hidden="true"
+            />
             <span className={styles.badge}>{t.label}</span>
           </div>
         )}

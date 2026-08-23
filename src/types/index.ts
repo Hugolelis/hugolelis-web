@@ -10,10 +10,5 @@ export interface Project {
   image?: string
 }
 
-export interface Skill {
-  name: string
-  category: 'backend' | 'infra' | 'tools'
-}
-
 export type Theme = 'dark' | 'light'
 export type Lang = 'pt' | 'en'

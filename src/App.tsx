@@ -1,16 +1,15 @@
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Hero, About, Footer, Reveal } from './components'
+import { Nav, Hero, Reveal } from './components'
 import styles from './components/BackToTop.module.css'
+import deferredStyles from './components/DeferredTimeline.module.css'
 import notFoundStyles from './components/NotFound.module.css'
 
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })))
 const CertificatesPage = lazy(() => import('./pages/CertificatesPage').then(m => ({ default: m.CertificatesPage })))
+const LinkedInPage = lazy(() => import('./pages/LinkedInPage').then(m => ({ default: m.LinkedInPage })))
 
 const Timeline = lazy(() => import('./components/Timeline').then(m => ({ default: m.Timeline })))
-const Certificates = lazy(() => import('./components/Certificates').then(m => ({ default: m.Certificates })))
-const Projects = lazy(() => import('./components/Projects').then(m => ({ default: m.Projects })))
-const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })))
 
 function Spinner() {
   return (
@@ -47,13 +46,50 @@ function EntryLoading() {
   )
 }
 
+function DeferredTimeline() {
+  const [shouldRender, setShouldRender] = useState(
+    () => typeof window !== 'undefined' && !('IntersectionObserver' in window),
+  )
+  const slotRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const slot = slotRef.current
+    if (!slot) return
+
+    if (!('IntersectionObserver' in window)) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        setShouldRender(true)
+        observer.disconnect()
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.01 },
+    )
+
+    observer.observe(slot)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div ref={slotRef} className={deferredStyles.slot} aria-busy={!shouldRender}>
+      {shouldRender && (
+        <Suspense fallback={<div className={deferredStyles.loading} aria-hidden="true" />}>
+          <Reveal delay={0.05}><Timeline /></Reveal>
+        </Suspense>
+      )}
+    </div>
+  )
+}
+
 export default function App() {
   const path = window.location.pathname
   const isProjectsPage = path === '/projetos'
   const isCertificatesPage = path === '/certificados'
-  const isUnknown = !isProjectsPage && !isCertificatesPage && path !== '/'
+  const isLinkedInPage = path === '/linkedin'
+  const isUnknown = !isProjectsPage && !isCertificatesPage && !isLinkedInPage && path !== '/'
 
-  const isSubPage = isProjectsPage || isCertificatesPage
+  const isSubPage = isProjectsPage || isCertificatesPage || isLinkedInPage
 
   const [showBackToTop, setShowBackToTop] = useState(false)
 
@@ -63,7 +99,7 @@ export default function App() {
   })
 
   useEffect(() => {
-    if (!sessionStorage.getItem('scrollTo')) window.scrollTo(0, 0)
+    window.scrollTo(0, 0)
   }, [])
 
   useEffect(() => {
@@ -98,7 +134,6 @@ export default function App() {
             <a href="/" className={notFoundStyles.link}>Voltar ao início</a>
           </div>
         </main>
-        <Footer />
       </>
     )
   }
@@ -137,6 +172,23 @@ export default function App() {
     )
   }
 
+  if (isLinkedInPage) {
+    return (
+      <>
+        <Helmet>
+          <title>{'Hugo | LinkedIn'}</title>
+          <meta name="description" content="Publicacoes de Hugo de Lelis no LinkedIn." />
+          <meta property="og:title" content="Hugo | LinkedIn" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={window.location.href} />
+        </Helmet>
+        <Suspense fallback={null}>
+          <LinkedInPage />
+        </Suspense>
+      </>
+    )
+  }
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -165,15 +217,10 @@ export default function App() {
         <Nav />
         <main id="main-content">
           <Hero />
-          <Reveal><About /></Reveal>
           <Suspense fallback={null}>
-            <Reveal delay={0.05}><Timeline /></Reveal>
-            <Reveal delay={0.1}><Certificates /></Reveal>
-            <Reveal delay={0.15}><Projects /></Reveal>
-            <Reveal delay={0.2}><Contact /></Reveal>
+            <DeferredTimeline />
           </Suspense>
         </main>
-        <Footer />
         {showBackToTop && (
           <button
             className={styles.backToTop}

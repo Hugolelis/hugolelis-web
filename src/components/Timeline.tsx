@@ -1,18 +1,8 @@
-import { useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import styles from './Timeline.module.css'
 
 export function Timeline() {
   const { t } = useApp()
-
-  useEffect(() => {
-    const target = sessionStorage.getItem('scrollTo')
-    if (target === '#trajetoria') {
-      sessionStorage.removeItem('scrollTo')
-      const el = document.getElementById('trajetoria')
-      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
-    }
-  }, [])
 
   return (
     <section id="trajetoria" className={styles.timeline}>
@@ -21,9 +11,9 @@ export function Timeline() {
         <div className={styles.track}>
           {t.timeline.items.map((item, i) => (
             <div key={i} className={styles.item} style={{ animation: `fadeUp 0.4s ease ${i * 0.1}s both` }}>
-              <div className={styles.dot} />
+              <span className={styles.year}>{item.year}</span>
+              <span className={styles.dot} aria-hidden="true" />
               <div className={styles.content}>
-                <span className={styles.year}>{item.year}</span>
                 <span className={styles.tag}>{item.type}</span>
                 <h3 className={styles.role}>{item.role}</h3>
                 <p className={styles.place}>{item.place}</p>

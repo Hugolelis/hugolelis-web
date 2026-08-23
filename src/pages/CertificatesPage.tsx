@@ -32,7 +32,7 @@ export function CertificatesPage() {
               </div>
               <div className={styles.meta}>
                 <span className={styles.year}>{cert.year}</span>
-                <span className={styles.arrow}>→</span>
+                <span className={styles.arrow} aria-hidden="true">↗</span>
               </div>
             </button>
           ))}

@@ -1,0 +1,7 @@
+.slot {
+  min-height: clamp(360px, 50vh, 560px);
+}
+
+.loading {
+  min-height: clamp(360px, 50vh, 560px);
+}

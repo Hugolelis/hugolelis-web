@@ -155,7 +155,12 @@
 .termKey   { color: var(--term-key); min-width: 90px; }
 .termColon { color: var(--term-punct); margin: 0 4px 0 0; }
 .termQuote { color: var(--term-quote); }
-.termValue { color: var(--term-value); flex: 1; }
+.termValue {
+  min-width: 0;
+  flex: 1;
+  color: var(--term-value);
+  overflow-wrap: anywhere;
+}
 .termComma { color: var(--term-punct); }
 
 .termFooter {

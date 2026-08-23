@@ -2,32 +2,18 @@ import type { Translations } from './pt'
 
 export const en: Translations = {
   nav: {
-    hero: 'Home',
     about: 'About',
-    timeline: 'Timeline',
     certificates: 'Certificates',
     projects: 'Projects',
-    contact: 'Contact',
-    pages: 'Pages',
   },
   hero: {
     sub: 'I turn complex problems into clean, performant code that is easy to maintain.',
     cta_projects: 'View projects',
-    cta_contact: 'Get in touch',
     cta_cv: 'Download CV',
     available: 'code',
   },
-  about: {
-    title: 'About me',
-    p1: "I'm Hugo, a software developer passionate about backend, distributed systems, and well-architected solutions. I enjoy solving hard problems with simple, well-structured code.",
-    skills_title: 'Core stack',
-    cat_backend: 'Technologies',
-    cat_infra: 'Infra',
-    cat_tools: 'Methodologies',
-  },
   projects: {
     title: 'Projects',
-    viewAll: 'View all projects',
     count: '{n} projects',
     viewCode: 'View code',
     viewDeploy: 'View deploy',
@@ -79,7 +65,6 @@ export const en: Translations = {
   },
   certificates: {
     title: 'Certificates',
-    viewAll: 'View all certificates',
     count: '{n} certificates',
     items: [
       { name: 'Object-Oriented Data Structures in C++', issuer: 'University of Illinois · Coursera', year: '2026', file: '/courses/c++.pdf' },
@@ -90,10 +75,4 @@ export const en: Translations = {
       { name: 'Introduction to Git and GitHub', issuer: 'Google · Coursera', year: '2026', file: '/courses/GIT.pdf' },
     ],
   },
-  contact: {
-    title: "Let's talk?",
-    sub: 'Want to chat about systems?',
-    cta: 'Send an email',
-  },
-  footer: 'Developed by @Hugolelis',
 }

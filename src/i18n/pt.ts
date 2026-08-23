@@ -1,31 +1,17 @@
 export const pt = {
   nav: {
-    hero: 'Início',
     about: 'Sobre',
-    timeline: 'Trajetória',
     certificates: 'Certificados',
     projects: 'Projetos',
-    contact: 'Contato',
-    pages: 'Páginas',
   },
   hero: {
     sub: 'Transformo problemas complexos em código limpo, performático e fácil de manter.',
     cta_projects: 'Ver projetos',
-    cta_contact: 'Falar comigo',
     cta_cv: 'Baixar currículo',
     available: 'code',
   },
-  about: {
-    title: 'Sobre mim',
-    p1: 'Sou Hugo, desenvolvedor de software apaixonado por backend, sistemas distribuídos e soluções bem arquitetadas. Gosto de resolver problemas difíceis com código simples e bem estruturado.',
-    skills_title: 'Stack principal',
-    cat_backend: 'Tecnologias',
-    cat_infra: 'Infra',
-    cat_tools: 'Metodologias',
-  },
   projects: {
     title: 'Projetos',
-    viewAll: 'Ver todos os projetos',
     count: '{n} projetos',
     viewCode: 'Ver código',
     viewDeploy: 'Ver deploy',
@@ -77,7 +63,6 @@ export const pt = {
   },
   certificates: {
     title: 'Certificados',
-    viewAll: 'Ver todos os certificados',
     count: '{n} certificados',
     items: [
       { name: 'Object-Oriented Data Structures in C++', issuer: 'University of Illinois · Coursera', year: '2026', file: '/courses/c++.pdf' },
@@ -88,12 +73,6 @@ export const pt = {
       { name: 'Introduction to Git and GitHub', issuer: 'Google · Coursera', year: '2026', file: '/courses/GIT.pdf' },
     ],
   },
-  contact: {
-    title: 'Vamos conversar?',
-    sub: 'Quer trocar uma ideia sobre sistemas?',
-    cta: 'Enviar e-mail',
-  },
-  footer: 'Desenvolvido por @Hugolelis',
 }
 
 export type Translations = typeof pt
