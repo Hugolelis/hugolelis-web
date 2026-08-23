@@ -12,7 +12,6 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const navRef = useRef<HTMLElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
-  const contactDialogRef = useRef<HTMLDivElement>(null)
   const currentPath = window.location.pathname
   const onSubPage = SUB_PAGES.some(page => currentPath === page)
 
@@ -30,10 +29,6 @@ export function Nav() {
 
     const handlePointerDown = (event: PointerEvent) => {
       const target = event.target as Node
-
-      if (contactOpen && contactDialogRef.current && !contactDialogRef.current.contains(target)) {
-        setContactOpen(false)
-      }
 
       if (menuOpen && !navRef.current?.contains(target) && !mobileMenuRef.current?.contains(target)) {
         setMenuOpen(false)
@@ -134,9 +129,14 @@ export function Nav() {
       )}
 
       {contactOpen && (
-        <div className={styles.contactOverlay} role="presentation">
+        <div
+          className={styles.contactOverlay}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) setContactOpen(false)
+          }}
+          role="presentation"
+        >
           <div
-            ref={contactDialogRef}
             className={styles.contactModal}
             role="dialog"
             aria-modal="true"
