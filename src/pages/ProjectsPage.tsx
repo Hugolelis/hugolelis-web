@@ -21,6 +21,7 @@ export function ProjectsPage() {
               <div key={project.id} style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}>
                 <ProjectCard
                   project={project}
+                  lang={lang}
                   translations={t.projects}
                 />
               </div>

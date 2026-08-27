@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Nav, PdfModal, Reveal } from '../components'
 import { useApp } from '../context/AppContext'
+import { certificates } from '../data'
+import type { Certificate } from '../types'
 import styles from './CertificatesPage.module.css'
 
 export function CertificatesPage() {
   const { t, lang } = useApp()
-  const [selected, setSelected] = useState<{ name: string; issuer: string; year: string; file: string } | null>(null)
+  const [selected, setSelected] = useState<Certificate | null>(null)
 
   return (
     <div className={styles.page}>
@@ -13,12 +15,12 @@ export function CertificatesPage() {
         <main className={styles.main}>
           <Reveal>
             <header className={styles.header}>
-              <span className={styles.count}>{t.certificates.count.replace('{n}', String(t.certificates.items.length))}</span>
+              <span className={styles.count}>{t.certificates.count.replace('{n}', String(certificates.length))}</span>
               <h1 className={styles.title}>{t.certificates.title}</h1>
             </header>
           </Reveal>
         <div className={styles.grid}>
-            {t.certificates.items.map((cert, i) => (
+            {certificates.map((cert, i) => (
               <button
                 key={i}
                 className={styles.card}

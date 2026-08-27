@@ -1,9 +1,11 @@
 import type { Project } from '../types'
+import type { Lang } from '../types'
 import type { Translations } from '../i18n'
 import styles from './ProjectCard.module.css'
 
 interface Props {
   project: Project
+  lang: Lang
   translations: Translations['projects']
 }
 
@@ -15,9 +17,9 @@ const TYPE_STYLE: Record<Project['type'], { dot: string; label: string }> = {
   OTHER: { dot: styles.dotOther, label: '' },
 }
 
-export function ProjectCard({ project, translations }: Props) {
-  const title = translations[project.titleKey as keyof typeof translations]
-  const description = translations[project.descriptionKey as keyof typeof translations]
+export function ProjectCard({ project, lang, translations }: Props) {
+  const title = project.title[lang]
+  const description = project.description[lang]
   const t = TYPE_STYLE[project.type] ?? TYPE_STYLE.OTHER
 
   return (
