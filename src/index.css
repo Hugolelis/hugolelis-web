@@ -54,6 +54,16 @@ select { font: inherit; }
   --tag-default-border: rgba(255,255,255,0.1);
   --timeline-tag-bg: rgba(96,165,250,0.12);
   --timeline-tag-color: #60a5fa;
+
+  /* issuer badges */
+  --badge-blue-bg: rgba(96,165,250,0.12);
+  --badge-blue-color: #60a5fa;
+  --badge-purple-bg: rgba(167,139,250,0.12);
+  --badge-purple-color: #a78bfa;
+  --badge-green-bg: rgba(74,222,128,0.12);
+  --badge-green-color: #4ade80;
+  --badge-amber-bg: rgba(251,191,36,0.12);
+  --badge-amber-color: #fbbf24;
 }
 
 [data-theme='light'] {
@@ -93,6 +103,16 @@ select { font: inherit; }
   --tag-default-border: rgba(0,0,0,0.07);
   --timeline-tag-bg: rgba(96,165,250,0.12);
   --timeline-tag-color: #52719d;
+
+  /* issuer badges */
+  --badge-blue-bg: rgba(82,113,157,0.09);
+  --badge-blue-color: #52719d;
+  --badge-purple-bg: rgba(128,107,151,0.09);
+  --badge-purple-color: #806b97;
+  --badge-green-bg: rgba(64,122,80,0.09);
+  --badge-green-color: #407a50;
+  --badge-amber-bg: rgba(180,131,31,0.09);
+  --badge-amber-color: #ad8420;
 }
 
 html { scroll-behavior: smooth; }

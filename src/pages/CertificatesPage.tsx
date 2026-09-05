@@ -3,7 +3,15 @@ import { Nav, PdfModal, Reveal } from '../components'
 import { useApp } from '../context/AppContext'
 import { certificates } from '../data'
 import type { Certificate } from '../types'
+import { getIssuerBadge, type BadgeColor } from '../utils/issuerBadge'
 import styles from './CertificatesPage.module.css'
+
+const BADGE_CLASS: Record<BadgeColor, string> = {
+  blue: styles.badgeBlue,
+  purple: styles.badgePurple,
+  green: styles.badgeGreen,
+  amber: styles.badgeAmber,
+}
 
 export function CertificatesPage() {
   const { t, lang } = useApp()
@@ -20,14 +28,18 @@ export function CertificatesPage() {
             </header>
           </Reveal>
         <div className={styles.grid}>
-            {certificates.map((cert, i) => (
+            {certificates.map((cert, i) => {
+              const badge = getIssuerBadge(cert.issuer)
+              return (
               <button
                 key={i}
                 className={styles.card}
                 style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}
                 onClick={() => setSelected(cert)}
               >
-              <div className={styles.icon}>⟨/⟩</div>
+              <div className={`${styles.icon} ${BADGE_CLASS[badge.color]}`} aria-hidden="true" title={badge.org}>
+                {badge.initials}
+              </div>
               <div className={styles.info}>
                 <span className={styles.name}>{cert.name}</span>
                 <span className={styles.issuer}>{cert.issuer}</span>
@@ -37,7 +49,8 @@ export function CertificatesPage() {
                 <span className={styles.arrow} aria-hidden="true">↗</span>
               </div>
             </button>
-          ))}
+              )
+            })}
         </div>
         <div className={styles.profileCta}>
           <span>{lang === 'pt' ? 'Quer ver meu perfil?' : 'Want to see my profile?'}</span>

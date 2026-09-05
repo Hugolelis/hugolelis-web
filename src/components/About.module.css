@@ -1,6 +1,26 @@
 .about {
+  position: relative;
   padding: 6rem 0 7rem;
   border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.warpBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.24;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+:global([data-theme='light']) .warpBg {
+  opacity: 0.16;
+}
+
+.about > :global(.container) {
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
