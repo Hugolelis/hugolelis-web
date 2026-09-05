@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Footer, Loading, Nav, Hero, Reveal } from './components'
+import { Footer, Loading, Nav, Hero, About, Reveal } from './components'
 import { useApp } from './context/AppContext'
 import styles from './components/BackToTop.module.css'
 import deferredStyles from './components/DeferredTimeline.module.css'
@@ -167,6 +167,7 @@ export default function App() {
         <Nav />
         <main id="main-content">
           <Hero />
+          <Reveal><About /></Reveal>
           <DeferredTimeline />
         </main>
         {showBackToTop && (

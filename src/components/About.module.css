@@ -1,0 +1,85 @@
+.about {
+  padding: 6rem 0 7rem;
+  border-top: 1px solid var(--border);
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-bottom: 1.75rem;
+}
+
+.philosophy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.pill {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  max-width: 720px;
+  margin-bottom: 2.75rem;
+}
+
+.body p {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.body strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.interestsLabel {
+  margin-bottom: 0.85rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.interest {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--timeline-tag-border, var(--border));
+  border-radius: 6px;
+  background: var(--timeline-tag-bg);
+  color: var(--timeline-tag-color);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 900px) {
+  .about { padding: 4.5rem 0 5rem; }
+  .title { margin-bottom: 1.4rem; }
+  .body p { font-size: 0.92rem; }
+}

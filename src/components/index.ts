@@ -1,5 +1,6 @@
 export { Nav } from './Nav'
 export { Hero } from './Hero'
+export { About } from './About'
 export { ProjectCard } from './ProjectCard'
 export { PdfModal } from './PdfModal'
 export { Reveal } from './Reveal'

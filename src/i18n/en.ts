@@ -19,6 +19,12 @@ export const en: Translations = {
     cta_email: 'Send email',
     available: 'code',
   },
+  about: {
+    title: 'About me',
+    p1: 'Software developer focused on building well-structured, efficient solutions that hold up over time.',
+    p2: 'I have hands-on experience with Python, C++, TypeScript/Node.js, databases, Docker, Git, and backend development, working on feature implementation, system integration, testing, debugging, and continuous code improvement.',
+    p3: 'I like working close to the code, understanding problems deeply, and pursuing simple, readable, reliable solutions. I keep growing through hands-on projects, technical challenges, and collaboration with other developers, always prioritizing code quality and good development practices.',
+  },
   projects: {
     title: 'Projects',
     count: '{n} projects',
