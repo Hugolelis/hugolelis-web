@@ -42,6 +42,7 @@
 }
 
 .dot {
+  position: relative;
   width: 0.75rem;
   height: 0.75rem;
   margin-top: 1.25rem;
@@ -49,6 +50,25 @@
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 1px var(--accent);
+}
+
+.dotBlue   { background: var(--badge-blue-color);   box-shadow: 0 0 0 1px var(--badge-blue-color);   color: var(--badge-blue-color); }
+.dotPurple { background: var(--badge-purple-color); box-shadow: 0 0 0 1px var(--badge-purple-color); color: var(--badge-purple-color); }
+.dotGreen  { background: var(--badge-green-color);  box-shadow: 0 0 0 1px var(--badge-green-color);  color: var(--badge-green-color); }
+.dotAmber  { background: var(--badge-amber-color);  box-shadow: 0 0 0 1px var(--badge-amber-color);  color: var(--badge-amber-color); }
+
+.dotCurrent::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  animation: timelinePing 1.8s ease-out infinite;
+}
+
+@keyframes timelinePing {
+  0%   { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(2.1); opacity: 0; }
 }
 
 .content {
@@ -61,7 +81,7 @@
 }
 
 .item:hover .content {
-  border-color: var(--accent);
+  border-color: var(--item-accent, var(--accent));
   transform: translateX(4px);
 }
 
@@ -76,6 +96,17 @@
   font-size: 0.6rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.tagBlue   { background: var(--badge-blue-bg);   color: var(--badge-blue-color); }
+.tagPurple { background: var(--badge-purple-bg); color: var(--badge-purple-color); }
+.tagGreen  { background: var(--badge-green-bg);  color: var(--badge-green-color); }
+.tagAmber  { background: var(--badge-amber-bg);  color: var(--badge-amber-color); }
+
+.current {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  opacity: 0.75;
 }
 
 .role {

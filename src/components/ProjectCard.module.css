@@ -25,6 +25,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -170,17 +171,6 @@
 
 .btn:hover {
   border-color: var(--accent);
-  color: var(--text);
-  background: transparent;
-}
-
-.btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.btn:disabled:hover {
-  border-color: var(--border);
   color: var(--text);
   background: transparent;
 }
