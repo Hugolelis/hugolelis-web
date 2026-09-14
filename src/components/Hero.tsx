@@ -64,7 +64,7 @@ export function Hero() {
           squareSize={40}
           direction="diagonal"
           borderColor={theme === 'light' ? 'rgba(66, 66, 66, 0.1)' : 'rgba(255, 255, 255, 0.09)'}
-          hoverFillColor={theme === 'light' ? 'rgba(168, 85, 247, 0.12)' : 'rgba(168, 85, 247, 0.2)'}
+          hoverFillColor={theme === 'light' ? 'rgba(26, 26, 26, 0.15)' : 'rgba(255, 255, 255, 0.15)'}
           shape="square"
           hoverTrailAmount={5}
         />

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import type { Project } from '../types'
 import type { Lang } from '../types'
 import type { Translations } from '../i18n'
@@ -25,9 +25,17 @@ export function ProjectCard({ project, lang, translations }: Props) {
   const description = project.description[lang]
   const t = TYPE_STYLE[project.type] ?? TYPE_STYLE.OTHER
   const [showImage, setShowImage] = useState(false)
+  const cardRef = useRef<HTMLElement>(null)
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = cardRef.current?.getBoundingClientRect()
+    if (!rect) return
+    cardRef.current!.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
+    cardRef.current!.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
+  }
 
   return (
-    <article className={styles.card}>
+    <article ref={cardRef} className={styles.card} onMouseMove={handleMouseMove}>
       <div className={styles.content}>
         <div className={styles.top}>
           <span className={`${styles.dot} ${t.dot}`} />
