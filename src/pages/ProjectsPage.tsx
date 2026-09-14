@@ -8,7 +8,7 @@ const INITIAL_COUNT = 4
 
 export function ProjectsPage() {
   const { t, lang } = useApp()
-  const { visible, remaining, showMore } = useShowMore(projects, INITIAL_COUNT)
+  const { visible, remaining, canShowLess, showMore, showLess } = useShowMore(projects, INITIAL_COUNT)
 
   return (
     <div className={styles.page}>
@@ -31,11 +31,17 @@ export function ProjectsPage() {
               </div>
             ))}
           </div>
-          {remaining > 0 && (
+          {(remaining > 0 || canShowLess) && (
             <div className={styles.showMore}>
-              <button className="btn btn--ghost" onClick={showMore}>
-                {lang === 'pt' ? `Ver mais (${remaining})` : `Show more (${remaining})`}
-              </button>
+              {remaining > 0 ? (
+                <button className="btn btn--ghost" onClick={showMore}>
+                  {lang === 'pt' ? `Ver mais (${remaining})` : `Show more (${remaining})`}
+                </button>
+              ) : (
+                <button className="btn btn--ghost" onClick={showLess}>
+                  {lang === 'pt' ? 'Ver menos' : 'Show less'}
+                </button>
+              )}
             </div>
           )}
           <div className={styles.profileCta}>

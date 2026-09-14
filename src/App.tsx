@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Footer, Loading, Nav, Hero, About, Reveal } from './components'
+import { Footer, Loading, Nav, Hero, About, LinkedInSection, Reveal } from './components'
 import { useApp } from './context/AppContext'
 import styles from './components/BackToTop.module.css'
 import deferredStyles from './components/DeferredTimeline.module.css'
 import notFoundStyles from './components/NotFound.module.css'
 
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })))
-const MorePage = lazy(() => import('./pages/MorePage').then(m => ({ default: m.MorePage })))
 
 const Timeline = lazy(() => import('./components/Timeline').then(m => ({ default: m.Timeline })))
 
@@ -52,13 +51,39 @@ export default function App() {
   const { lang } = useApp()
   const path = window.location.pathname
   const isProjectsPage = path === '/projetos'
-  const isMorePage = path === '/mais' || path === '/certificados' || path === '/linkedin'
-  const isUnknown = !isProjectsPage && !isMorePage && path !== '/'
+  const isUnknown = !isProjectsPage && path !== '/'
 
   const [showBackToTop, setShowBackToTop] = useState(false)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    const hash = window.location.hash
+    const target = hash ? document.getElementById(hash.slice(1)) : null
+    if (!target) {
+      window.scrollTo(0, 0)
+      return
+    }
+
+    target.scrollIntoView({ behavior: 'instant' })
+
+    // Hero's typewriter/reveal animation keeps growing the page for ~1.2s,
+    // which can push the target out of place after the jump above. Correct
+    // once more, but only if the user hasn't taken the wheel in the meantime.
+    let userScrolled = false
+    const markScrolled = () => { userScrolled = true }
+    window.addEventListener('wheel', markScrolled, { once: true, passive: true })
+    window.addEventListener('touchstart', markScrolled, { once: true, passive: true })
+    window.addEventListener('keydown', markScrolled, { once: true })
+
+    const timeoutId = window.setTimeout(() => {
+      if (!userScrolled) target.scrollIntoView({ behavior: 'instant' })
+    }, 1300)
+
+    return () => {
+      window.clearTimeout(timeoutId)
+      window.removeEventListener('wheel', markScrolled)
+      window.removeEventListener('touchstart', markScrolled)
+      window.removeEventListener('keydown', markScrolled)
+    }
   }, [])
 
   useEffect(() => {
@@ -104,23 +129,6 @@ export default function App() {
     )
   }
 
-  if (isMorePage) {
-    return (
-      <>
-        <Helmet>
-          <title>{'Hugo | More'}</title>
-          <meta name="description" content="Certificates and LinkedIn posts by Hugo de Lelis | Software Developer." />
-          <meta property="og:title" content="Hugo | More" />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content={window.location.href} />
-        </Helmet>
-        <Suspense fallback={<Loading fullScreen />}>
-          <MorePage />
-        </Suspense>
-      </>
-    )
-  }
-
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -150,6 +158,7 @@ export default function App() {
           <Hero />
           <Reveal><About /></Reveal>
           <DeferredTimeline />
+          <Reveal><LinkedInSection /></Reveal>
         </main>
         {showBackToTop && (
           <button

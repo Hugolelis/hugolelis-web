@@ -1,6 +1,7 @@
 export { Nav } from './Nav'
 export { Hero } from './Hero'
 export { About } from './About'
+export { LinkedInSection } from './LinkedInSection'
 export { ProjectCard } from './ProjectCard'
 export { PdfModal } from './PdfModal'
 export { ImageModal } from './ImageModal'
