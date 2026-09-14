@@ -146,7 +146,7 @@
   content: '–';
   position: absolute;
   left: 0;
-  color: var(--item-accent, var(--accent));
+  color: var(--muted);
 }
 
 @media (max-width: 900px) {

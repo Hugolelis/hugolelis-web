@@ -17,6 +17,7 @@ export interface Project {
   year: string
   link?: string
   deploy?: string
+  image?: string
 }
 
 export interface Certificate {
