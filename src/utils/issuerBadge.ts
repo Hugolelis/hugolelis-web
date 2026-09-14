@@ -1,23 +1,4 @@
-export type BadgeColor = 'blue' | 'purple' | 'green' | 'amber'
-
-const PALETTE: BadgeColor[] = ['blue', 'purple', 'green', 'amber']
-
-const KNOWN_COLORS: Record<string, BadgeColor> = {
-  'IBM': 'blue',
-  'Google': 'green',
-  'Udemy': 'amber',
-  'University of Illinois': 'purple',
-}
-
 const STOPWORDS = new Set(['of', 'and', 'the', 'for', 'de', 'da', 'do'])
-
-function hashString(value: string): number {
-  let hash = 0
-  for (let i = 0; i < value.length; i++) {
-    hash = (hash * 31 + value.charCodeAt(i)) | 0
-  }
-  return Math.abs(hash)
-}
 
 function primaryOrg(issuer: string): string {
   const [first] = issuer.split('·')
@@ -36,11 +17,9 @@ function getInitials(org: string): string {
 export interface IssuerBadge {
   org: string
   initials: string
-  color: BadgeColor
 }
 
 export function getIssuerBadge(issuer: string): IssuerBadge {
   const org = primaryOrg(issuer)
-  const color = KNOWN_COLORS[org] ?? PALETTE[hashString(org) % PALETTE.length]
-  return { org, initials: getInitials(org), color }
+  return { org, initials: getInitials(org) }
 }

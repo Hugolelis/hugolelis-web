@@ -2,8 +2,8 @@ import type { Translations } from './pt'
 
 export const en: Translations = {
   nav: {
+    home: 'Home',
     about: 'About',
-    more: 'More',
     projects: 'Projects',
     media: 'Media',
     social: 'SOCIAL',

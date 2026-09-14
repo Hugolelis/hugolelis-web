@@ -1,7 +1,7 @@
 export const pt = {
   nav: {
+    home: 'Início',
     about: 'Sobre',
-    more: 'Mais',
     projects: 'Projetos',
     media: 'Mídia',
     social: 'REDES',
