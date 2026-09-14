@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { useApp } from '../context/AppContext'
 import { certificates } from '../data'
 import type { Certificate } from '../types'
 import { useShowMore } from '../hooks/useShowMore'
 import { getIssuerBadge } from '../utils/issuerBadge'
+import { Expandable } from './Expandable'
 import { PdfModal } from './PdfModal'
 import styles from './CertificatesSection.module.css'
 
@@ -22,13 +23,13 @@ export function CertificatesSection() {
           <h2 className={`section-title ${styles.sectionTitle}`}>{t.certificates.title}</h2>
         </div>
         <div className={styles.grid}>
-          {certsShown.visible.map((cert, i) => {
+          {certificates.map((cert, i) => {
             const badge = getIssuerBadge(cert.issuer)
-            return (
+            const isInitial = i < INITIAL_COUNT
+            const card = (
               <button
-                key={i}
                 className={styles.card}
-                style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}
+                style={isInitial ? { animation: `fadeUp 0.4s ease ${i * 0.06}s both` } : undefined}
                 onClick={() => setSelected(cert)}
               >
                 <div className={styles.icon} aria-hidden="true" title={badge.org}>
@@ -43,6 +44,11 @@ export function CertificatesSection() {
                   <span className={styles.arrow} aria-hidden="true">↗</span>
                 </div>
               </button>
+            )
+            return isInitial ? (
+              <Fragment key={i}>{card}</Fragment>
+            ) : (
+              <Expandable key={i} expanded={certsShown.expanded}>{card}</Expandable>
             )
           })}
         </div>

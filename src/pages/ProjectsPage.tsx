@@ -1,4 +1,4 @@
-import { Nav, ProjectCard, Reveal } from '../components'
+import { Expandable, Nav, ProjectCard, Reveal } from '../components'
 import { useApp } from '../context/AppContext'
 import { projects } from '../data'
 import { useShowMore } from '../hooks/useShowMore'
@@ -8,7 +8,7 @@ const INITIAL_COUNT = 4
 
 export function ProjectsPage() {
   const { t, lang } = useApp()
-  const { visible, remaining, canShowLess, showMore, showLess } = useShowMore(projects, INITIAL_COUNT)
+  const { expanded, remaining, canShowLess, showMore, showLess } = useShowMore(projects, INITIAL_COUNT)
 
   return (
     <div className={styles.page}>
@@ -21,15 +21,23 @@ export function ProjectsPage() {
             </header>
           </Reveal>
           <div className={styles.list}>
-            {visible.map((project, i) => (
-              <div key={project.id} style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}>
+            {projects.map((project, i) => {
+              const isInitial = i < INITIAL_COUNT
+              const card = (
                 <ProjectCard
                   project={project}
                   lang={lang}
                   translations={t.projects}
                 />
-              </div>
-            ))}
+              )
+              return isInitial ? (
+                <div key={project.id} style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}>
+                  {card}
+                </div>
+              ) : (
+                <Expandable key={project.id} expanded={expanded}>{card}</Expandable>
+              )
+            })}
           </div>
           {(remaining > 0 || canShowLess) && (
             <div className={styles.showMore}>

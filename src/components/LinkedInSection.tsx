@@ -1,6 +1,8 @@
+import { Fragment } from 'react'
 import { useApp } from '../context/AppContext'
 import { posts } from '../data'
 import { useShowMore } from '../hooks/useShowMore'
+import { Expandable } from './Expandable'
 import styles from './LinkedInSection.module.css'
 
 const INITIAL_COUNT = 4
@@ -17,19 +19,26 @@ export function LinkedInSection() {
           <h2 className={`section-title ${styles.sectionTitle}`}>LinkedIn</h2>
         </div>
         <div className={styles.list}>
-          {postsShown.visible.map(post => (
-            <a
-              key={post.number}
-              className={styles.post}
-              href={post.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className={styles.number}>{post.number}</span>
-              <span className={styles.postTitle}>{post.title[lang]}</span>
-              <span className={styles.arrow} aria-hidden="true">↗</span>
-            </a>
-          ))}
+          {posts.map((post, i) => {
+            const isInitial = i < INITIAL_COUNT
+            const item = (
+              <a
+                className={styles.post}
+                href={post.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className={styles.number}>{post.number}</span>
+                <span className={styles.postTitle}>{post.title[lang]}</span>
+                <span className={styles.arrow} aria-hidden="true">↗</span>
+              </a>
+            )
+            return isInitial ? (
+              <Fragment key={post.number}>{item}</Fragment>
+            ) : (
+              <Expandable key={post.number} expanded={postsShown.expanded}>{item}</Expandable>
+            )
+          })}
         </div>
         {(postsShown.remaining > 0 || postsShown.canShowLess) && (
           <div className={styles.showMore}>
