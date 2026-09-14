@@ -23,15 +23,12 @@ export function ImageModal({ src, alt, onClose }: ImageModalProps) {
 
   return createPortal(
     <div className={styles.overlay} onClick={onClose} role="presentation">
-      <button className={styles.closeBtn} onClick={onClose} title="Fechar">
-        ✕
-      </button>
-      <img
-        src={src}
-        alt={alt}
-        className={styles.image}
-        onClick={(e) => e.stopPropagation()}
-      />
+      <div className={styles.imageWrap} onClick={(e) => e.stopPropagation()}>
+        <img src={src} alt={alt} className={styles.image} />
+        <button className={styles.closeBtn} onClick={onClose} title="Fechar">
+          ✕
+        </button>
+      </div>
     </div>,
     document.body
   )

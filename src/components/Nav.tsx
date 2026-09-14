@@ -5,7 +5,7 @@ import { useActiveSection } from '../hooks/useActiveSection'
 import styles from './Nav.module.css'
 
 const SUB_PAGES = ['/projetos'] as const
-const SECTION_IDS = ['hero', 'sobre', 'certificados', 'trajetoria', 'linkedin'] as const
+const SECTION_IDS = ['hero', 'sobre', 'trajetoria', 'certificados', 'linkedin'] as const
 
 export function Nav() {
   const { t, theme, toggleTheme, lang, toggleLang } = useApp()
@@ -78,9 +78,9 @@ export function Nav() {
           <div className={styles.links}>
             <a href={onSubPage ? '/#hero' : '#hero'} className={homeActive ? styles.active : undefined} aria-current={homeActive ? 'page' : undefined}>{t.nav.home}</a>
             <a href={onSubPage ? '/#sobre' : '#sobre'} className={aboutActive ? styles.active : undefined} aria-current={aboutActive ? 'page' : undefined}>{t.nav.about}</a>
-            <a href="/projetos" className={currentPath === '/projetos' ? styles.active : undefined} aria-current={currentPath === '/projetos' ? 'page' : undefined}>{t.nav.projects}</a>
             <a href={onSubPage ? '/#certificados' : '#certificados'} className={certificatesActive ? styles.active : undefined} aria-current={certificatesActive ? 'page' : undefined}>{t.certificates.title}</a>
             <a href={onSubPage ? '/#linkedin' : '#linkedin'} className={linkedinActive ? styles.active : undefined} aria-current={linkedinActive ? 'page' : undefined}>LinkedIn</a>
+            <a href="/projetos" className={`${styles.projectsLink} ${currentPath === '/projetos' ? styles.active : ''}`} aria-current={currentPath === '/projetos' ? 'page' : undefined}>{t.nav.projects}</a>
             <button className={styles.contactTrigger} onClick={() => setContactOpen(true)}>
               {t.nav.media}
             </button>
@@ -131,9 +131,9 @@ export function Nav() {
         <div ref={mobileMenuRef} id="mobile-navigation" className={styles.mobileMenu}>
           <a href={onSubPage ? '/#hero' : '#hero'} className={homeActive ? styles.active : undefined} aria-current={homeActive ? 'page' : undefined} onClick={closeMenu}>{t.nav.home}</a>
           <a href={onSubPage ? '/#sobre' : '#sobre'} className={aboutActive ? styles.active : undefined} aria-current={aboutActive ? 'page' : undefined} onClick={closeMenu}>{t.nav.about}</a>
-          <a href="/projetos" className={currentPath === '/projetos' ? styles.active : undefined} aria-current={currentPath === '/projetos' ? 'page' : undefined} onClick={closeMenu}>{t.nav.projects}</a>
           <a href={onSubPage ? '/#certificados' : '#certificados'} className={certificatesActive ? styles.active : undefined} aria-current={certificatesActive ? 'page' : undefined} onClick={closeMenu}>{t.certificates.title}</a>
           <a href={onSubPage ? '/#linkedin' : '#linkedin'} className={linkedinActive ? styles.active : undefined} aria-current={linkedinActive ? 'page' : undefined} onClick={closeMenu}>LinkedIn</a>
+          <a href="/projetos" className={`${styles.projectsLink} ${currentPath === '/projetos' ? styles.active : ''}`} aria-current={currentPath === '/projetos' ? 'page' : undefined} onClick={closeMenu}>{t.nav.projects}</a>
           <button
             className={styles.mobileContactTrigger}
             onClick={() => {
