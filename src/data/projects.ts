@@ -18,6 +18,7 @@ export const projects: Project[] = [
     },
     year: '2026',
     link: 'https://github.com/Hugolelis/qrcode-TOOL',
+    image: '/projects/qrcode.png',
   },
   {
     id: 1,
@@ -54,23 +55,25 @@ export const projects: Project[] = [
     },
     year: '2026',
     link: 'https://github.com/Hugolelis/Lexio-CLI',
+    image: '/projects/lexio.png',
   },
   {
     id: 2,
     title: { pt: 'YT Downloader', en: 'YT Downloader' },
-    tag: 'Python · yt-dlp · Typer',
+    tag: 'Python · yt-dlp · Typer · rich',
     type: 'CLI',
     description: {
       pt: [
         'Download de vídeo e áudio do YouTube direto do terminal',
-        'Seleção de qualidade e extração em MP3, construído com yt-dlp e Typer',
+        'Seleção de qualidade e extração em MP3, construído com yt-dlp, Typer e rich',
       ],
       en: [
         'Downloads YouTube video and audio directly from the terminal',
-        'Quality selection and MP3 extraction, built with yt-dlp and Typer',
+        'Quality selection and MP3 extraction, built with yt-dlp, Typer, and rich',
       ],
     },
     year: '2026',
     link: 'https://github.com/Hugolelis/YT_Downloader-CLI',
+    image: '/projects/yt-downloader.png',
   },
 ]

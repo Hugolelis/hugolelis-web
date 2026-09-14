@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import type { Project } from '../types'
 import type { Lang } from '../types'
 import type { Translations } from '../i18n'
+import { ImageModal } from './ImageModal'
 import styles from './ProjectCard.module.css'
 
 interface Props {
@@ -10,11 +12,11 @@ interface Props {
 }
 
 const TYPE_STYLE: Record<Project['type'], { dot: string; preview: string; label: string }> = {
-  API:   { dot: styles.dotApi,   preview: styles.previewApi,     label: 'API' },
-  CLI:   { dot: styles.dotCli,   preview: styles.previewCli,     label: 'CLI' },
-  WEB:   { dot: styles.dotWeb,   preview: styles.previewApi,     label: 'WEB' },
+  API:   { dot: styles.dotApi,   preview: styles.previewDefault, label: 'API' },
+  CLI:   { dot: styles.dotCli,   preview: styles.previewDefault, label: 'CLI' },
+  WEB:   { dot: styles.dotWeb,   preview: styles.previewDefault, label: 'WEB' },
   LIB:   { dot: styles.dotLib,   preview: styles.previewDefault, label: 'LIB' },
-  TOOL:  { dot: styles.dotTool,  preview: styles.previewTool,    label: 'TOOL' },
+  TOOL:  { dot: styles.dotTool,  preview: styles.previewDefault, label: 'TOOL' },
   OTHER: { dot: styles.dotOther, preview: styles.previewDefault, label: 'OTHER' },
 }
 
@@ -22,6 +24,7 @@ export function ProjectCard({ project, lang, translations }: Props) {
   const title = project.title[lang]
   const description = project.description[lang]
   const t = TYPE_STYLE[project.type] ?? TYPE_STYLE.OTHER
+  const [showImage, setShowImage] = useState(false)
 
   return (
     <article className={styles.card}>
@@ -34,9 +37,20 @@ export function ProjectCard({ project, lang, translations }: Props) {
           <span className={styles.year}>{project.year}</span>
         </div>
         <h3 className={styles.title}>{title}</h3>
-        <div className={`${styles.media} ${t.preview}`} aria-hidden="true">
-          <span className={styles.typeBig}>{t.label}</span>
-        </div>
+        {project.image ? (
+          <button
+            type="button"
+            className={`${styles.media} ${styles.mediaButton}`}
+            onClick={() => setShowImage(true)}
+            aria-label={lang === 'pt' ? `Ampliar imagem de ${title}` : `Enlarge ${title} image`}
+          >
+            <img src={project.image} alt="" className={styles.mediaImg} />
+          </button>
+        ) : (
+          <div className={`${styles.media} ${t.preview}`} aria-hidden="true">
+            <span className={styles.typeBig}>{t.label}</span>
+          </div>
+        )}
         <ul className={styles.desc}>
           {description.map((line, i) => (
             <li key={i}>{line}</li>
@@ -63,6 +77,9 @@ export function ProjectCard({ project, lang, translations }: Props) {
           </a>
         )}
       </div>
+      {showImage && project.image && (
+        <ImageModal src={project.image} alt={title} onClose={() => setShowImage(false)} />
+      )}
     </article>
   )
 }
