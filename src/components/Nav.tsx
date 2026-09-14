@@ -5,7 +5,7 @@ import { useActiveSection } from '../hooks/useActiveSection'
 import styles from './Nav.module.css'
 
 const SUB_PAGES = ['/projetos'] as const
-const SECTION_IDS = ['hero', 'sobre', 'certificados', 'linkedin'] as const
+const SECTION_IDS = ['hero', 'sobre', 'certificados', 'trajetoria', 'linkedin'] as const
 
 export function Nav() {
   const { t, theme, toggleTheme, lang, toggleLang } = useApp()
@@ -18,7 +18,7 @@ export function Nav() {
   const onSubPage = SUB_PAGES.some(page => currentPath === page)
   const activeSection = useActiveSection(SECTION_IDS, currentPath === '/')
   const homeActive = currentPath === '/' && (activeSection === null || activeSection === 'hero')
-  const aboutActive = currentPath === '/' && activeSection === 'sobre'
+  const aboutActive = currentPath === '/' && (activeSection === 'sobre' || activeSection === 'trajetoria')
   const certificatesActive = currentPath === '/' && activeSection === 'certificados'
   const linkedinActive = currentPath === '/' && activeSection === 'linkedin'
 

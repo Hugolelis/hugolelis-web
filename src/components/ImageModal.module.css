@@ -14,8 +14,8 @@
 
 .image {
   width: auto;
-  max-width: min(680px, 100%);
-  max-height: min(70vh, 100%);
+  max-width: min(420px, 100%);
+  max-height: min(50vh, 100%);
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface);

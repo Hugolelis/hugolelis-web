@@ -7,12 +7,7 @@ export function useActiveSection(ids: readonly string[], enabled: boolean) {
   useEffect(() => {
     if (!enabled) return
 
-    const elements = ids
-      .map(id => document.getElementById(id))
-      .filter((el): el is HTMLElement => !!el)
-    if (elements.length === 0) return
-
-    intersecting.current = new Map(elements.map(el => [el.id, false]))
+    intersecting.current = new Map(ids.map(id => [id, false]))
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -31,8 +26,31 @@ export function useActiveSection(ids: readonly string[], enabled: boolean) {
       { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
     )
 
-    elements.forEach(el => observer.observe(el))
-    return () => observer.disconnect()
+    const observed = new Set<string>()
+    const tryObserveNew = () => {
+      for (const id of ids) {
+        if (observed.has(id)) continue
+        const el = document.getElementById(id)
+        if (el) {
+          observer.observe(el)
+          observed.add(id)
+        }
+      }
+      if (observed.size === ids.length) mutationObserver.disconnect()
+    }
+
+    // Some sections (e.g. Timeline) mount lazily well after this effect
+    // first runs, so keep watching the DOM until every id has been found.
+    const mutationObserver = new MutationObserver(tryObserveNew)
+    tryObserveNew()
+    if (observed.size < ids.length) {
+      mutationObserver.observe(document.body, { childList: true, subtree: true })
+    }
+
+    return () => {
+      observer.disconnect()
+      mutationObserver.disconnect()
+    }
   }, [ids, enabled])
 
   return enabled ? activeId : null

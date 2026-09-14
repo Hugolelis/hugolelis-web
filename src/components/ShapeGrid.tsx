@@ -1,13 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import './ShapeGrid.css'
 
-type Direction = 'diagonal' | 'up' | 'right' | 'down' | 'left'
+type Direction = 'right' | 'left' | 'up' | 'down' | 'diagonal'
 type Shape = 'square' | 'hexagon' | 'circle' | 'triangle'
-
-interface Cell {
-  x: number
-  y: number
-}
 
 interface ShapeGridProps {
   direction?: Direction
@@ -18,6 +13,11 @@ interface ShapeGridProps {
   shape?: Shape
   hoverTrailAmount?: number
   className?: string
+}
+
+interface Cell {
+  x: number
+  y: number
 }
 
 export default function ShapeGrid({
@@ -33,197 +33,249 @@ export default function ShapeGrid({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const requestRef = useRef<number | null>(null)
   const gridOffset = useRef({ x: 0, y: 0 })
-  const hoveredCell = useRef<Cell | null>(null)
+  const hoveredSquare = useRef<Cell | null>(null)
   const trailCells = useRef<Cell[]>([])
-  const cellOpacities = useRef(new Map<string, number>())
+  const cellOpacities = useRef<Map<string, number>>(new Map())
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
 
-    const context = canvas.getContext('2d')
-    if (!context) return
-    const opacities = cellOpacities.current
-
-    const isHexagon = shape === 'hexagon'
-    const isTriangle = shape === 'triangle'
-    const hexHorizontal = squareSize * 1.5
-    const hexVertical = squareSize * Math.sqrt(3)
-    const size = { width: 0, height: 0 }
+    const isHex = shape === 'hexagon'
+    const isTri = shape === 'triangle'
+    const hexHoriz = squareSize * 1.5
+    const hexVert = squareSize * Math.sqrt(3)
 
     const resizeCanvas = () => {
-      const rect = canvas.getBoundingClientRect()
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
-      size.width = rect.width
-      size.height = rect.height
-      canvas.width = rect.width * dpr
-      canvas.height = rect.height * dpr
-      context.setTransform(dpr, 0, 0, dpr, 0, 0)
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
     }
 
-    const drawHexagon = (centerX: number, centerY: number, radius: number) => {
-      context.beginPath()
-      for (let index = 0; index < 6; index++) {
-        const angle = (Math.PI / 3) * index
-        const x = centerX + radius * Math.cos(angle)
-        const y = centerY + radius * Math.sin(angle)
-        if (index === 0) context.moveTo(x, y)
-        else context.lineTo(x, y)
+    window.addEventListener('resize', resizeCanvas)
+    resizeCanvas()
+
+    const drawHex = (cx: number, cy: number, size: number) => {
+      ctx.beginPath()
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i
+        const vx = cx + size * Math.cos(angle)
+        const vy = cy + size * Math.sin(angle)
+        if (i === 0) ctx.moveTo(vx, vy)
+        else ctx.lineTo(vx, vy)
       }
-      context.closePath()
+      ctx.closePath()
     }
 
-    const drawCircle = (centerX: number, centerY: number, diameter: number) => {
-      context.beginPath()
-      context.arc(centerX, centerY, diameter / 2, 0, Math.PI * 2)
-      context.closePath()
+    const drawCircle = (cx: number, cy: number, size: number) => {
+      ctx.beginPath()
+      ctx.arc(cx, cy, size / 2, 0, Math.PI * 2)
+      ctx.closePath()
     }
 
-    const drawTriangle = (centerX: number, centerY: number, side: number, flipped: boolean) => {
-      context.beginPath()
-      if (flipped) {
-        context.moveTo(centerX, centerY + side / 2)
-        context.lineTo(centerX + side / 2, centerY - side / 2)
-        context.lineTo(centerX - side / 2, centerY - side / 2)
+    const drawTriangle = (cx: number, cy: number, size: number, flip: boolean) => {
+      ctx.beginPath()
+      if (flip) {
+        ctx.moveTo(cx, cy + size / 2)
+        ctx.lineTo(cx + size / 2, cy - size / 2)
+        ctx.lineTo(cx - size / 2, cy - size / 2)
       } else {
-        context.moveTo(centerX, centerY - side / 2)
-        context.lineTo(centerX + side / 2, centerY + side / 2)
-        context.lineTo(centerX - side / 2, centerY + side / 2)
+        ctx.moveTo(cx, cy - size / 2)
+        ctx.lineTo(cx + size / 2, cy + size / 2)
+        ctx.lineTo(cx - size / 2, cy + size / 2)
       }
-      context.closePath()
-    }
-
-    const fillActiveCell = (cellKey: string, drawShape: () => void) => {
-      const opacity = cellOpacities.current.get(cellKey)
-      if (!opacity) return
-      context.globalAlpha = opacity
-      drawShape()
-      context.fillStyle = hoverFillColor
-      context.fill()
-      context.globalAlpha = 1
+      ctx.closePath()
     }
 
     const drawGrid = () => {
-      const { width, height } = size
-      context.clearRect(0, 0, width, height)
-      context.strokeStyle = borderColor
-      context.lineWidth = 1
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      if (isHexagon) {
-        const columnShift = Math.floor(gridOffset.current.x / hexHorizontal)
-        const offsetX = ((gridOffset.current.x % hexHorizontal) + hexHorizontal) % hexHorizontal
-        const offsetY = ((gridOffset.current.y % hexVertical) + hexVertical) % hexVertical
-        const columns = Math.ceil(width / hexHorizontal) + 3
-        const rows = Math.ceil(height / hexVertical) + 3
+      if (isHex) {
+        const colShift = Math.floor(gridOffset.current.x / hexHoriz)
+        const offsetX = ((gridOffset.current.x % hexHoriz) + hexHoriz) % hexHoriz
+        const offsetY = ((gridOffset.current.y % hexVert) + hexVert) % hexVert
 
-        for (let column = -2; column < columns; column++) {
+        const cols = Math.ceil(canvas.width / hexHoriz) + 3
+        const rows = Math.ceil(canvas.height / hexVert) + 3
+
+        for (let col = -2; col < cols; col++) {
           for (let row = -2; row < rows; row++) {
-            const centerX = column * hexHorizontal + offsetX
-            const centerY = row * hexVertical + ((column + columnShift) % 2 !== 0 ? hexVertical / 2 : 0) + offsetY
-            const draw = () => drawHexagon(centerX, centerY, squareSize)
-            fillActiveCell(`${column},${row}`, draw)
-            draw()
-            context.stroke()
-          }
-        }
-        return
-      }
+            const cx = col * hexHoriz + offsetX
+            const cy = row * hexVert + ((col + colShift) % 2 !== 0 ? hexVert / 2 : 0) + offsetY
 
-      if (isTriangle) {
-        const halfWidth = squareSize / 2
-        const columnShift = Math.floor(gridOffset.current.x / halfWidth)
-        const rowShift = Math.floor(gridOffset.current.y / squareSize)
-        const offsetX = ((gridOffset.current.x % halfWidth) + halfWidth) % halfWidth
-        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
-        const columns = Math.ceil(width / halfWidth) + 4
-        const rows = Math.ceil(height / squareSize) + 4
-
-        for (let column = -2; column < columns; column++) {
-          for (let row = -2; row < rows; row++) {
-            const centerX = column * halfWidth + offsetX
-            const centerY = row * squareSize + squareSize / 2 + offsetY
-            const flipped = ((column + columnShift + row + rowShift) % 2 + 2) % 2 !== 0
-            const draw = () => drawTriangle(centerX, centerY, squareSize, flipped)
-            fillActiveCell(`${column},${row}`, draw)
-            draw()
-            context.stroke()
-          }
-        }
-        return
-      }
-
-      const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
-      const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
-      const columns = Math.ceil(width / squareSize) + 3
-      const rows = Math.ceil(height / squareSize) + 3
-
-      for (let column = -2; column < columns; column++) {
-        for (let row = -2; row < rows; row++) {
-          const cellKey = `${column},${row}`
-
-          if (shape === 'circle') {
-            const centerX = column * squareSize + squareSize / 2 + offsetX
-            const centerY = row * squareSize + squareSize / 2 + offsetY
-            const draw = () => drawCircle(centerX, centerY, squareSize)
-            fillActiveCell(cellKey, draw)
-            draw()
-            context.stroke()
-          } else {
-            const x = column * squareSize + offsetX
-            const y = row * squareSize + offsetY
-            const opacity = cellOpacities.current.get(cellKey)
-            if (opacity) {
-              context.globalAlpha = opacity
-              context.fillStyle = hoverFillColor
-              context.fillRect(x, y, squareSize, squareSize)
-              context.globalAlpha = 1
+            const cellKey = `${col},${row}`
+            const alpha = cellOpacities.current.get(cellKey)
+            if (alpha) {
+              ctx.globalAlpha = alpha
+              drawHex(cx, cy, squareSize)
+              ctx.fillStyle = hoverFillColor
+              ctx.fill()
+              ctx.globalAlpha = 1
             }
-            context.strokeRect(x, y, squareSize, squareSize)
+
+            drawHex(cx, cy, squareSize)
+            ctx.strokeStyle = borderColor
+            ctx.stroke()
+          }
+        }
+      } else if (isTri) {
+        const halfW = squareSize / 2
+        const colShift = Math.floor(gridOffset.current.x / halfW)
+        const rowShift = Math.floor(gridOffset.current.y / squareSize)
+        const offsetX = ((gridOffset.current.x % halfW) + halfW) % halfW
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
+
+        const cols = Math.ceil(canvas.width / halfW) + 4
+        const rows = Math.ceil(canvas.height / squareSize) + 4
+
+        for (let col = -2; col < cols; col++) {
+          for (let row = -2; row < rows; row++) {
+            const cx = col * halfW + offsetX
+            const cy = row * squareSize + squareSize / 2 + offsetY
+            const flip = (((col + colShift + row + rowShift) % 2) + 2) % 2 !== 0
+
+            const cellKey = `${col},${row}`
+            const alpha = cellOpacities.current.get(cellKey)
+            if (alpha) {
+              ctx.globalAlpha = alpha
+              drawTriangle(cx, cy, squareSize, flip)
+              ctx.fillStyle = hoverFillColor
+              ctx.fill()
+              ctx.globalAlpha = 1
+            }
+
+            drawTriangle(cx, cy, squareSize, flip)
+            ctx.strokeStyle = borderColor
+            ctx.stroke()
+          }
+        }
+      } else if (shape === 'circle') {
+        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
+
+        const cols = Math.ceil(canvas.width / squareSize) + 3
+        const rows = Math.ceil(canvas.height / squareSize) + 3
+
+        for (let col = -2; col < cols; col++) {
+          for (let row = -2; row < rows; row++) {
+            const cx = col * squareSize + squareSize / 2 + offsetX
+            const cy = row * squareSize + squareSize / 2 + offsetY
+
+            const cellKey = `${col},${row}`
+            const alpha = cellOpacities.current.get(cellKey)
+            if (alpha) {
+              ctx.globalAlpha = alpha
+              drawCircle(cx, cy, squareSize)
+              ctx.fillStyle = hoverFillColor
+              ctx.fill()
+              ctx.globalAlpha = 1
+            }
+
+            drawCircle(cx, cy, squareSize)
+            ctx.strokeStyle = borderColor
+            ctx.stroke()
+          }
+        }
+      } else {
+        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
+
+        const cols = Math.ceil(canvas.width / squareSize) + 3
+        const rows = Math.ceil(canvas.height / squareSize) + 3
+
+        for (let col = -2; col < cols; col++) {
+          for (let row = -2; row < rows; row++) {
+            const sx = col * squareSize + offsetX
+            const sy = row * squareSize + offsetY
+
+            const cellKey = `${col},${row}`
+            const alpha = cellOpacities.current.get(cellKey)
+            if (alpha) {
+              ctx.globalAlpha = alpha
+              ctx.fillStyle = hoverFillColor
+              ctx.fillRect(sx, sy, squareSize, squareSize)
+              ctx.globalAlpha = 1
+            }
+
+            ctx.strokeStyle = borderColor
+            ctx.strokeRect(sx, sy, squareSize, squareSize)
           }
         }
       }
+
+      const gradient = ctx.createRadialGradient(
+        canvas.width / 2,
+        canvas.height / 2,
+        0,
+        canvas.width / 2,
+        canvas.height / 2,
+        Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2,
+      )
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 0)')
+
+      ctx.fillStyle = gradient
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
     }
 
     const updateCellOpacities = () => {
       const targets = new Map<string, number>()
-      const hovered = hoveredCell.current
-      if (hovered) targets.set(`${hovered.x},${hovered.y}`, 1)
+
+      if (hoveredSquare.current) {
+        targets.set(`${hoveredSquare.current.x},${hoveredSquare.current.y}`, 1)
+      }
 
       if (hoverTrailAmount > 0) {
-        for (let index = 0; index < trailCells.current.length; index++) {
-          const cell = trailCells.current[index]
-          const key = `${cell.x},${cell.y}`
+        for (let i = 0; i < trailCells.current.length; i++) {
+          const t = trailCells.current[i]
+          const key = `${t.x},${t.y}`
           if (!targets.has(key)) {
-            targets.set(key, (trailCells.current.length - index) / (trailCells.current.length + 1))
+            targets.set(key, (trailCells.current.length - i) / (trailCells.current.length + 1))
           }
         }
       }
 
-      for (const key of targets.keys()) {
-        if (!cellOpacities.current.has(key)) cellOpacities.current.set(key, 0)
+      for (const [key] of targets) {
+        if (!cellOpacities.current.has(key)) {
+          cellOpacities.current.set(key, 0)
+        }
       }
 
       for (const [key, opacity] of cellOpacities.current) {
         const target = targets.get(key) || 0
         const next = opacity + (target - opacity) * 0.15
-        if (next < 0.005) cellOpacities.current.delete(key)
-        else cellOpacities.current.set(key, next)
+        if (next < 0.005) {
+          cellOpacities.current.delete(key)
+        } else {
+          cellOpacities.current.set(key, next)
+        }
       }
     }
 
     const updateAnimation = () => {
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      const effectiveSpeed = reducedMotion ? 0 : Math.max(speed, 0.1)
-      const wrapX = isHexagon ? hexHorizontal * 2 : squareSize
-      const wrapY = isHexagon ? hexVertical : isTriangle ? squareSize * 2 : squareSize
+      const effectiveSpeed = Math.max(speed, 0.1)
+      const wrapX = isHex ? hexHoriz * 2 : squareSize
+      const wrapY = isHex ? hexVert : isTri ? squareSize * 2 : squareSize
 
-      if (direction === 'right') gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX
-      if (direction === 'left') gridOffset.current.x = (gridOffset.current.x + effectiveSpeed + wrapX) % wrapX
-      if (direction === 'up') gridOffset.current.y = (gridOffset.current.y + effectiveSpeed + wrapY) % wrapY
-      if (direction === 'down') gridOffset.current.y = (gridOffset.current.y - effectiveSpeed + wrapY) % wrapY
-      if (direction === 'diagonal') {
-        gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX
-        gridOffset.current.y = (gridOffset.current.y - effectiveSpeed + wrapY) % wrapY
+      switch (direction) {
+        case 'right':
+          gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX
+          break
+        case 'left':
+          gridOffset.current.x = (gridOffset.current.x + effectiveSpeed + wrapX) % wrapX
+          break
+        case 'up':
+          gridOffset.current.y = (gridOffset.current.y + effectiveSpeed + wrapY) % wrapY
+          break
+        case 'down':
+          gridOffset.current.y = (gridOffset.current.y - effectiveSpeed + wrapY) % wrapY
+          break
+        case 'diagonal':
+          gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX
+          gridOffset.current.y = (gridOffset.current.y - effectiveSpeed + wrapY) % wrapY
+          break
+        default:
+          break
       }
 
       updateCellOpacities()
@@ -231,64 +283,71 @@ export default function ShapeGrid({
       requestRef.current = requestAnimationFrame(updateAnimation)
     }
 
-    const rememberHoveredCell = (cell: Cell) => {
-      const current = hoveredCell.current
-      if (current?.x === cell.x && current.y === cell.y) return
-      if (current && hoverTrailAmount > 0) {
-        trailCells.current.unshift({ ...current })
-        if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount
-      }
-      hoveredCell.current = cell
-    }
-
     const handleMouseMove = (event: MouseEvent) => {
       const rect = canvas.getBoundingClientRect()
       const mouseX = event.clientX - rect.left
       const mouseY = event.clientY - rect.top
 
-      if (isHexagon) {
-        const columnShift = Math.floor(gridOffset.current.x / hexHorizontal)
-        const offsetX = ((gridOffset.current.x % hexHorizontal) + hexHorizontal) % hexHorizontal
-        const offsetY = ((gridOffset.current.y % hexVertical) + hexVertical) % hexVertical
-        const column = Math.round((mouseX - offsetX) / hexHorizontal)
-        const rowOffset = (column + columnShift) % 2 !== 0 ? hexVertical / 2 : 0
-        const row = Math.round((mouseY - offsetY - rowOffset) / hexVertical)
-        rememberHoveredCell({ x: column, y: row })
-        return
-      }
+      let col: number
+      let row: number
 
-      if (isTriangle) {
-        const halfWidth = squareSize / 2
-        const offsetX = ((gridOffset.current.x % halfWidth) + halfWidth) % halfWidth
+      if (isHex) {
+        const colShift = Math.floor(gridOffset.current.x / hexHoriz)
+        const offsetX = ((gridOffset.current.x % hexHoriz) + hexHoriz) % hexHoriz
+        const offsetY = ((gridOffset.current.y % hexVert) + hexVert) % hexVert
+        const adjustedX = mouseX - offsetX
+        const adjustedY = mouseY - offsetY
+
+        col = Math.round(adjustedX / hexHoriz)
+        const rowOffset = (col + colShift) % 2 !== 0 ? hexVert / 2 : 0
+        row = Math.round((adjustedY - rowOffset) / hexVert)
+      } else if (isTri) {
+        const halfW = squareSize / 2
+        const offsetX = ((gridOffset.current.x % halfW) + halfW) % halfW
         const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
-        rememberHoveredCell({
-          x: Math.round((mouseX - offsetX) / halfWidth),
-          y: Math.floor((mouseY - offsetY) / squareSize),
-        })
-        return
+
+        const adjustedX = mouseX - offsetX
+        const adjustedY = mouseY - offsetY
+
+        col = Math.round(adjustedX / halfW)
+        row = Math.floor(adjustedY / squareSize)
+      } else if (shape === 'circle') {
+        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
+
+        const adjustedX = mouseX - offsetX
+        const adjustedY = mouseY - offsetY
+
+        col = Math.round(adjustedX / squareSize)
+        row = Math.round(adjustedY / squareSize)
+      } else {
+        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
+
+        const adjustedX = mouseX - offsetX
+        const adjustedY = mouseY - offsetY
+
+        col = Math.floor(adjustedX / squareSize)
+        row = Math.floor(adjustedY / squareSize)
       }
 
-      const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
-      const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
-      const adjustedX = mouseX - offsetX
-      const adjustedY = mouseY - offsetY
-      rememberHoveredCell({
-        x: shape === 'circle' ? Math.round(adjustedX / squareSize) : Math.floor(adjustedX / squareSize),
-        y: shape === 'circle' ? Math.round(adjustedY / squareSize) : Math.floor(adjustedY / squareSize),
-      })
+      if (!hoveredSquare.current || hoveredSquare.current.x !== col || hoveredSquare.current.y !== row) {
+        if (hoveredSquare.current && hoverTrailAmount > 0) {
+          trailCells.current.unshift({ ...hoveredSquare.current })
+          if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount
+        }
+        hoveredSquare.current = { x: col, y: row }
+      }
     }
 
     const handleMouseLeave = () => {
-      const current = hoveredCell.current
-      if (current && hoverTrailAmount > 0) {
-        trailCells.current.unshift({ ...current })
+      if (hoveredSquare.current && hoverTrailAmount > 0) {
+        trailCells.current.unshift({ ...hoveredSquare.current })
         if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount
       }
-      hoveredCell.current = null
+      hoveredSquare.current = null
     }
 
-    resizeCanvas()
-    window.addEventListener('resize', resizeCanvas)
     canvas.addEventListener('mousemove', handleMouseMove)
     canvas.addEventListener('mouseleave', handleMouseLeave)
 
@@ -296,43 +355,45 @@ export default function ShapeGrid({
     let isPageVisible = !document.hidden
 
     const tryStart = () => {
-      if (isVisible && isPageVisible && requestRef.current === null) {
+      if (isVisible && isPageVisible && !requestRef.current) {
         requestRef.current = requestAnimationFrame(updateAnimation)
       }
     }
     const tryStop = () => {
-      if (requestRef.current !== null) {
+      if (requestRef.current) {
         cancelAnimationFrame(requestRef.current)
         requestRef.current = null
       }
     }
 
-    const observer = new IntersectionObserver(([entry]) => {
-      isVisible = entry.isIntersecting
-      if (isVisible) tryStart()
-      else tryStop()
-    })
-    observer.observe(canvas)
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting
+        if (isVisible) tryStart()
+        else tryStop()
+      },
+      { threshold: 0 },
+    )
+    io.observe(canvas)
 
-    const onVisibilityChange = () => {
+    const onVisibility = () => {
       isPageVisible = !document.hidden
       if (isPageVisible) tryStart()
       else tryStop()
     }
-    document.addEventListener('visibilitychange', onVisibilityChange)
+    document.addEventListener('visibilitychange', onVisibility)
+
+    tryStart()
 
     return () => {
       window.removeEventListener('resize', resizeCanvas)
       tryStop()
-      observer.disconnect()
-      document.removeEventListener('visibilitychange', onVisibilityChange)
+      io.disconnect()
+      document.removeEventListener('visibilitychange', onVisibility)
       canvas.removeEventListener('mousemove', handleMouseMove)
       canvas.removeEventListener('mouseleave', handleMouseLeave)
-      hoveredCell.current = null
-      trailCells.current = []
-      opacities.clear()
     }
   }, [direction, speed, borderColor, hoverFillColor, squareSize, shape, hoverTrailAmount])
 
-  return <canvas ref={canvasRef} className={`shapegrid-canvas ${className}`.trim()} aria-hidden />
+  return <canvas ref={canvasRef} className={`shapegrid-canvas ${className}`} />
 }
