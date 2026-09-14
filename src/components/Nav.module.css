@@ -63,6 +63,24 @@
   display: none;
 }
 
+.links .projectsLink {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+}
+
+.links .projectsLink::after {
+  display: none;
+}
+
+.links .projectsLink:hover,
+.links .projectsLink.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--tag-default-bg);
+}
+
 .menuToggle {
   display: none;
   width: 2rem;
@@ -407,6 +425,18 @@
   .mobileMenu a.active {
     background: var(--term-hover);
     color: var(--text);
+  }
+
+  .mobileMenu a.projectsLink {
+    margin-top: 0.2rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+
+  .mobileMenu a.projectsLink:hover,
+  .mobileMenu a.projectsLink.active {
+    background: var(--accent);
+    color: var(--bg);
   }
 
   .mobileContactTrigger {
