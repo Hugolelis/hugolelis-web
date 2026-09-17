@@ -1,17 +1,17 @@
 .slot {
-  min-height: 880px;
+  min-height: 1680px;
 }
 
 .loading {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 880px;
+  min-height: 1680px;
 }
 
 @media (max-width: 900px) {
   .slot,
   .loading {
-    min-height: 1040px;
+    min-height: 1700px;
   }
 }
