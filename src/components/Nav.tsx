@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useApp } from '../context/AppContext'
 import { useScrollY } from '../hooks/useScrollY'
 import { useActiveSection } from '../hooks/useActiveSection'
+import { ScrollProgress } from './ScrollProgress'
 import styles from './Nav.module.css'
 
 const SUB_PAGES = ['/projetos'] as const
@@ -55,6 +56,8 @@ export function Nav() {
       <a href="#main-content" className={styles.skipLink}>
         {lang === 'pt' ? 'Pular para o conteúdo' : 'Skip to content'}
       </a>
+
+      <ScrollProgress />
 
       <nav
         ref={navRef}

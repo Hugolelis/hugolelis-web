@@ -161,15 +161,15 @@ export default function App() {
           <Reveal><CertificatesSection /></Reveal>
           <Reveal><LinkedInSection /></Reveal>
         </main>
-        {showBackToTop && (
-          <button
-            className={styles.backToTop}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label={lang === 'pt' ? 'Voltar ao topo' : 'Back to top'}
-          >
-            ↑
-          </button>
-        )}
+        <button
+          className={`${styles.backToTop} ${showBackToTop ? styles.backToTopVisible : ''}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label={lang === 'pt' ? 'Voltar ao topo' : 'Back to top'}
+          tabIndex={showBackToTop ? 0 : -1}
+          inert={!showBackToTop}
+        >
+          ↑
+        </button>
         <Footer />
       </div>
     </>
