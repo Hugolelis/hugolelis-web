@@ -74,7 +74,7 @@ export const timeline: TimelineEntry[] = [
   {
     year: '2023',
     category: 'milestone',
-    type: { pt: 'Primeiro contato com programação', en: 'First contact with programming' },
+    type: { pt: 'Primeiro contato', en: 'First contact' },
     role: { pt: 'Classificado para o evento programação 2.0 Inatel', en: 'Qualified for the Inatel 2.0 programming event' },
     place: { pt: 'Inatel', en: 'Inatel' },
     description: {
