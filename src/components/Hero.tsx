@@ -76,7 +76,7 @@ export function Hero() {
             <span className={styles.accent}>{displayedTitle}</span>
             <span className={styles.cursor}>_</span>
           </h1>
-          <p className={styles.role}>{lang === 'pt' ? 'Desenvolvedor' : 'Developer'}</p>
+          <p className={styles.role}>{lang === 'pt' ? 'Desenvolvedor de software' : 'Software developer'}</p>
           <p className={styles.sub}>{t.hero.sub}</p>
           <div className={styles.cta}>
             <a href="/projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
