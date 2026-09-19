@@ -5,7 +5,7 @@ export const timeline: TimelineEntry[] = [
     year: '2025',
     category: 'internship',
     type: { pt: 'Estágio', en: 'Internship' },
-    role: { pt: 'Desenvolvedor de Software (Estagiário)', en: 'Software Developer (Intern)' },
+    role: { pt: 'Desenvolvedor de Software', en: 'Software Developer' },
     place: { pt: 'Metta Innovations', en: 'Metta Innovations' },
     description: {
       pt: [
@@ -26,7 +26,7 @@ export const timeline: TimelineEntry[] = [
     year: '2024',
     category: 'work',
     type: { pt: 'Trabalho', en: 'Work' },
-    role: { pt: 'Desenvolvedor de Software (Autônomo)', en: 'Software Developer (Freelance)' },
+    role: { pt: 'Desenvolvedor de Software', en: 'Software Developer' },
     place: { pt: 'Autônomo', en: 'Self-employed' },
     description: {
       pt: [
