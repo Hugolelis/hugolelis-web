@@ -1,11 +1,9 @@
 import { Activity, useEffect, useRef, useState } from 'react'
-import { AppProvider, useApp } from '../context/AppContext'
+import { useApp } from '../context/AppContext'
 import { useScrollY } from '../hooks/useScrollY'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { ScrollProgress } from './ScrollProgress'
 import styles from './Nav.module.css'
-import { ProjectsPage } from '../pages/ProjectsPage'
-import App from '../App'
 
 const SUB_PAGES = ['/projetos'] as const
 const SECTION_IDS = ['hero', 'sobre', 'trajetoria', 'certificados', 'linkedin'] as const
