@@ -27,22 +27,5 @@ export interface Certificate {
   file: string
 }
 
-export type TimelineCategory = 'milestone' | 'education' | 'work' | 'internship'
-
-export interface TimelineEntry {
-  year: string
-  category: TimelineCategory
-  type: LocalizedText
-  role: LocalizedText
-  place: LocalizedText
-  description: LocalizedList
-}
-
-export interface LinkedInPost {
-  number: string
-  title: LocalizedText
-  url: string
-}
-
 export type Theme = 'dark' | 'light'
 export type Lang = 'pt' | 'en'
