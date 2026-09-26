@@ -1,51 +1,11 @@
-import { useState, useEffect, useRef, lazy, Suspense } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Footer, Loading, Nav, Hero, About, CertificatesSection, LinkedInSection, Reveal } from './components'
+import { Footer, Loading, Nav, Hero, About, CertificatesSection, Reveal } from './components'
 import { useApp } from './context/AppContext'
 import styles from './components/BackToTop.module.css'
-import deferredStyles from './components/DeferredTimeline.module.css'
 import notFoundStyles from './components/NotFound.module.css'
 
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })))
-
-const Timeline = lazy(() => import('./components/Timeline').then(m => ({ default: m.Timeline })))
-
-function DeferredTimeline() {
-  const [shouldRender, setShouldRender] = useState(
-    () => typeof window !== 'undefined' && !('IntersectionObserver' in window),
-  )
-  const slotRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const slot = slotRef.current
-    if (!slot) return
-
-    if (!('IntersectionObserver' in window)) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return
-        setShouldRender(true)
-        observer.disconnect()
-      },
-      { rootMargin: '0px 0px -12% 0px', threshold: 0.01 },
-    )
-
-    observer.observe(slot)
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <div ref={slotRef} className={deferredStyles.slot} aria-busy={!shouldRender}>
-      {!shouldRender && <div className={deferredStyles.loading}><Loading /></div>}
-      {shouldRender && (
-        <Suspense fallback={<div className={deferredStyles.loading}><Loading /></div>}>
-          <Reveal delay={0.05}><Timeline /></Reveal>
-        </Suspense>
-      )}
-    </div>
-  )
-}
 
 export default function App() {
   const { lang } = useApp()
@@ -157,9 +117,7 @@ export default function App() {
         <main id="main-content">
           <Hero />
           <Reveal><About /></Reveal>
-          <DeferredTimeline />
           <Reveal><CertificatesSection /></Reveal>
-          <Reveal><LinkedInSection /></Reveal>
         </main>
         <button
           className={`${styles.backToTop} ${showBackToTop ? styles.backToTopVisible : ''}`}

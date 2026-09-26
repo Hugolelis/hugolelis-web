@@ -30,9 +30,6 @@ export const en: Translations = {
     viewCode: 'View code',
     viewDeploy: 'View deploy',
   },
-  timeline: {
-    title: 'Timeline',
-  },
   certificates: {
     title: 'Certificates',
     count: '{n} certificates',

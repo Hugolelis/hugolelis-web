@@ -28,9 +28,6 @@ export const pt = {
     viewCode: 'Ver código',
     viewDeploy: 'Ver deploy',
   },
-  timeline: {
-    title: 'Trajetória',
-  },
   certificates: {
     title: 'Certificados',
     count: '{n} certificados',
