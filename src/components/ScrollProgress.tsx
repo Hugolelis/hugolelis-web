@@ -13,18 +13,23 @@ export function ScrollProgress() {
       ticking.current = false
     }
 
-    const onScroll = () => {
+    const schedule = () => {
       if (ticking.current) return
       ticking.current = true
       requestAnimationFrame(update)
     }
 
     update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+
+    const resizeObserver = new ResizeObserver(schedule)
+    resizeObserver.observe(document.body)
+
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      resizeObserver.disconnect()
     }
   }, [])
 
