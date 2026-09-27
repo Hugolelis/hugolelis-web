@@ -7,9 +7,6 @@ export const pt = {
     social: 'REDES',
     email: 'E-mail',
   },
-  footer: {
-    role: 'Hugo | Desenvolvedor de Software',
-  },
   hero: {
     sub: 'Transformo problemas complexos em código limpo, performático e fácil de manter.',
     cta_projects: 'Ver projetos',

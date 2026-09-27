@@ -1,5 +1,5 @@
 .certificates {
-  padding: 6rem 0 7rem;
+  padding: 6rem 0 4rem;
   border-top: 1px solid var(--border);
   scroll-margin-top: 6rem;
   background: var(--bg);
@@ -116,7 +116,7 @@
 }
 
 @media (max-width: 900px) {
-  .certificates { padding: 4.5rem 0 5rem; }
+  .certificates { padding: 4.5rem 0 3rem; }
 }
 
 @media (max-width: 600px) {
