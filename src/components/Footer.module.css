@@ -1,37 +1,10 @@
 .footer {
-  padding: 1.75rem 2rem 2rem;
-  color: var(--muted);
-}
-
-.inner {
   display: flex;
-  max-width: 900px;
-  align-items: center;
   justify-content: center;
-  gap: 0.65rem;
-  margin: 0 auto;
+  padding: 1.25rem 1rem;
+  color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
   text-align: center;
-}
-
-.separator {
-  color: var(--border);
-}
-
-@media (max-width: 480px) {
-  .footer {
-    padding: 1.5rem 1rem;
-  }
-
-  .inner {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
-  }
-
-  .separator {
-    display: none;
-  }
 }
