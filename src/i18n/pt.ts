@@ -31,6 +31,11 @@ export const pt = {
     title: 'Certificados',
     count: '{n} certificados',
   },
+  timeline: {
+    title: 'Timeline',
+    count: '{n} experiências',
+    present: 'Presente',
+  },
 }
 
 export type Translations = typeof pt

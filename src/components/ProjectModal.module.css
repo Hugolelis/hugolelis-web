@@ -111,6 +111,12 @@
   color: var(--accent);
 }
 
+.tagGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .sep {
   color: var(--border);
   font-size: 0.8rem;

@@ -62,8 +62,10 @@ export function ProjectModal({ project, lang, translations, onClose }: Props) {
           <div className={styles.top}>
             <span className={styles.dot} style={{ background: TYPE_DOT[project.type] }} />
             <span className={styles.typeLabel}>{project.type}</span>
-            <span className={styles.sep}>/</span>
-            <span className={styles.tag}>{project.tag}</span>
+            <span className={styles.tagGroup}>
+              <span className={styles.sep}>/</span>
+              <span className={styles.tag}>{project.tag}</span>
+            </span>
             <span className={styles.year}>{project.year}</span>
           </div>
 
