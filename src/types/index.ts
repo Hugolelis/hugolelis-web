@@ -28,5 +28,14 @@ export interface Certificate {
   file: string
 }
 
+export interface TimelineEntry {
+  id: string
+  role: LocalizedText
+  org: LocalizedText
+  period: LocalizedText
+  current?: boolean
+  description: LocalizedList
+}
+
 export type Theme = 'dark' | 'light'
 export type Lang = 'pt' | 'en'

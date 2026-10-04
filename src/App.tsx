@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Footer, Loading, Nav, Hero, About, CertificatesSection, Reveal } from './components'
+import { Footer, Loading, Nav, Hero, About, CertificatesSection, Timeline, Reveal } from './components'
 import { useApp } from './context/AppContext'
 import styles from './components/BackToTop.module.css'
 import notFoundStyles from './components/NotFound.module.css'
@@ -118,6 +118,7 @@ export default function App() {
           <Hero />
           <Reveal><About /></Reveal>
           <Reveal><CertificatesSection /></Reveal>
+          <Timeline />
         </main>
         <button
           className={`${styles.backToTop} ${showBackToTop ? styles.backToTopVisible : ''}`}

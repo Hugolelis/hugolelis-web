@@ -33,4 +33,9 @@ export const en: Translations = {
     title: 'Certificates',
     count: '{n} certificates',
   },
+  timeline: {
+    title: 'Timeline',
+    count: '{n} experiences',
+    present: 'Present',
+  },
 }
