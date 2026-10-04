@@ -165,12 +165,6 @@ export function ProjectsPage() {
               )}
             </div>
           )}
-          <div className={styles.profileCta}>
-            <span>{lang === 'pt' ? 'Quer ver meu perfil?' : 'Want to see my profile?'}</span>
-            <a href="https://github.com/Hugolelis" target="_blank" rel="noreferrer">
-              {lang === 'pt' ? 'Acessar GitHub' : 'Visit GitHub'} <span aria-hidden="true">↗</span>
-            </a>
-          </div>
       </main>
     </div>
   )
