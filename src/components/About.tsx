@@ -1,4 +1,5 @@
 import { useApp } from '../context/AppContext'
+import { asciiPortraitDark, asciiPortraitLight } from '../data'
 import styles from './About.module.css'
 
 const interests = [
@@ -11,27 +12,30 @@ const interestsEn = [
 ]
 
 export function About() {
-  const { t, lang } = useApp()
+  const { t, lang, theme } = useApp()
   const interestTags = lang === 'pt' ? interests : interestsEn
+  const asciiPortrait = theme === 'dark' ? asciiPortraitDark : asciiPortraitLight
 
   return (
     <section id="sobre" className={styles.about}>
       <div className="container">
-        <div className={styles.header}>
-          <img
-            src="/avatar.jpg"
-            alt={lang === 'pt' ? 'Foto de Hugo de Lelis' : 'Photo of Hugo de Lelis'}
-            className={styles.avatar}
-            width={84}
-            height={84}
-          />
-          <h2 className={`section-title ${styles.title}`}>{t.about.title}</h2>
-        </div>
+        <div className={styles.layout}>
+          <div
+            className={styles.photoCard}
+            role="img"
+            aria-label={lang === 'pt' ? 'Foto de Hugo de Lelis' : 'Photo of Hugo de Lelis'}
+          >
+            <pre className={styles.ascii} aria-hidden="true">{asciiPortrait}</pre>
+          </div>
 
-        <div className={styles.body}>
-          <p>{t.about.p1}</p>
-          <p>{t.about.p2}</p>
-          <p>{t.about.p3}</p>
+          <div className={styles.content}>
+            <h2 className={`section-title ${styles.title}`}>{t.about.title}</h2>
+            <div className={styles.body}>
+              <p>{t.about.p1}</p>
+              <p>{t.about.p2}</p>
+              <p>{t.about.p3}</p>
+            </div>
+          </div>
         </div>
 
         <div className={styles.subsection}>
