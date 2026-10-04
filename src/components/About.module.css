@@ -5,31 +5,43 @@
   background: var(--surface);
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
+.layout {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 2.5rem;
+  align-items: start;
   margin-bottom: 1.75rem;
 }
 
-.avatar {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--border);
-  flex-shrink: 0;
+/* ── photo card: ASCII-art portrait, built from characters ── */
+.photoCard {
+  display: flex;
+  justify-content: center;
+}
+
+.ascii {
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 6px;
+  line-height: 1;
+  white-space: pre;
+  color: var(--text);
+  user-select: none;
+}
+
+/* ── text column ── */
+.content {
+  min-width: 0;
 }
 
 .title {
-  margin-bottom: 0;
+  margin-bottom: 1.5rem;
 }
 
 .body {
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
-  max-width: 720px;
   margin-bottom: 2.75rem;
 }
 
@@ -79,8 +91,17 @@
 
 @media (max-width: 900px) {
   .about { padding: 4.5rem 0 5rem; }
-  .header { gap: 1rem; margin-bottom: 1.4rem; }
-  .avatar { width: 64px; height: 64px; }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .ascii {
+    font-size: 5.2px;
+  }
+
+  .body { margin-bottom: 2.25rem; }
   .body p { font-size: 0.92rem; }
 }
 
