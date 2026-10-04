@@ -24,6 +24,8 @@ export const pt = {
     count: '{n} projetos',
     viewCode: 'Ver código',
     viewDeploy: 'Ver deploy',
+    viewDetails: 'Ver detalhes',
+    deployUnavailable: 'Sem deploy disponível',
   },
   certificates: {
     title: 'Certificados',
