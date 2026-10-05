@@ -37,13 +37,24 @@ export const timeline: TimelineEntry[] = [
     },
   },
   {
+    id: 'unifoa',
+    role: { pt: 'Sistemas de Informação', en: 'Information Systems' },
+    org: { pt: 'UniFoa', en: 'UniFoa' },
+    period: { pt: '2024', en: '2024' },
+    current: true,
+    description: {
+      pt: ['Graduação em Sistemas de Informação, com foco em arquitetura, algoritmos e desenvolvimento de software'],
+      en: ['Information Systems degree, focused on architecture, algorithms, and software development'],
+    },
+  },
+  {
     id: 'python2-inatel',
     role: { pt: 'Python 2.0', en: 'Python 2.0' },
     org: { pt: 'Inatel', en: 'Inatel' },
     period: { pt: '2023', en: '2023' },
     description: {
-      pt: ['Competição de programação em Python, meu primeiro contato com programação'],
-      en: ['Python programming competition, my first contact with programming'],
+      pt: ['Competição nacional de programação em Python, realizada na faculdade Inatel, meu primeiro contato com programação'],
+      en: ['National Python programming competition, held at Inatel college, my first contact with programming'],
     },
   },
 ]

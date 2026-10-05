@@ -2,9 +2,11 @@
   display: flex;
   justify-content: center;
   padding: 1.25rem 1rem;
+  background: var(--surface);
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
   text-align: center;
+  transition: background 0.3s;
 }

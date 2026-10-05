@@ -6,30 +6,39 @@ interface Props {
   entry: TimelineEntry
   lang: Lang
   present: string
-  reverse: boolean
 }
 
-export function TimelineItem({ entry, lang, present, reverse }: Props) {
-  const { ref, visible } = useScrollFade<HTMLDivElement>(0.15)
+export function TimelineItem({ entry, lang, present }: Props) {
+  const { ref, visible } = useScrollFade<HTMLDivElement>()
 
   return (
-    <div className={`${styles.item} ${reverse ? styles.itemReverse : ''}`}>
+    <div className={styles.item}>
       <div className={styles.dotCol}>
-        <span className={`${styles.dot} ${entry.current ? styles.dotCurrent : ''}`} />
+        <span
+          className={styles.line}
+          style={{ transform: `translateX(-50%) scaleY(${visible ? 1 : 0})` }}
+        />
+        <span
+          className={`${styles.dot} ${entry.current ? styles.dotCurrent : ''}`}
+          style={{
+            transform: visible ? 'scale(1)' : 'scale(0.4)',
+            opacity: visible ? 1 : 0,
+          }}
+        />
       </div>
       <div
         ref={ref}
         className={styles.card}
         style={{
           opacity: visible ? 1 : 0,
-          transform: visible ? 'translateY(0)' : 'translateY(18px)',
+          transform: visible ? 'translateY(0) scale(1)' : 'translateY(18px) scale(0.98)',
           transition: 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
       >
         <div className={styles.cardTop}>
           <span className={styles.period}>
             {entry.period[lang]}
-            {entry.current && <span className={styles.current}> — {present}</span>}
+            {entry.current && <span className={styles.current}> · {present}</span>}
           </span>
         </div>
         <h3 className={styles.role}>{entry.role[lang]}</h3>
