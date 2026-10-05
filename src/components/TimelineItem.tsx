@@ -6,13 +6,14 @@ interface Props {
   entry: TimelineEntry
   lang: Lang
   present: string
+  reverse: boolean
 }
 
-export function TimelineItem({ entry, lang, present }: Props) {
+export function TimelineItem({ entry, lang, present, reverse }: Props) {
   const { ref, visible } = useScrollFade<HTMLDivElement>()
 
   return (
-    <div className={styles.item}>
+    <div className={`${styles.item} ${reverse ? styles.itemReverse : ''}`}>
       <div className={styles.dotCol}>
         <span
           className={styles.line}

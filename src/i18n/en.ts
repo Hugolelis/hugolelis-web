@@ -26,7 +26,6 @@ export const en: Translations = {
     count: '{n} projects',
     viewCode: 'View code',
     viewDeploy: 'View deploy',
-    viewDetails: 'View details',
     deployUnavailable: 'No live deploy available',
   },
   certificates: {

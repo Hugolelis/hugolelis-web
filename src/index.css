@@ -37,9 +37,9 @@ select { font: inherit; }
   --term-hover: rgba(255,255,255,0.04);
   --term-comment: #4a5568;
   --term-muted: #555;
-  --term-key: #7dd3fc;
-  --term-quote: #a78bfa;
-  --term-value: #86efac;
+  --term-key: #84b3ca;
+  --term-quote: #9b8bc9;
+  --term-value: #89c29e;
   --term-punct: #888;
 
   /* project tags */
@@ -52,8 +52,6 @@ select { font: inherit; }
   --tag-default-bg: rgba(255,255,255,0.06);
   --tag-default-color: #aaa;
   --tag-default-border: rgba(255,255,255,0.1);
-
-  --spotlight-color: rgba(255,255,255,0.06);
 }
 
 [data-theme='light'] {
@@ -91,8 +89,6 @@ select { font: inherit; }
   --tag-default-bg: rgba(0,0,0,0.025);
   --tag-default-color: #858582;
   --tag-default-border: rgba(0,0,0,0.07);
-
-  --spotlight-color: rgba(0,0,0,0.045);
 }
 
 html { scroll-behavior: smooth; }
