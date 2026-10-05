@@ -15,13 +15,12 @@ export function Timeline() {
         </div>
 
         <div className={styles.list}>
-          {timeline.map((entry, i) => (
+          {timeline.map(entry => (
             <TimelineItem
               key={entry.id}
               entry={entry}
               lang={lang}
               present={t.timeline.present}
-              reverse={i % 2 === 1}
             />
           ))}
         </div>
