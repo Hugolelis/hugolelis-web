@@ -143,7 +143,7 @@ export function ProjectsPage() {
                   />
                 )
                 return isInitial ? (
-                  <div key={project.id} style={{ animation: `fadeUp 0.4s ease ${i * 0.06}s both` }}>
+                  <div key={project.id}>
                     {card}
                   </div>
                 ) : (
