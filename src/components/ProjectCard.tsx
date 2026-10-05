@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import type { Project } from '../types'
 import type { Lang } from '../types'
 import type { Translations } from '../i18n'
+import { ImageModal } from './ImageModal'
 import styles from './ProjectCard.module.css'
 
 interface Props {
@@ -22,13 +24,19 @@ export function ProjectCard({ project, lang, translations }: Props) {
   const title = project.title[lang]
   const description = project.description[lang]
   const t = TYPE_STYLE[project.type] ?? TYPE_STYLE.OTHER
+  const [showImage, setShowImage] = useState(false)
 
   return (
     <article className={styles.card}>
       {project.image ? (
-        <div className={styles.media}>
+        <button
+          type="button"
+          className={`${styles.media} ${styles.mediaButton}`}
+          onClick={() => setShowImage(true)}
+          aria-label={lang === 'pt' ? `Ampliar imagem de ${title}` : `Enlarge ${title} image`}
+        >
           <img src={project.image} alt="" className={styles.mediaImg} />
-        </div>
+        </button>
       ) : (
         <div className={`${styles.media} ${t.preview}`} aria-hidden="true">
           <span className={styles.typeBig}>{t.label}</span>
@@ -83,6 +91,9 @@ export function ProjectCard({ project, lang, translations }: Props) {
           )}
         </div>
       </div>
+      {showImage && project.image && (
+        <ImageModal src={project.image} alt={title} onClose={() => setShowImage(false)} />
+      )}
     </article>
   )
 }
