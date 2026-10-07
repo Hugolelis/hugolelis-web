@@ -14,6 +14,7 @@ const TYPE_DOT: Record<Project['type'], string> = {
   WEB: 'var(--tag-api-color)',
   LIB: 'var(--tag-default-color)',
   TOOL: 'var(--accent-term)',
+  STUDY: 'var(--tag-default-color)',
   OTHER: 'var(--tag-default-color)',
 }
 
@@ -143,7 +144,7 @@ export function ProjectsPage() {
                   />
                 )
                 return isInitial ? (
-                  <div key={project.id}>
+                  <div key={project.id} className={styles.item}>
                     {card}
                   </div>
                 ) : (

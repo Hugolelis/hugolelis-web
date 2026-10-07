@@ -21,6 +21,24 @@ export const projects: Project[] = [
     image: '/projects/qrcode.png',
   },
   {
+    id: 5,
+    title: { pt: 'LeetCodes Study', en: 'LeetCodes Study' },
+    tag: 'Python · DSA · Zero Deps',
+    type: 'STUDY',
+    description: {
+      pt: [
+        'Resoluções pessoais de problemas do LeetCode em Python, com foco em prática deliberada de padrões como two pointers, sliding window, hashing, DP e grafos',
+        'Cada problema isolado em seu próprio arquivo, testável individualmente, usando apenas a biblioteca padrão do Python',
+      ],
+      en: [
+        'Personal LeetCode solutions in Python, focused on deliberate practice of patterns like two pointers, sliding window, hashing, DP, and graph traversal',
+        'Each problem lives in its own file, runnable in isolation, with zero external dependencies — pure Python standard library',
+      ],
+    },
+    year: '2026',
+    link: 'https://github.com/Hugolelis/leetcodes-study',
+  },
+  {
     id: 1,
     title: { pt: 'Generator', en: 'Generator' },
     tag: 'Fastify · TypeScript · Prisma',
