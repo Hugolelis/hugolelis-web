@@ -8,7 +8,7 @@ import cvUrl from '/Hugolelis_cv.pdf'
 
 const email = 'hugodelelis05@gmail.com'
 
-interface TerminalField {
+interface Fact {
   key: string
   labelPt: string
   labelEn: string
@@ -16,12 +16,11 @@ interface TerminalField {
   valueEn: string
 }
 
-const fields: TerminalField[] = [
-  { key: 'name',     labelPt: 'nome',        labelEn: 'name',     valuePt: 'Hugo de Lelis',            valueEn: 'Hugo de Lelis' },
-  { key: 'stack',    labelPt: 'stack',       labelEn: 'stack',    valuePt: 'Python · Node.js/TS · C++', valueEn: 'Python · C++ · Node.js/TS' },
-  { key: 'database', labelPt: 'dados',       labelEn: 'data',     valuePt: 'PostgreSQL · MySQL',       valueEn: 'PostgreSQL · MySQL' },
-  { key: 'infra',    labelPt: 'infra',       labelEn: 'infra',    valuePt: 'Docker · Linux · Git',      valueEn: 'Docker · Linux · Git' },
-  { key: 'location', labelPt: 'localizacao', labelEn: 'location', valuePt: 'Brasil',                    valueEn: 'Brazil' },
+const facts: Fact[] = [
+  { key: 'stack',    labelPt: 'Stack',  labelEn: 'Stack',    valuePt: 'Python · Node.js/TS · C++', valueEn: 'Python · C++ · Node.js/TS' },
+  { key: 'data',     labelPt: 'Dados',  labelEn: 'Data',     valuePt: 'PostgreSQL · MySQL',        valueEn: 'PostgreSQL · MySQL' },
+  { key: 'infra',    labelPt: 'Infra',  labelEn: 'Infra',    valuePt: 'Docker · Linux · Git',       valueEn: 'Docker · Linux · Git' },
+  { key: 'location', labelPt: 'Local',  labelEn: 'Location', valuePt: 'Brasil',                     valueEn: 'Brazil' },
 ]
 
 function useTypewriter(text: string, speed = 28) {
@@ -44,17 +43,9 @@ function useTypewriter(text: string, speed = 28) {
 
 export function Hero() {
   const { t, lang, theme } = useApp()
-  const [animStep, setAnimStep] = useState(0)
   const [cvOpen, setCvOpen] = useState(false)
 
   const displayedTitle = useTypewriter('Hugo de Lelis', 30)
-
-  useEffect(() => {
-    const timers = fields.map((_, i) =>
-      setTimeout(() => setAnimStep(i + 1), i * 150 + 400)
-    )
-    return () => timers.forEach(clearTimeout)
-  }, [])
 
   return (
     <section className={styles.hero} id='hero'>
@@ -69,15 +60,15 @@ export function Hero() {
           hoverTrailAmount={5}
         />
       </div>
-      <div className={styles.layout}>
-
-        <div className={styles.leftCol}>
+      <div className={`container ${styles.layout}`}>
+        <div className={styles.left}>
           <h1 className={styles.title}>
             <span className={styles.accent}>{displayedTitle}</span>
             <span className={styles.cursor}>_</span>
           </h1>
           <p className={styles.role}>{lang === 'pt' ? 'Desenvolvedor de software' : 'Software developer'}</p>
           <p className={styles.sub}>{t.hero.sub}</p>
+
           <div className={styles.cta}>
             <a href="/projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
             <button
@@ -97,48 +88,18 @@ export function Hero() {
           </div>
         </div>
 
-        <div className={styles.terminal}>
-          <div className={styles.termBar}>
-            <span className={styles.termDot} style={{ background: '#ff5f57' }} />
-            <span className={styles.termDot} style={{ background: '#ffbd2e' }} />
-            <span className={styles.termDot} style={{ background: '#28c840' }} />
-            <span className={styles.termTitle}>portfolio.config</span>
-          </div>
-
-          <div className={styles.termBody}>
-            <p className={styles.termComment}>{lang === 'pt' ? '# configuração do portfólio' : '# portfolio config'}</p>
-            <p className={styles.termComment}>export default {'{'}</p>
-
-            {fields.map((field, i) => {
-              const label = lang === 'pt' ? field.labelPt : field.labelEn
-              const value = lang === 'pt' ? field.valuePt : field.valueEn
-
-              return (
-                <div
-                  key={field.key}
-                  className={`${styles.termLine} ${animStep > i ? styles.termLineVisible : ''}`}
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
-                  <span className={styles.termKey}>&nbsp;&nbsp;{label}</span>
-                  <span className={styles.termColon}>:</span>
-                  <span className={styles.termQuote}>"</span>
-                  <span className={styles.termValue}>{value}</span>
-                  <span className={styles.termQuote}>"</span>
-                  <span className={styles.termComma}>,</span>
-                </div>
-              )
-            })}
-
-            <p className={styles.termComment}>{'}'}</p>
-
-            <div className={styles.termFooter}>
-              <span className={styles.termSuccess}>
-                {lang === 'pt' ? 'configuração carregada' : 'config loaded'}
-              </span>
+        <div className={styles.facts}>
+          {facts.map((fact, i) => (
+            <div
+              key={fact.key}
+              className={styles.fact}
+              style={{ animationDelay: `${0.25 + i * 0.06}s` }}
+            >
+              <span className={styles.factLabel}>{lang === 'pt' ? fact.labelPt : fact.labelEn}</span>
+              <span className={styles.factValue}>{lang === 'pt' ? fact.valuePt : fact.valueEn}</span>
             </div>
-          </div>
+          ))}
         </div>
-
       </div>
 
       <div className={styles.scrollArrow} aria-hidden>
