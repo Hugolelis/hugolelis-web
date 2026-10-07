@@ -88,6 +88,7 @@
 .dotWeb   { background: var(--tag-api-color); }
 .dotLib   { background: var(--tag-default-color); }
 .dotTool  { background: var(--accent-term); }
+.dotStudy { background: var(--tag-default-color); }
 .dotOther { background: var(--tag-default-color); }
 
 .typeLabel {

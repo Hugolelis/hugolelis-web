@@ -17,6 +17,7 @@ const TYPE_STYLE: Record<Project['type'], { dot: string; preview: string; label:
   WEB:   { dot: styles.dotWeb,   preview: styles.previewDefault, label: 'WEB' },
   LIB:   { dot: styles.dotLib,   preview: styles.previewDefault, label: 'LIB' },
   TOOL:  { dot: styles.dotTool,  preview: styles.previewDefault, label: 'TOOL' },
+  STUDY: { dot: styles.dotStudy, preview: styles.previewDefault, label: 'STUDY' },
   OTHER: { dot: styles.dotOther, preview: styles.previewDefault, label: 'OTHER' },
 }
 
