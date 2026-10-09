@@ -8,7 +8,6 @@ export const pt = {
     email: 'E-mail',
   },
   hero: {
-    sub: 'Transformo problemas complexos em código limpo, performático e fácil de manter.',
     cta_projects: 'Ver projetos',
     cta_cv: 'Baixar currículo',
     cta_email: 'Enviar e-mail',
