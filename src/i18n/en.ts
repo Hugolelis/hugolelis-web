@@ -10,7 +10,6 @@ export const en: Translations = {
     email: 'Email',
   },
   hero: {
-    sub: 'I turn complex problems into clean, performant code that is easy to maintain.',
     cta_projects: 'View projects',
     cta_cv: 'Download CV',
     cta_email: 'Send email',
