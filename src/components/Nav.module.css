@@ -344,7 +344,23 @@
   }
 
   .links {
-    gap: 1rem;
+    gap: 0.85rem;
+  }
+
+  .links a {
+    font-size: 0.78rem;
+  }
+}
+
+/* six section links plus the CTA no longer fit comfortably below this —
+   switch to the hamburger menu well before things start wrapping */
+@media (max-width: 1040px) {
+  .links {
+    display: none;
+  }
+
+  .menuToggle {
+    display: grid;
   }
 }
 
@@ -357,24 +373,12 @@
     gap: 0.5rem;
   }
 
-  .links {
-    display: none;
-  }
-
-  .links a {
-    font-size: 0.68rem;
-  }
-
   .contactTrigger {
     font-size: 0.68rem;
   }
 
   .controls {
     gap: 0.35rem;
-  }
-
-  .menuToggle {
-    display: grid;
   }
 
   .toggle {
