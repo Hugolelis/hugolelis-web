@@ -8,21 +8,6 @@ import cvUrl from '/Hugolelis_cv.pdf'
 
 const email = 'hugodelelis05@gmail.com'
 
-interface Fact {
-  key: string
-  labelPt: string
-  labelEn: string
-  valuePt: string
-  valueEn: string
-}
-
-const facts: Fact[] = [
-  { key: 'stack',    labelPt: 'Stack',  labelEn: 'Stack',    valuePt: 'Python · Node.js/TS · C++', valueEn: 'Python · C++ · Node.js/TS' },
-  { key: 'data',     labelPt: 'Dados',  labelEn: 'Data',     valuePt: 'PostgreSQL · MySQL',        valueEn: 'PostgreSQL · MySQL' },
-  { key: 'infra',    labelPt: 'Infra',  labelEn: 'Infra',    valuePt: 'Docker · Linux · Git',       valueEn: 'Docker · Linux · Git' },
-  { key: 'location', labelPt: 'Local',  labelEn: 'Location', valuePt: 'Brasil',                     valueEn: 'Brazil' },
-]
-
 function useTypewriter(text: string, speed = 28) {
   const [displayed, setDisplayed] = useState('')
   useEffect(() => {
@@ -85,19 +70,6 @@ export function Hero() {
               <span className={styles.emailArrow} aria-hidden="true">↗</span>
             </a>
           </div>
-        </div>
-
-        <div className={styles.facts}>
-          {facts.map((fact, i) => (
-            <div
-              key={fact.key}
-              className={styles.fact}
-              style={{ animationDelay: `${0.25 + i * 0.06}s` }}
-            >
-              <span className={styles.factLabel}>{lang === 'pt' ? fact.labelPt : fact.labelEn}</span>
-              <span className={styles.factValue}>{lang === 'pt' ? fact.valuePt : fact.valueEn}</span>
-            </div>
-          ))}
         </div>
       </div>
 
