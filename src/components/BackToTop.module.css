@@ -5,10 +5,10 @@
   z-index: 50;
   width: 44px;
   height: 44px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--text);
   border-radius: 50%;
-  background: var(--surface);
-  color: var(--text);
+  background: var(--text);
+  color: var(--bg);
   font-size: 1.25rem;
   cursor: pointer;
   display: flex;
@@ -30,6 +30,7 @@
 .backToTopVisible:hover {
   opacity: 1;
   background: var(--accent);
+  border-color: var(--accent);
   color: var(--bg);
   transform: translateY(-2px) scale(1);
 }

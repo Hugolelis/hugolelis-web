@@ -32,7 +32,31 @@ export const pt = {
   timeline: {
     title: 'Timeline',
     count: '{n} experiências',
+    summary: 'Experiências, formação e marcos que me trouxeram até aqui. Role para o lado para ver a trajetória completa.',
     present: 'Presente',
+  },
+  stack: {
+    eyebrow: 'Stack & atividade',
+    title: 'Stack',
+    languages: 'Linguagens',
+    databases: 'Banco de dados',
+    infra: 'Infra',
+    heatmapLabel: 'Contribuições no GitHub no último ano',
+    heatmapPeriod: 'no último ano',
+    heatmapConnector: '',
+    unitOne: 'contribuição',
+    unitOther: 'contribuições',
+    noActivity: 'Nenhuma',
+    less: 'Menos',
+    more: 'Mais',
+    loading: 'Carregando atividade do GitHub…',
+    unavailable: 'Não foi possível carregar a atividade do GitHub agora.',
+    visitGithub: 'Ver no GitHub',
+  },
+  footer: {
+    tagline: 'Desenvolvedor de software',
+    linksLabel: 'Links do rodapé',
+    rights: 'Todos os direitos reservados.',
   },
 }
 

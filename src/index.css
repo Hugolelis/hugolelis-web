@@ -101,7 +101,10 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   transition: background 0.3s, color 0.3s;
-  overflow-x: hidden;
+  /* clip, not hidden: hidden still counts as a "scroll container" for CSS
+     purposes even though nothing visibly scrolls, which breaks
+     position:sticky for any descendant (e.g. Timeline's pinned track) */
+  overflow-x: clip;
 }
 
 .container {
