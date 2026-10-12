@@ -22,7 +22,7 @@ export const timeline: TimelineEntry[] = [
   {
     id: 'freelancer',
     role: { pt: 'Desenvolvedor de Software', en: 'Software Developer' },
-    org: { pt: 'Freelancer · Autônomo', en: 'Freelancer · Self-employed' },
+    org: { pt: 'Freelancer', en: 'Freelancer' },
     period: { pt: 'Set 2024', en: 'Sep 2024' },
     current: true,
     description: {

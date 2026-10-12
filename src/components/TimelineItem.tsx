@@ -23,8 +23,8 @@ export function TimelineItem({ entry, lang, present, above, column }: Props) {
         style={{ gridColumn: column }}
       >
         <span className={styles.period}>{entry.period[lang]}</span>
-        <h3 className={styles.role}>{entry.role[lang]}</h3>
-        <span className={styles.org}>{entry.org[lang]}</span>
+        <h3 className={styles.org}>{entry.org[lang]}</h3>
+        <span className={styles.role}>{entry.role[lang]}</span>
         <ul className={styles.desc}>
           {entry.description[lang].map((line, i) => (
             <li key={i}>{line}</li>

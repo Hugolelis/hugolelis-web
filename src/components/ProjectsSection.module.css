@@ -1,0 +1,67 @@
+.projects {
+  padding: 6rem 0 4rem;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 6rem;
+  background: var(--surface);
+}
+
+.grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+/* ── sticky sidebar: stays put while .list scrolls past it ── */
+
+.sidebar {
+  position: sticky;
+  top: 6rem;
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.count {
+  display: block;
+  margin-top: 1.25rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.summary {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-bottom: 0.25rem;
+}
+
+/* ── list: the part that actually scrolls ── */
+
+.list {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .projects { padding: 4.5rem 0 3rem; }
+  .grid { flex-direction: column; gap: 2rem; }
+  .sidebar {
+    position: static;
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}

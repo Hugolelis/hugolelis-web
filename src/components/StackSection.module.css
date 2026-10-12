@@ -116,9 +116,17 @@
 
 @media (max-width: 900px) {
   .stack { padding: 4.5rem 0 3rem; }
+
+  /* below the site's 900px container width, the card is no longer wide
+     enough to lay out all 52 weeks without the heatmap's own horizontal
+     scroller kicking in — rather than show a panel that needs its own
+     scroll to be read, the panel just doesn't show here */
+  .heatmapCard,
+  .heatmapStatus {
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {
-  .heatmapCard { padding: 1.1rem; }
   .items { gap: 1rem 1.5rem; }
 }
