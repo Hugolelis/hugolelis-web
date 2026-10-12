@@ -13,14 +13,6 @@ const clamp = (value: number, min: number, max: number) => Math.min(max, Math.ma
 // a slower, more deliberate reveal instead of rushing through it.
 const SCROLL_EASE = 1.6
 
-// Below this width the columns narrow enough that text wraps onto several
-// more lines, which makes the track far taller than one screen — pinning
-// it then means a lot of scrolling just to watch tall cards crawl sideways.
-// Below the breakpoint the pin is skipped entirely and Timeline.module.css
-// falls back to a plain swipeable row instead (position: static, native
-// overflow-x scroll).
-const PIN_MIN_WIDTH = 760
-
 // Converts vertical scroll into horizontal movement. The section is grown
 // tall enough to hold the scroll distance the track needs; CSS `position:
 // sticky` on the track's wrapper (see Timeline.module.css) does the actual
@@ -57,16 +49,14 @@ export function useHorizontalPin<TSection extends HTMLElement, TTrack extends HT
     }
 
     const measure = () => {
-      if (window.innerWidth < PIN_MIN_WIDTH) {
-        maxTranslate = 0
-        section.style.height = ''
-        update()
-        return
-      }
-
-      // Width available to the track itself, not the full viewport — it
-      // shares the row with a sidebar, so it's narrower than window.innerWidth.
-      const availableW = track.parentElement?.clientWidth ?? window.innerWidth
+      // Width available to the track: the section's own box. Reading this
+      // off .trackArea (a flex child sized by shrinking around a grid with
+      // width:max-content) resolved inconsistently in Firefox at narrower
+      // widths — sometimes reporting the track's full content width back,
+      // which zeroed maxTranslate and silently disabled the whole pin.
+      // The section itself is a plain block box, not involved in any of
+      // that flex/grid sizing, so its width is unambiguous everywhere.
+      const availableW = section.clientWidth
       const viewportH = window.innerHeight
       maxTranslate = Math.max(0, track.scrollWidth - availableW)
       section.style.height = maxTranslate > 0 ? `${viewportH + maxTranslate * SCROLL_EASE}px` : ''

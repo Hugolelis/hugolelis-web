@@ -200,26 +200,12 @@
 }
 
 @media (max-width: 760px) {
-  /* the scroll-jack (see useHorizontalPin, which bails out below this same
-     width) stops making sense once cards are tall enough to need several
-     screens of scroll just to crawl past one card — fall back to a plain
-     swipeable row instead: no pin, no JS-driven transform, just native
-     horizontal scroll */
-  .pin {
-    position: static;
-    height: auto;
-    min-height: 0;
-  }
-
-  .trackArea {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 0.5rem;
-  }
-
+  /* same pin + horizontal-scroll-jack mechanism as desktop (see
+     useHorizontalPin) — just narrower columns and tighter spacing so it
+     still reads well on a phone-width track */
   .track {
-    grid-auto-columns: min(78vw, 300px);
-    column-gap: 3rem;
+    grid-auto-columns: min(80vw, 300px);
+    column-gap: 2.5rem;
     padding: 1rem 1.5rem;
   }
   .intro { padding-right: 1rem; }
