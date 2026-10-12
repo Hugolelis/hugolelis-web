@@ -20,9 +20,9 @@ export function Footer() {
           <a href={onSubPage ? '/#hero' : '#hero'}>{t.nav.home}</a>
           <a href={onSubPage ? '/#sobre' : '#sobre'}>{t.about.title}</a>
           <a href={onSubPage ? '/#stack' : '#stack'}>{t.stack.title}</a>
+          <a href={onSubPage ? '/#projetos' : '#projetos'}>{t.nav.projects}</a>
           <a href={onSubPage ? '/#timeline' : '#timeline'}>{t.timeline.title}</a>
           <a href={onSubPage ? '/#certificados' : '#certificados'}>{t.certificates.title}</a>
-          <a href="/projetos">{t.nav.projects}</a>
         </nav>
 
         <div className={styles.social}>

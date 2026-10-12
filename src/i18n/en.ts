@@ -23,6 +23,7 @@ export const en: Translations = {
   projects: {
     title: 'Projects',
     count: '{n} projects',
+    summary: 'Tools, APIs, and studies I\'ve built to solve real problems, from scratch to deploy.',
     viewCode: 'View code',
     viewDeploy: 'View deploy',
     deployUnavailable: 'No live deploy available',

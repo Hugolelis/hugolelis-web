@@ -78,9 +78,9 @@ export function Nav() {
             <a href={onSubPage ? '/#hero' : '#hero'} className={homeActive ? styles.active : undefined} aria-current={homeActive ? 'page' : undefined}>{t.nav.home}</a>
             <a href={onSubPage ? '/#stack' : '#stack'}>{t.stack.title}</a>
             <a href={onSubPage ? '/#sobre' : '#sobre'}>{t.nav.about}</a>
+            <a href={onSubPage ? '/#projetos' : '#projetos'}>{t.nav.projects}</a>
             <a href={onSubPage ? '/#timeline' : '#timeline'}>{t.timeline.title}</a>
             <a href={onSubPage ? '/#certificados' : '#certificados'}>{t.certificates.title}</a>
-            <a href="/projetos" className={`${styles.projectsLink} ${currentPath === '/projetos' ? styles.active : ''}`} aria-current={currentPath === '/projetos' ? 'page' : undefined}>{t.nav.projects}</a>
             <button className={styles.contactTrigger} onClick={() => setContactOpen(true)}>
               {t.nav.media}
             </button>
@@ -130,11 +130,11 @@ export function Nav() {
       {menuOpen && (
         <div ref={mobileMenuRef} id="mobile-navigation" className={styles.mobileMenu}>
           <a href={onSubPage ? '/#hero' : '#hero'} className={homeActive ? styles.active : undefined} aria-current={homeActive ? 'page' : undefined} onClick={closeMenu}>{t.nav.home}</a>
-          <a href={onSubPage ? '/#sobre' : '#sobre'} onClick={closeMenu}>{t.nav.about}</a>
           <a href={onSubPage ? '/#stack' : '#stack'} onClick={closeMenu}>{t.stack.title}</a>
+          <a href={onSubPage ? '/#sobre' : '#sobre'} onClick={closeMenu}>{t.nav.about}</a>
+          <a href={onSubPage ? '/#projetos' : '#projetos'} onClick={closeMenu}>{t.nav.projects}</a>
           <a href={onSubPage ? '/#timeline' : '#timeline'} onClick={closeMenu}>{t.timeline.title}</a>
           <a href={onSubPage ? '/#certificados' : '#certificados'} onClick={closeMenu}>{t.certificates.title}</a>
-          <a href="/projetos" className={`${styles.projectsLink} ${currentPath === '/projetos' ? styles.active : ''}`} aria-current={currentPath === '/projetos' ? 'page' : undefined} onClick={closeMenu}>{t.nav.projects}</a>
           <button
             className={styles.mobileContactTrigger}
             onClick={() => {

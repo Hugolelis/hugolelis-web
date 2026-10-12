@@ -21,6 +21,7 @@ export const pt = {
   projects: {
     title: 'Projetos',
     count: '{n} projetos',
+    summary: 'Ferramentas, APIs e estudos que construí pra resolver problemas reais, do zero ao deploy.',
     viewCode: 'Ver código',
     viewDeploy: 'Ver deploy',
     deployUnavailable: 'Sem deploy disponível',

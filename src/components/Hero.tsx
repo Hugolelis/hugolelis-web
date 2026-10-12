@@ -54,7 +54,7 @@ export function Hero() {
           <p className={styles.role}>{lang === 'pt' ? 'Desenvolvedor de software' : 'Software developer'}</p>
 
           <div className={styles.cta}>
-            <a href="/projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
+            <a href="#projetos" className="btn btn--primary">{t.hero.cta_projects}</a>
             <button
               className="btn btn--ghost"
               onClick={() => setCvOpen(true)}
