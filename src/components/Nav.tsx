@@ -1,10 +1,12 @@
 import { Activity, useEffect, useRef, useState } from 'react'
 import { useApp } from '../context/AppContext'
+import { useActiveSection } from '../hooks/useActiveSection'
 import { useScrollY } from '../hooks/useScrollY'
 import { ScrollProgress } from './ScrollProgress'
 import styles from './Nav.module.css'
 
 const SUB_PAGES = ['/projetos'] as const
+const SECTION_IDS = ['hero', 'stack', 'sobre', 'projetos', 'timeline', 'certificados'] as const
 
 export function Nav() {
   const { t, theme, toggleTheme, lang, toggleLang } = useApp()
@@ -15,7 +17,9 @@ export function Nav() {
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const currentPath = window.location.pathname
   const onSubPage = SUB_PAGES.some(page => currentPath === page)
-  const homeActive = currentPath === '/'
+  const isHomeRoute = currentPath === '/'
+  const activeSection = useActiveSection(SECTION_IDS, isHomeRoute)
+  const linkActive = (id: string) => (isHomeRoute && activeSection === id ? styles.active : undefined)
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -75,12 +79,12 @@ export function Nav() {
 
         <div className={styles.right}>
           <div className={styles.links}>
-            <a href={onSubPage ? '/#hero' : '#hero'} className={homeActive ? styles.active : undefined} aria-current={homeActive ? 'page' : undefined}>{t.nav.home}</a>
-            <a href={onSubPage ? '/#stack' : '#stack'}>{t.stack.title}</a>
-            <a href={onSubPage ? '/#sobre' : '#sobre'}>{t.nav.about}</a>
-            <a href={onSubPage ? '/#projetos' : '#projetos'}>{t.nav.projects}</a>
-            <a href={onSubPage ? '/#timeline' : '#timeline'}>{t.timeline.title}</a>
-            <a href={onSubPage ? '/#certificados' : '#certificados'}>{t.certificates.title}</a>
+            <a href={onSubPage ? '/#hero' : '#hero'} className={linkActive('hero')} aria-current={linkActive('hero') ? 'page' : undefined}>{t.nav.home}</a>
+            <a href={onSubPage ? '/#stack' : '#stack'} className={linkActive('stack')} aria-current={linkActive('stack') ? 'page' : undefined}>{t.stack.title}</a>
+            <a href={onSubPage ? '/#sobre' : '#sobre'} className={linkActive('sobre')} aria-current={linkActive('sobre') ? 'page' : undefined}>{t.nav.about}</a>
+            <a href={onSubPage ? '/#projetos' : '#projetos'} className={linkActive('projetos')} aria-current={linkActive('projetos') ? 'page' : undefined}>{t.nav.projects}</a>
+            <a href={onSubPage ? '/#timeline' : '#timeline'} className={linkActive('timeline')} aria-current={linkActive('timeline') ? 'page' : undefined}>{t.timeline.title}</a>
+            <a href={onSubPage ? '/#certificados' : '#certificados'} className={linkActive('certificados')} aria-current={linkActive('certificados') ? 'page' : undefined}>{t.certificates.title}</a>
             <button className={styles.contactTrigger} onClick={() => setContactOpen(true)}>
               {t.nav.media}
             </button>
@@ -129,12 +133,12 @@ export function Nav() {
 
       {menuOpen && (
         <div ref={mobileMenuRef} id="mobile-navigation" className={styles.mobileMenu}>
-          <a href={onSubPage ? '/#hero' : '#hero'} className={homeActive ? styles.active : undefined} aria-current={homeActive ? 'page' : undefined} onClick={closeMenu}>{t.nav.home}</a>
-          <a href={onSubPage ? '/#stack' : '#stack'} onClick={closeMenu}>{t.stack.title}</a>
-          <a href={onSubPage ? '/#sobre' : '#sobre'} onClick={closeMenu}>{t.nav.about}</a>
-          <a href={onSubPage ? '/#projetos' : '#projetos'} onClick={closeMenu}>{t.nav.projects}</a>
-          <a href={onSubPage ? '/#timeline' : '#timeline'} onClick={closeMenu}>{t.timeline.title}</a>
-          <a href={onSubPage ? '/#certificados' : '#certificados'} onClick={closeMenu}>{t.certificates.title}</a>
+          <a href={onSubPage ? '/#hero' : '#hero'} className={linkActive('hero')} aria-current={linkActive('hero') ? 'page' : undefined} onClick={closeMenu}>{t.nav.home}</a>
+          <a href={onSubPage ? '/#stack' : '#stack'} className={linkActive('stack')} aria-current={linkActive('stack') ? 'page' : undefined} onClick={closeMenu}>{t.stack.title}</a>
+          <a href={onSubPage ? '/#sobre' : '#sobre'} className={linkActive('sobre')} aria-current={linkActive('sobre') ? 'page' : undefined} onClick={closeMenu}>{t.nav.about}</a>
+          <a href={onSubPage ? '/#projetos' : '#projetos'} className={linkActive('projetos')} aria-current={linkActive('projetos') ? 'page' : undefined} onClick={closeMenu}>{t.nav.projects}</a>
+          <a href={onSubPage ? '/#timeline' : '#timeline'} className={linkActive('timeline')} aria-current={linkActive('timeline') ? 'page' : undefined} onClick={closeMenu}>{t.timeline.title}</a>
+          <a href={onSubPage ? '/#certificados' : '#certificados'} className={linkActive('certificados')} aria-current={linkActive('certificados') ? 'page' : undefined} onClick={closeMenu}>{t.certificates.title}</a>
           <button
             className={styles.mobileContactTrigger}
             onClick={() => {
