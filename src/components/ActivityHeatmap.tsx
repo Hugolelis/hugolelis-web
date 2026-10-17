@@ -84,7 +84,7 @@ type Tip = {
   primary: string
   secondary: string
   value: number
-  anchor: HTMLElement
+  index: number
 }
 /** How the tooltip text changes: rolls up or down with the count, crossfades on a tie, or appears at once when the bubble opens. */
 type Change = 1 | -1 | 0 | 'instant'
@@ -480,7 +480,7 @@ export function ActivityHeatmap({
     tipY = useMotionValue(0),
     tipWidth = useMotionValue<number | 'auto'>('auto')
 
-  function contentFor(index: number, anchor: HTMLElement): Tip {
+  function contentFor(index: number): Tip {
     const count = model.counts[index]
     const date = new Date(model.start + index * DAY)
     return {
@@ -490,7 +490,7 @@ export function ActivityHeatmap({
         : `${noActivityWord} ${unit.other}`,
       secondary: formats.short.format(date),
       value: count,
-      anchor,
+      index,
     }
   }
   const [a, b, c] = model.thresholds
@@ -532,37 +532,52 @@ export function ActivityHeatmap({
 
   useLayoutEffect(() => {
     const root = rootRef.current,
-      measure = measureRef.current
-    if (!tip || !root || !measure) return
-    const place = (glide: boolean) => {
+      measure = measureRef.current,
+      grid = gridRef.current
+    if (!tip || !root || !measure || !grid) return
+    const place = () => {
+      // Re-find the cell by index rather than trusting a DOM reference
+      // captured back when the pointer entered it — that reference can
+      // outlive the cell's real position (e.g. a re-render elsewhere in
+      // the grid recreating cells around it), which desyncs the bubble
+      // from whichever cell its text actually describes.
+      const anchor = grid.querySelector<HTMLElement>(
+        `[data-index="${tip.index}"]`,
+      )
+      if (!anchor) return
       const box = root.getBoundingClientRect(),
-        cell = tip.anchor.getBoundingClientRect()
-      const width = Math.ceil(measure.getBoundingClientRect().width)
+        cell = anchor.getBoundingClientRect()
+      // .tipBody is border-box with 0.65rem of horizontal padding (see
+      // ActivityHeatmap.module.css) — the measured span itself has none,
+      // so without adding it back here the box is set to exactly the
+      // text's own width, leaving no room for the padding and clipping
+      // the text against its own edge.
+      const tipPaddingX = 21
+      const width = Math.ceil(measure.getBoundingClientRect().width) + tipPaddingX
       const half = width / 2 + 13
       const x = Math.min(
         Math.max(cell.left - box.left + cell.width / 2, half + 2),
         box.width - half - 2,
       )
       const y = cell.top - box.top
-      if (glide) {
-        animate(tipX, x, motionTokens.spring.snappy)
-        animate(tipY, y, motionTokens.spring.snappy)
-        animate(tipWidth, width, motionTokens.spring.morph)
-      } else {
-        tipX.jump(x)
-        tipY.jump(y)
-        tipWidth.jump(width)
-      }
+      // Jump rather than glide: a spring retargeted on every cell the
+      // pointer crosses can fall behind a fast sweep across the grid,
+      // landing the bubble over a cell it no longer describes. Snapping
+      // keeps it glued to the right cell every time; the bubble's own
+      // opacity/scale transition (see the JSX below) still gives the
+      // open/close its motion.
+      tipX.jump(x)
+      tipY.jump(y)
+      tipWidth.jump(width)
     }
-    place(open && openRef.current && !reduced)
+    place()
     openRef.current = open
     if (!open) return
     // The grid scrolls sideways on narrow screens; the bubble stays pinned to its cell while it does.
     const scroller = scrollerRef.current
-    const follow = () => place(false)
-    scroller?.addEventListener('scroll', follow, { passive: true })
-    return () => scroller?.removeEventListener('scroll', follow)
-  }, [tip, open, reduced, tipX, tipY, tipWidth])
+    scroller?.addEventListener('scroll', place, { passive: true })
+    return () => scroller?.removeEventListener('scroll', place)
+  }, [tip, open, tipX, tipY, tipWidth])
 
   const indexOf = (element: Element | null) => {
     const cell = element?.closest<HTMLElement>('[data-index]')
@@ -577,21 +592,21 @@ export function ActivityHeatmap({
 
   function onGridPointerOver(event: PointerEvent<HTMLDivElement>) {
     const hit = indexOf(event.target as Element)
-    if (hit) show(contentFor(hit.index, hit.cell))
+    if (hit) show(contentFor(hit.index))
   }
   function onGridPointerLeave(event: PointerEvent<HTMLDivElement>) {
     // A keyboard user keeps their bubble on the focused day. A tap focuses its day too, so the bubble stays until focus moves on;
     // where a tap does not focus, it lingers long enough to read.
     const focused = indexOf(document.activeElement)
     if (focused?.cell.matches(':focus-visible'))
-      show(contentFor(focused.index, focused.cell))
+      show(contentFor(focused.index))
     else hideSoon(event.pointerType === 'touch' ? 2400 : 110)
   }
   function onGridFocus(event: FocusEvent<HTMLDivElement>) {
     const hit = indexOf(event.target)
     if (!hit) return
     setFocusIndex(hit.index)
-    show(contentFor(hit.index, hit.cell))
+    show(contentFor(hit.index))
   }
   function onGridBlur(event: FocusEvent<HTMLDivElement>) {
     if (!gridRef.current?.contains(event.relatedTarget as Node | null))
