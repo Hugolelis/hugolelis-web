@@ -1,4 +1,5 @@
-import type { TimelineEntry, Lang } from '../types'
+import type { TimelineEntry, Lang, TimelineCategory } from '../types'
+import { BriefcaseIcon, GraduationCapIcon, TrophyIcon } from './icons'
 import styles from './Timeline.module.css'
 
 interface Props {
@@ -9,15 +10,24 @@ interface Props {
   column: number
 }
 
+const categoryIcon: Record<TimelineCategory, typeof BriefcaseIcon> = {
+  work: BriefcaseIcon,
+  education: GraduationCapIcon,
+  competition: TrophyIcon,
+}
+
 export function TimelineItem({ entry, lang, present, above, column }: Props) {
   const ended = lang === 'pt' ? 'Experiência encerrada' : 'Experience ended'
+  const CategoryIcon = categoryIcon[entry.category]
 
   return (
     <>
       <span
         className={`${styles.dot} ${entry.current ? styles.dotCurrent : ''}`}
         style={{ gridColumn: column }}
-      />
+      >
+        <CategoryIcon size={13} />
+      </span>
       <div
         className={`${styles.text} ${above ? styles.textAbove : styles.textBelow}`}
         style={{ gridColumn: column }}

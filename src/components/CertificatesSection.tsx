@@ -6,7 +6,14 @@ import { useShowMore } from '../hooks/useShowMore'
 import { getIssuerBadge } from '../utils/issuerBadge'
 import { Expandable } from './Expandable'
 import { PdfModal } from './PdfModal'
+import { GoogleIcon, UdemyIcon } from './icons'
+import type { CertificateIcon } from '../types'
 import styles from './CertificatesSection.module.css'
+
+const certIcon: Record<CertificateIcon, typeof GoogleIcon> = {
+  google: GoogleIcon,
+  udemy: UdemyIcon,
+}
 
 const INITIAL_COUNT = 4
 
@@ -25,6 +32,7 @@ export function CertificatesSection() {
         <div className={styles.grid}>
           {certificates.map((cert, i) => {
             const badge = getIssuerBadge(cert.issuer)
+            const Icon = cert.icon ? certIcon[cert.icon] : null
             const isInitial = i < INITIAL_COUNT
             const card = (
               <button
@@ -33,7 +41,7 @@ export function CertificatesSection() {
                 onClick={() => setSelected(cert)}
               >
                 <div className={styles.icon} aria-hidden="true" title={badge.org}>
-                  {badge.initials}
+                  {Icon ? <Icon size={18} /> : badge.initials}
                 </div>
                 <div className={styles.info}>
                   <span className={styles.name}>{cert.name}</span>

@@ -29,7 +29,14 @@ export function ProjectModal({ project, lang, translations, onClose }: Props) {
   }, [onClose])
 
   return createPortal(
-    <div className={styles.overlay} onClick={onClose} role="presentation">
+    <div
+      className={styles.overlay}
+      onClick={(e) => {
+        e.stopPropagation()
+        onClose()
+      }}
+      role="presentation"
+    >
       <div
         className={styles.modal}
         onClick={(e) => e.stopPropagation()}

@@ -114,17 +114,22 @@
   justify-self: center;
   align-self: center;
   z-index: 1;
-  width: 10px;
-  height: 10px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   background: var(--surface);
   border: 2px solid var(--muted);
-  transition: border-color 0.3s, background 0.3s;
+  color: var(--muted);
+  transition: border-color 0.3s, background 0.3s, color 0.3s;
 }
 
 .dotCurrent {
   background: var(--accent);
   border-color: var(--accent);
+  color: var(--bg);
 }
 
 .text {

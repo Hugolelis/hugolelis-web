@@ -20,12 +20,17 @@ export interface Project {
   image?: string
 }
 
+export type CertificateIcon = 'google' | 'udemy'
+
 export interface Certificate {
   name: string
   issuer: string
   year: string
   file: string
+  icon?: CertificateIcon
 }
+
+export type TimelineCategory = 'work' | 'education' | 'competition'
 
 export interface TimelineEntry {
   id: string
@@ -34,6 +39,7 @@ export interface TimelineEntry {
   period: LocalizedText
   current?: boolean
   description: LocalizedList
+  category: TimelineCategory
 }
 
 export type Theme = 'dark' | 'light'
