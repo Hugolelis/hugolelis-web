@@ -30,15 +30,15 @@
 
 ## About
 
-Most portfolio sites are static one-pagers with a resume bolted on. This one is built as a small React application on purpose — full bilingual support (PT/EN) with auto-detection, persisted theme preference, and a terminal-inspired hero meant to signal the kind of engineer behind it before a recruiter reads a single word.
+Most portfolio sites are static one-pagers with a resume bolted on. This one is built as a small React application on purpose: full bilingual support (PT/EN) with auto-detection, persisted theme preference, and a terminal-inspired hero meant to signal the kind of engineer behind it before a recruiter reads a single word.
 
-<!-- Adjust this paragraph to your actual motivation — this is a draft based on the feature list, not your own words. -->
+<!-- Adjust this paragraph to your actual motivation. This is a draft based on the feature list, not your own words. -->
 
 ---
 
 ## Demo
 
-<!-- Add the live link and, ideally, a screenshot or short GIF of the terminal hero animation — this is a web project, so Demo isn't optional the way it is for an API. -->
+<!-- Add the live link and, ideally, a screenshot or short GIF of the terminal hero animation. This is a web project, so Demo isn't optional the way it is for an API. -->
 **Live:** [your-portfolio-url](#)
 
 ---
@@ -107,14 +107,14 @@ src/
 └── main.tsx                  # Entry point
 ```
 
-**Why this shape:** CSS Modules over Tailwind/styled-components keeps styling scoped per component with zero runtime cost — no CSS-in-JS overhead for a site that's mostly static content. Theme and language live in React Context rather than a state library, since both are small, low-frequency, app-wide values — a full store would be overkill. Active-section highlighting in the nav uses `IntersectionObserver` (`useActiveSection`) instead of a router, since the whole site is a single scrollable page rather than distinct routed views.
+**Why this shape:** CSS Modules over Tailwind/styled-components keeps styling scoped per component with zero runtime cost, with no CSS-in-JS overhead for a site that's mostly static content. Theme and language live in React Context rather than a state library, since both are small, low-frequency, app-wide values. A full store would be overkill. Active-section highlighting in the nav uses `IntersectionObserver` (`useActiveSection`) instead of a router, since the whole site is a single scrollable page rather than distinct routed views.
 
 **Known limitations:**
 - No automated tests yet.
-- Translations live as hand-written objects per language (`i18n/pt.ts`, `i18n/en.ts`) rather than an external i18n framework — fine at two languages, would need a real library beyond that.
+- Translations live as hand-written objects per language (`i18n/pt.ts`, `i18n/en.ts`) rather than an external i18n framework: fine at two languages, would need a real library beyond that.
 - Certificate PDFs render inline via modal; very large files may be slow to load on mobile.
 
-<!-- Adjust "Why this shape" and "Known limitations" to match your actual reasoning — draft based on the code structure. -->
+<!-- Adjust "Why this shape" and "Known limitations" to match your actual reasoning, draft based on the code structure. -->
 
 ---
 
@@ -166,10 +166,10 @@ The project is configured for **Vercel** deployment with SPA rewrites via `verce
 
 Distributed under the **MIT License**. See [LICENSE](LICENSE) for more information.
 
-<!-- Confirm this repo actually has a LICENSE file with MIT — added to match your other repos, remove/adjust if it's not really open-sourced under MIT. -->
+<!-- Confirm this repo actually has a LICENSE file with MIT. Added to match your other repos, remove/adjust if it's not really open-sourced under MIT. -->
 
 ---
 
 ## Author
 
-**Hugo** — [GitHub](https://github.com/Hugolelis)
+[Hugolelis](https://github.com/Hugolelis)
