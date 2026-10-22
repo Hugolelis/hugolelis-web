@@ -12,7 +12,7 @@ export interface Project {
   id: number
   title: LocalizedText
   tag: string
-  type: 'API' | 'CLI' | 'WEB' | 'LIB' | 'TOOL' | 'STUDY' | 'OTHER'
+  type: 'API' | 'CLI' | 'WEB' | 'LIB' | 'TOOL' | 'STUDY' | 'AI' | 'OTHER'
   description: LocalizedList
   year: string
   link?: string

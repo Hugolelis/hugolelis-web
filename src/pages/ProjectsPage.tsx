@@ -15,6 +15,7 @@ const TYPE_DOT: Record<Project['type'], string> = {
   LIB: 'var(--tag-default-color)',
   TOOL: 'var(--accent-term)',
   STUDY: 'var(--tag-default-color)',
+  AI: 'var(--tag-ai-color)',
   OTHER: 'var(--tag-default-color)',
 }
 

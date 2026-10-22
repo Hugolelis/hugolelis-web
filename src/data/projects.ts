@@ -2,6 +2,25 @@ import type { Project } from '../types'
 
 export const projects: Project[] = [
   {
+    id: 6,
+    title: { pt: 'Person Detector', en: 'Person Detector' },
+    tag: 'Python · YOLOv8 · PySide6 · OpenCV',
+    type: 'AI',
+    description: {
+      pt: [
+        'Conta pessoas dentro de uma zona demarcada em vídeo ou webcam, com YOLOv8 pra detecção e uma máquina de estados com debounce que transforma contagens instáveis em eventos de violação',
+        'Vista de profundidade com Depth Anything V2 destaca a pessoa mais próxima, cada violação vira um clipe anotado e um gráfico acompanha a ocupação da zona — tudo rodando em CPU, sem GPU',
+      ],
+      en: [
+        'Counts people inside a user-defined zone in video or webcam feed, using YOLOv8 for detection and a debounced state machine that turns flickering counts into discrete violation events',
+        'Depth view with Depth Anything V2 highlights the closest person, each violation is saved as an annotated clip, and a chart tracks zone occupancy over time — all running on CPU, no GPU needed',
+      ],
+    },
+    year: '2026',
+    link: 'https://github.com/Hugolelis/person_detector-ai',
+    image: '/projects/person-detector.webp',
+  },
+  {
     id: 4,
     title: { pt: 'QrCode', en: 'QrCode' },
     tag: 'C++17 · ISO/IEC 18004 · Zero Deps',
