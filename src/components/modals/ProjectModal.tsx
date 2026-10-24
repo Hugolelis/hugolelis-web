@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import type { Project, Lang } from '../types'
-import type { Translations } from '../i18n'
+import type { Project, Lang } from '../../types'
+import type { Translations } from '../../i18n'
 import styles from './ProjectModal.module.css'
 
 interface Props {

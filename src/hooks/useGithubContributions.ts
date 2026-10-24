@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { ActivityDay } from '../components/ActivityHeatmap'
+import type { ActivityDay } from '../components/sections/ActivityHeatmap'
 
 interface State {
   days: ActivityDay[]

@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import type { Project } from '../types'
-import type { Lang } from '../types'
-import type { Translations } from '../i18n'
-import { ProjectModal } from './ProjectModal'
+import type { Project } from '../../types'
+import type { Lang } from '../../types'
+import type { Translations } from '../../i18n'
+import { ProjectModal } from '../modals/ProjectModal'
 import styles from './ProjectCard.module.css'
 
 interface Props {

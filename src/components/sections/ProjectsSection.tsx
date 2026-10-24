@@ -1,6 +1,6 @@
-import { useApp } from '../context/AppContext'
-import { projects } from '../data'
-import { ProjectCard } from './ProjectCard'
+import { useApp } from '../../context/AppContext'
+import { projects } from '../../data'
+import { ProjectCard } from '../project/ProjectCard'
 import styles from './ProjectsSection.module.css'
 
 export function ProjectsSection() {

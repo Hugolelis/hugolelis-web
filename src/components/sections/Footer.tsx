@@ -1,4 +1,4 @@
-import { useApp } from '../context/AppContext'
+import { useApp } from '../../context/AppContext'
 import styles from './Footer.module.css'
 
 const email = 'hugodelelis05@gmail.com'

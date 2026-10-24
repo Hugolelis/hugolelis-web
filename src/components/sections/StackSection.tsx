@@ -1,6 +1,6 @@
-import { useApp } from '../context/AppContext'
+import { useApp } from '../../context/AppContext'
 import { ActivityHeatmap } from './ActivityHeatmap'
-import { useGithubContributions } from '../hooks/useGithubContributions'
+import { useGithubContributions } from '../../hooks/useGithubContributions'
 import styles from './StackSection.module.css'
 
 const GITHUB_USERNAME = 'Hugolelis'

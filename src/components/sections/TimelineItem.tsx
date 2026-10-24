@@ -1,5 +1,5 @@
-import type { TimelineEntry, Lang, TimelineCategory } from '../types'
-import { BriefcaseIcon, GraduationCapIcon, TrophyIcon } from './icons'
+import type { TimelineEntry, Lang, TimelineCategory } from '../../types'
+import { BriefcaseIcon, GraduationCapIcon, TrophyIcon } from '../ui/icons'
 import styles from './Timeline.module.css'
 
 interface Props {

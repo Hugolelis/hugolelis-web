@@ -1,5 +1,5 @@
-import { useApp } from '../context/AppContext'
-import { asciiPortraitDark, asciiPortraitLight } from '../data'
+import { useApp } from '../../context/AppContext'
+import { asciiPortraitDark, asciiPortraitLight } from '../../data'
 import styles from './About.module.css'
 
 const interests = [

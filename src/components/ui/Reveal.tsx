@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react'
-import { useReveal } from '../hooks/useReveal'
+import { useReveal } from '../../hooks/useReveal'
 
 interface Props {
   children: ReactNode

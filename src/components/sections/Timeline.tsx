@@ -1,7 +1,7 @@
-import { useApp } from '../context/AppContext'
-import { timeline } from '../data'
+import { useApp } from '../../context/AppContext'
+import { timeline } from '../../data'
 import { TimelineItem } from './TimelineItem'
-import { useHorizontalPin } from '../hooks/useHorizontalPin'
+import { useHorizontalPin } from '../../hooks/useHorizontalPin'
 import styles from './Timeline.module.css'
 
 // Data is stored newest -> oldest; the horizontal track reads left to right

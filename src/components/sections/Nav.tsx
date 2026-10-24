@@ -1,8 +1,8 @@
 import { Activity, useEffect, useRef, useState } from 'react'
-import { useApp } from '../context/AppContext'
-import { useActiveSection } from '../hooks/useActiveSection'
-import { useScrollY } from '../hooks/useScrollY'
-import { ScrollProgress } from './ScrollProgress'
+import { useApp } from '../../context/AppContext'
+import { useActiveSection } from '../../hooks/useActiveSection'
+import { useScrollY } from '../../hooks/useScrollY'
+import { ScrollProgress } from '../ui/ScrollProgress'
 import styles from './Nav.module.css'
 
 const SUB_PAGES = ['/projetos'] as const

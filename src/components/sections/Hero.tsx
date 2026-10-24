@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useApp } from '../context/AppContext'
-import { PdfModal } from './PdfModal'
-import ShapeGrid from './ShapeGrid'
+import { useApp } from '../../context/AppContext'
+import { PdfModal } from '../modals/PdfModal'
+import ShapeGrid from '../ui/ShapeGrid'
 import styles from './Hero.module.css'
 
 import cvUrl from '/Hugolelis_cv.pdf'

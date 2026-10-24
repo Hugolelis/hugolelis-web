@@ -3,8 +3,8 @@ import { Helmet } from 'react-helmet-async'
 import { Footer, Loading, Nav, Hero, About, CertificatesSection, StackSection, ProjectsSection, Timeline, Reveal } from './components'
 import { useApp } from './context/AppContext'
 import { useAppReady } from './hooks/useAppReady'
-import styles from './components/BackToTop.module.css'
-import notFoundStyles from './components/NotFound.module.css'
+import styles from './components/ui/BackToTop.module.css'
+import notFoundStyles from './components/ui/NotFound.module.css'
 
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })))
 
